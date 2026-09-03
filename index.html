@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto Teknikal Academy · Belajar Trading Crypto Dari 0 Sampai Konsisten Profit</title>
+<meta name="description" content="Bongkar rahasia trading crypto dari 0 hingga konsisten profit di segala kondisi market. Modul lengkap, komunitas eksklusif, private 1 on 1, dan live mentoring mingguan.">
+<meta property="og:title" content="Crypto Teknikal Academy">
+<meta property="og:description" content="Belajar trading crypto dari 0 sampai konsisten profit dua digit per bulan. Tanpa hoki, tanpa nebak-nebak.">
+<meta property="og:type" content="website">
+<link rel="icon" href="https://cdn.scalev.id/business_files/FhKeMA8RcWkseYr_Quhz2a3Q/1753400218631-logo%20ct%20academy%20pn.webp">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1a1425; --ink2:#3d3350; --mut:#6e6580; --soft-mut:#9a93a8;
+  --brand:#8C3BD9; --brand2:#6B24B2; --branddk:#4d1885;
+  --bg:#ffffff; --soft:#f8f6fc; --soft2:#f1ecf9; --tint:#faf8fe;
+  --line:#eae5f2; --line2:#ded6ec;
+  --amber:#f4a63b; --green:#00A344; --red:#df0e03;
+  --grad:linear-gradient(135deg,#8C3BD9,#6B24B2);
+  --shadow:0 18px 50px rgba(26,20,37,.10);
+  --shadow-sm:0 6px 20px rgba(26,20,37,.07);
+  --r:18px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+section{position:relative}
+section[id]{scroll-margin-top:82px}
+.eyebrow{display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--brand2);background:rgba(140,59,217,.08);border:1px solid rgba(140,59,217,.2);padding:6px 13px;border-radius:99px;margin-bottom:18px}
+.eyebrow.hot{color:var(--red);background:rgba(223,14,3,.07);border-color:rgba(223,14,3,.2)}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.12;font-weight:850}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+.lead{color:var(--mut);font-size:clamp(1rem,1.4vw,1.12rem)}
+.hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-weight:800;font-size:1rem;cursor:pointer;border:none;border-radius:13px;padding:14px 26px;transition:transform .16s,box-shadow .16s,background .16s,border .16s;white-space:nowrap}
+.btn.primary{background:var(--grad);color:#fff;box-shadow:0 12px 28px rgba(140,59,217,.30)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(140,59,217,.42)}
+.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line2)}
+.btn.ghost:hover{border-color:var(--brand);color:var(--brand2);transform:translateY(-2px)}
+.btn.sm{padding:11px 20px;font-size:.92rem;border-radius:11px}
+.btn.white{background:#fff;color:var(--brand2)}
+.btn.white:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.18)}
+
+/* ===== NAV ===== */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border .25s,box-shadow .25s}
+nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(26,20,37,.05)}
+.navin{display:flex;align-items:center;justify-content:space-between;height:66px;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:1.08rem;letter-spacing:-.01em;white-space:nowrap}
+.brand .mark{width:34px;height:34px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(140,59,217,.35);flex:none}
+.brand .mark svg{width:19px;height:19px;display:block}
+.brand b{color:var(--brand2)}
+.navlinks{display:flex;align-items:center;gap:28px}
+.navlinks a.nl{font-size:.94rem;font-weight:600;color:var(--ink2);transition:color .15s}
+.navlinks a.nl:hover{color:var(--brand2)}
+.navcta{display:flex;align-items:center;gap:14px}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
+.burger svg{width:26px;height:26px;display:block}
+.mobmenu{display:none;flex-direction:column;gap:4px;padding:10px 22px 20px;border-bottom:1px solid var(--line);background:#fff}
+.mobmenu.open{display:flex}
+.mobmenu a{padding:12px 4px;font-weight:600;color:var(--ink2);border-bottom:1px solid var(--soft2)}
+.mobmenu .btn{margin-top:12px;justify-content:center}
+
+/* ===== HERO ===== */
+.hero{position:relative;padding:clamp(44px,6.5vw,86px) 0 clamp(40px,6vw,70px);overflow:hidden}
+.hero:before{content:"";position:absolute;width:720px;height:720px;right:-220px;top:-320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(140,59,217,.14),transparent 62%);pointer-events:none}
+.hero:after{content:"";position:absolute;width:520px;height:520px;left:-240px;bottom:-260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(140,59,217,.09),transparent 62%);pointer-events:none}
+.herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;position:relative;z-index:2}
+.hero h1{font-size:clamp(2rem,4.9vw,3.25rem);margin-bottom:20px}
+.hero .lead{font-size:clamp(1.02rem,1.5vw,1.15rem);max-width:540px;margin-bottom:28px}
+.herobtns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.herochips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:.85rem;font-weight:700;color:var(--ink2);background:var(--soft);border:1px solid var(--line);border-radius:99px;padding:7px 14px}
+.chip svg{width:15px;height:15px;color:var(--brand);flex:none}
+
+/* hero mockup */
+.mock{position:relative;z-index:2}
+.tgcard{background:#15131d;border:1px solid #2b2637;border-radius:22px;box-shadow:var(--shadow);overflow:hidden;transform:rotate(.6deg)}
+.tgcard .tgbar{display:flex;align-items:center;gap:9px;padding:13px 16px;border-bottom:1px solid #262133;background:#1b1826}
+.tgcard .tgav{width:26px;height:26px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex:none}
+.tgcard .tgav svg{width:14px;height:14px;color:#fff}
+.tgcard .tgnm{color:#efeaf7;font-size:.84rem;font-weight:800;letter-spacing:-.01em}
+.tgcard .tgtime{margin-left:auto;color:#7c7490;font-size:.68rem;font-weight:600}
+.tgbody{padding:24px 22px 20px;text-align:center;position:relative;overflow:hidden}
+.tgbody:after{content:"";position:absolute;width:260px;height:260px;right:-110px;top:-130px;border-radius:50%;background:radial-gradient(circle,rgba(140,59,217,.35),transparent 65%)}
+.tgex{position:relative;z-index:1;font-size:.7rem;font-weight:800;letter-spacing:.16em;color:#8a82a0;text-transform:uppercase}
+.tgpnl{position:relative;z-index:1;font-size:clamp(2rem,4vw,2.7rem);font-weight:850;color:#3ddc84;letter-spacing:-.02em;margin:6px 0 2px;line-height:1.05}
+.tgpnl small{font-size:.85rem;font-weight:700;color:#3ddc84;opacity:.72;margin-left:6px;letter-spacing:.04em;vertical-align:.55em}
+.tgpair{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:99px;padding:6px 14px;margin-top:12px}
+.tgpair .cn{width:18px;height:18px;border-radius:50%;background:#f7931a;color:#fff;font-size:.6rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.tgpair span{color:#d9d2e6;font-size:.78rem;font-weight:700}
+.tgpair em{font-style:normal;color:#8a82a0;font-size:.72rem;font-weight:600}
+.tgrows{position:relative;z-index:1;margin-top:18px;border-top:1px solid #262133;padding-top:14px;display:flex;flex-direction:column;gap:9px}
+.tgrow{display:flex;align-items:center;justify-content:space-between;font-size:.78rem}
+.tgrow .k{color:#8a82a0;font-weight:600}
+.tgrow .v{color:#efeaf7;font-weight:800}
+.tgfoot{background:#1b1826;border-top:1px solid #262133;padding:11px 16px;display:flex;align-items:center;gap:8px}
+.tgfoot .fl{color:#7c7490;font-size:.68rem;font-weight:600}
+.tgfoot .fr{margin-left:auto;display:flex;gap:5px}
+.tgfoot .fr i{width:6px;height:6px;border-radius:50%;background:#3a3450;display:block}
+.floatcard{position:absolute;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow-sm);padding:11px 14px;font-size:.76rem;font-weight:700;display:flex;align-items:center;gap:9px;z-index:3}
+.floatcard .ic{width:28px;height:28px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.floatcard .ic svg{width:15px;height:15px}
+.floatcard .sub{display:block;font-size:.66rem;color:var(--mut);font-weight:500;margin-top:1px}
+.floatcard .tx{display:block;line-height:1.25}
+.fc1{top:-54px;left:-30px;animation:bob 5s ease-in-out infinite}
+.fc2{bottom:-22px;right:-34px;animation:bob 5.6s ease-in-out infinite .6s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ===== BANDS / VALUE CARDS ===== */
+.band{padding:clamp(46px,6vw,74px) 0}
+.band.soft{background:var(--soft)}
+.center{text-align:center;max-width:660px;margin:0 auto clamp(34px,4vw,50px)}
+.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.vic{width:48px;height:48px;border-radius:13px;background:var(--soft2);display:flex;align-items:center;justify-content:center;color:var(--brand2);margin-bottom:15px}
+.vic svg{width:24px;height:24px}
+.vcard h3{font-size:1.05rem;margin-bottom:7px}
+.vcard p{font-size:.9rem;color:var(--mut)}
+
+/* ===== MASALAH ===== */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);align-items:center;padding:clamp(20px,3vw,32px) 0}
+.feat h3{font-size:clamp(1.35rem,2.6vw,1.85rem);margin-bottom:14px}
+.feat p{color:var(--mut);margin-bottom:20px;max-width:470px}
+.ftag{display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.ftag svg{width:15px;height:15px}
+.flist{list-style:none;display:flex;flex-direction:column;gap:11px}
+.flist li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;color:var(--ink2);font-weight:500}
+.flist .ck{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(140,59,217,.12);color:var(--brand2);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.flist .ck svg{width:13px;height:13px}
+.fvis{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:26px;min-height:270px;display:flex;flex-direction:column;justify-content:center}
+.painlist{list-style:none;display:flex;flex-direction:column;gap:10px}
+.painlist li{display:flex;gap:12px;align-items:flex-start;background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.88rem;font-weight:600;color:var(--ink2)}
+.painlist .x{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(223,14,3,.09);color:var(--red);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.painlist .x svg{width:12px;height:12px}
+.painnote{margin-top:16px;font-size:.86rem;color:var(--mut);text-align:center;font-weight:600}
+.painnote b{color:var(--brand2)}
+
+/* market condition pills */
+.mkt{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:760px;margin:0 auto}
+.mktcell{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 18px;text-align:center;box-shadow:var(--shadow-sm)}
+.mktcell .mi{width:44px;height:44px;margin:0 auto 12px;border-radius:12px;background:var(--soft2);display:flex;align-items:center;justify-content:center;color:var(--brand2)}
+.mktcell .mi svg{width:22px;height:22px}
+.mktcell b{display:block;font-size:1rem;letter-spacing:-.01em}
+.mktcell span{font-size:.84rem;color:var(--mut)}
+
+/* ===== BEFORE / AFTER ===== */
+.bagrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.bacard{border-radius:22px;padding:28px 26px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm)}
+.bacard.after{border-color:rgba(140,59,217,.35);box-shadow:var(--shadow);background:linear-gradient(160deg,rgba(140,59,217,.05),#fff 45%)}
+.bahead{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.bahead .bi{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none}
+.bacard.before .bi{background:rgba(223,14,3,.09);color:var(--red)}
+.bacard.after .bi{background:var(--grad);color:#fff;box-shadow:0 8px 18px rgba(140,59,217,.3)}
+.bahead .bi svg{width:19px;height:19px}
+.bahead b{font-size:.78rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--ink2)}
+.balist{list-style:none;display:flex;flex-direction:column;gap:12px}
+.balist li{display:flex;gap:11px;align-items:flex-start;font-size:.93rem;color:var(--ink2)}
+.balist .d{flex:none;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.balist .d svg{width:12px;height:12px}
+.bacard.before .d{background:rgba(110,101,128,.12);color:var(--mut)}
+.bacard.after .d{background:rgba(140,59,217,.13);color:var(--brand2)}
+.bacard.before .balist li{color:var(--mut)}
+
+/* ===== MODUL ===== */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 22px 26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.mcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.mic{width:48px;height:48px;border-radius:13px;background:var(--soft2);color:var(--brand2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.mic svg{width:24px;height:24px}
+.mtag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--brand2);margin-bottom:9px}
+.mcard h3{font-size:1.02rem;margin-bottom:8px;letter-spacing:-.015em}
+.mcard p{font-size:.88rem;color:var(--mut)}
+.mcard.valuecard{grid-column:span 2;background:linear-gradient(160deg,rgba(140,59,217,.07),#fff 55%);border-color:rgba(140,59,217,.28);flex-direction:row;align-items:center;justify-content:space-between;gap:24px;padding:28px 30px}
+.mcard.valuecard .vtext{max-width:420px}
+.mcard.valuecard h3{margin-bottom:6px}
+.mcard.valuecard .valuepill{flex:none}
+@media(max-width:980px){.mcard.valuecard{grid-column:span 2}}
+@media(max-width:620px){.mcard.valuecard{grid-column:span 1;flex-direction:column;text-align:center;gap:16px}}
+.valuepill{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;font-size:.82rem;font-weight:800;padding:9px 18px;border-radius:99px;box-shadow:0 10px 24px rgba(140,59,217,.28)}
+.valuepill svg{width:15px;height:15px}
+
+/* ===== PERSONAS ===== */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pcell{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow-sm);transition:transform .2s}
+.pcell:hover{transform:translateY(-4px)}
+.pcell .pemoji{font-size:1.7rem;margin-bottom:12px;line-height:1}
+.pcell h3{font-size:1.02rem;margin-bottom:7px}
+.pcell p{font-size:.89rem;color:var(--mut)}
+
+/* ===== BONUS ===== */
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.bcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.bcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.bic{width:48px;height:48px;border-radius:13px;background:var(--soft2);color:var(--brand2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.bic svg{width:24px;height:24px}
+.bbody{padding:26px 24px 26px;display:flex;flex-direction:column;flex:1}
+.btag{display:inline-flex;align-items:center;gap:6px;font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand2);margin-bottom:9px}
+.bbody h3{font-size:1.02rem;margin-bottom:8px}
+.bbody p{font-size:.88rem;color:var(--mut);flex:1}
+.bval{margin-top:16px;display:inline-flex;align-self:flex-start;align-items:center;gap:7px;font-size:.82rem;font-weight:800;color:var(--brand2);background:rgba(140,59,217,.09);border:1px solid rgba(140,59,217,.2);border-radius:99px;padding:6px 14px}
+.totalbox{margin-top:34px;background:var(--grad);border-radius:24px;padding:clamp(28px,4vw,40px);text-align:center;color:#fff;position:relative;overflow:hidden;box-shadow:0 26px 60px rgba(140,59,217,.3)}
+.totalbox:before{content:"";position:absolute;width:340px;height:340px;right:-110px;top:-150px;border-radius:50%;background:rgba(255,255,255,.12)}
+.totalbox:after{content:"";position:absolute;width:280px;height:280px;left:-130px;bottom:-160px;border-radius:50%;background:rgba(255,255,255,.08)}
+.totalbox .tl{position:relative;font-size:.78rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;opacity:.9}
+.totalbox .tv{position:relative;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:850;letter-spacing:-.03em;line-height:1.05;margin:8px 0 10px}
+.totalbox .tn{position:relative;opacity:.92;max-width:560px;margin:0 auto;font-size:1rem}
+
+/* ===== BUKTI ===== */
+.proofgrid{columns:4;column-gap:16px}
+.proofgrid figure{break-inside:avoid;margin-bottom:16px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.proofgrid img{width:100%}
+.disclaim{text-align:center;font-size:.8rem;color:var(--soft-mut);margin-top:22px;max-width:620px;margin-left:auto;margin-right:auto}
+
+/* ===== PRICING ===== */
+.pricewrap{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.plan{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px 26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;position:relative}
+.plan.pro{border:1.5px solid var(--brand);box-shadow:var(--shadow)}
+.plan .ptag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.05em;padding:6px 16px;border-radius:99px;box-shadow:0 8px 20px rgba(140,59,217,.35);white-space:nowrap}
+.plan .ptag.amber{background:linear-gradient(135deg,#f7b955,#f4a63b);box-shadow:0 8px 20px rgba(244,166,59,.4)}
+.plan .pname{font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.plan .pdisc{align-self:flex-start;margin-top:10px;font-size:.68rem;font-weight:800;letter-spacing:.06em;color:var(--red);background:rgba(223,14,3,.08);border:1px solid rgba(223,14,3,.18);border-radius:99px;padding:4px 11px}
+.plan .pcoret{display:block;margin-top:12px;color:var(--soft-mut);text-decoration:line-through;font-size:.95rem;font-weight:600}
+.plan .pprice{font-size:clamp(1.8rem,3vw,2.3rem);font-weight:850;margin:2px 0 2px;letter-spacing:-.025em;line-height:1.1}
+.plan .pprice small{display:block;font-size:.85rem;font-weight:600;color:var(--mut);letter-spacing:0;margin-top:2px}
+.plan .pdesc{font-size:.86rem;color:var(--mut);margin:12px 0 20px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;flex:1}
+.plan ul li{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--ink2)}
+.plan ul li .ck{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(140,59,217,.12);color:var(--brand2);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.plan ul li .ck svg{width:12px;height:12px}
+.plan .btn{width:100%;justify-content:center}
+.pricenote{text-align:center;color:var(--mut);font-size:.85rem;margin-top:24px}
+
+/* ===== QUOTE ===== */
+.quote{max-width:760px;margin:0 auto;text-align:center}
+.quote .qm{width:46px;height:46px;margin:0 auto 18px;border-radius:14px;background:var(--soft2);color:var(--brand2);display:flex;align-items:center;justify-content:center}
+.quote .qm svg{width:22px;height:22px}
+.quote p{font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.35}
+.quote cite{display:block;margin-top:14px;font-style:normal;font-size:.9rem;font-weight:800;color:var(--brand2);letter-spacing:.04em}
+
+/* ===== FAQ ===== */
+.faqlist{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border .2s,box-shadow .2s}
+.faq.open{border-color:rgba(140,59,217,.4);box-shadow:var(--shadow-sm)}
+.faq .q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;cursor:pointer;font-weight:700;font-size:1rem;background:none;border:none;width:100%;text-align:left;font-family:inherit;color:inherit;line-height:1.4}
+.faq .q .x{flex:none;width:24px;height:24px;border-radius:50%;background:var(--soft2);color:var(--brand2);display:flex;align-items:center;justify-content:center;transition:transform .25s,background .2s}
+.faq .q .x svg{width:13px;height:13px}
+.faq.open .q .x{transform:rotate(45deg);background:var(--grad);color:#fff}
+.faq .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq .a p{padding:0 22px 20px;color:var(--mut);font-size:.94rem}
+
+/* ===== FINAL CTA ===== */
+.finalcta{padding:clamp(40px,6vw,66px) 0}
+.ctabox{background:var(--grad);border-radius:28px;padding:clamp(38px,5vw,60px);text-align:center;color:#fff;position:relative;overflow:hidden;box-shadow:0 30px 70px rgba(140,59,217,.32)}
+.ctabox:before{content:"";position:absolute;width:400px;height:400px;right:-120px;top:-160px;border-radius:50%;background:rgba(255,255,255,.12)}
+.ctabox:after{content:"";position:absolute;width:320px;height:320px;left:-140px;bottom:-180px;border-radius:50%;background:rgba(255,255,255,.08)}
+.ctabox h2{font-size:clamp(1.6rem,3.4vw,2.3rem);margin-bottom:14px;position:relative}
+.ctabox p{opacity:.94;max-width:540px;margin:0 auto 26px;position:relative;font-size:1.05rem}
+.ctabox .btn{position:relative}
+.ctabox .sub{margin-top:16px;font-size:.82rem;opacity:.85;position:relative}
+
+/* ===== FOOTER ===== */
+footer{background:#140f1d;color:#c8c1d6;padding:56px 0 30px;font-size:.9rem}
+.footgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;margin-bottom:36px}
+footer .brand{color:#fff;margin-bottom:14px}
+footer .brand b{color:#c285ff}
+footer .fabout{color:#9c93ac;max-width:360px;font-size:.88rem}
+footer h4{color:#fff;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;font-weight:800}
+footer .fcol a{display:block;color:#9c93ac;padding:6px 0;transition:color .15s}
+footer .fcol a:hover{color:#c285ff}
+.foot-legal{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;color:#7d7490;font-size:.78rem;line-height:1.7}
+.foot-legal a{color:#c285ff}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* sticky mobile CTA */
+.stickycta{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;box-shadow:0 -6px 24px rgba(26,20,37,.08)}
+.stickycta .btn{width:100%;justify-content:center}
+
+@media(max-width:980px){
+  .mgrid,.bgrid,.pgrid{grid-template-columns:repeat(2,1fr)}
+  .pricewrap{grid-template-columns:1fr;max-width:460px;margin:0 auto;gap:28px}
+  .proofgrid{columns:3}
+}
+@media(max-width:900px){
+  .herogrid{grid-template-columns:1fr;gap:40px}
+  .mock{max-width:420px;margin:0 auto;width:100%}
+  .vgrid{grid-template-columns:repeat(2,1fr)}
+  .feat{grid-template-columns:1fr;gap:26px}
+  .fvis{order:-1}
+  .bagrid{grid-template-columns:1fr}
+  .footgrid{grid-template-columns:1fr 1fr}
+  .navlinks{display:none}
+  .burger{display:block}
+  .navcta .btn{display:none}
+  .stickycta{display:block}
+  .floatcard{display:none}
+  body{padding-bottom:70px}
+}
+@media(max-width:620px){
+  .vgrid,.mgrid,.bgrid,.pgrid{grid-template-columns:1fr}
+  .mkt{grid-template-columns:1fr}
+  .footgrid{grid-template-columns:1fr}
+  .proofgrid{columns:1}
+  .herobtns .btn{flex:1;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap navin">
+    <a href="#top" class="brand">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></span>
+      CRYPTO <b>TEKNIKAL</b>
+    </a>
+    <div class="navlinks">
+      <a class="nl" href="#masalah">Masalah</a>
+      <a class="nl" href="#modul">Modul</a>
+      <a class="nl" href="#bonus">Bonus</a>
+      <a class="nl" href="#bukti">Bukti</a>
+      <a class="nl" href="#harga">Harga</a>
+      <a class="nl" href="#faq">FAQ</a>
+    </div>
+    <div class="navcta">
+      <a class="btn primary sm" href="#harga">Gabung Sekarang</a>
+      <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobmenu" id="mobmenu">
+    <a href="#masalah">Masalah</a>
+    <a href="#modul">Modul</a>
+    <a href="#bonus">Bonus</a>
+    <a href="#bukti">Bukti</a>
+    <a href="#harga">Harga</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn primary" href="#harga">Gabung Sekarang</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap herogrid">
+    <div>
+      <span class="eyebrow hot">Buat lo yang rugi mulu</span>
+      <h1>Bongkar Rahasia Trading Crypto Dari 0 Hingga <span class="hl">Konsisten Profit</span> Tanpa Hoki</h1>
+      <p class="lead">Bukan grup sinyal, bukan pompom coin. Lo belajar sistem trading yang kepakai di segala kondisi market: bullish, bearish, sideways. Bahasa simpel, real case, langsung bisa dipraktekin hari itu juga.</p>
+      <div class="herobtns">
+        <a class="btn primary" href="#harga">Gabung Sekarang
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn ghost" href="#modul">Lihat Modulnya</a>
+      </div>
+      <div class="herochips">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>1000+ member aktif</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>7 modul dari nol</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Private 1 on 1 tiap hari</span>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="floatcard fc1">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
+        <span class="tx">1000+ member<span class="sub">komunitas aktif tiap hari</span></span>
+      </div>
+      <div class="tgcard">
+        <div class="tgbar">
+          <span class="tgav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/></svg></span>
+          <span class="tgnm">CryptoTeknikal</span>
+          <span class="tgtime">04.24 WIB</span>
+        </div>
+        <div class="tgbody">
+          <div class="tgex">Realized PnL</div>
+          <div class="tgpnl">+8.338,1<small>USDT</small></div>
+          <div class="tgpair"><span class="cn">B</span><span>BTCUSDT</span><em>Perpetual · 100x</em></div>
+          <div class="tgrows">
+            <div class="tgrow"><span class="k">Harga entri</span><span class="v">118.732,1</span></div>
+            <div class="tgrow"><span class="k">Harga keluar</span><span class="v">102.151,0</span></div>
+            <div class="tgrow"><span class="k">Arah posisi</span><span class="v">Short</span></div>
+          </div>
+        </div>
+        <div class="tgfoot">
+          <span class="fl">Channel member Crypto Teknikal Academy</span>
+          <span class="fr"><i></i><i></i><i></i></span>
+        </div>
+      </div>
+      <div class="floatcard fc2">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/></svg></span>
+        <span class="tx">ROI +114,57%<span class="sub">SOLUSDT, member CTA</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KENAPA CTA ===== -->
+<section class="band">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Kenapa Crypto Teknikal</span>
+      <h2>Bukan kelas teori. Ini sistem yang <span class="hl">dipakai tiap hari</span>.</h2>
+      <p class="lead" style="margin-top:12px">Empat hal yang bikin member bertahan, dan balik lagi tiap kali market berubah arah.</p>
+    </div>
+    <div class="vgrid reveal">
+      <div class="vcard">
+        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></div>
+        <h3>Sistem teruji</h3>
+        <p>Terbukti profitable di bull market, bear market, maupun sideways. Bukan strategi satu musim.</p>
+      </div>
+      <div class="vcard">
+        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-1.5z"/><path d="M8 7h7M8 11h7"/></svg></div>
+        <h3>Materi dari nol</h3>
+        <p>Tujuh modul runtut dari price action sampai prop firm. Gak ada yang diloncat.</p>
+      </div>
+      <div class="vcard">
+        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <h3>Komunitas eksklusif</h3>
+        <p>Tempat nanya tanpa takut dibully, diisi orang-orang yang sefrekuensi dan saling dukung.</p>
+      </div>
+      <div class="vcard">
+        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Private 1 on 1</h3>
+        <p>Konsultasi porto lewat chat tiap hari, plus live mentoring seminggu sekali bareng mentor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MASALAH ===== -->
+<section class="band soft" id="masalah">
+  <div class="wrap">
+    <div class="feat reveal">
+      <div class="ftext">
+        <span class="ftag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+          Kelihatan familiar?
+        </span>
+        <h3>Lo pasti pernah ngerasa: <span class="hl">"kok orang lain bisa, gue enggak?"</span></h3>
+        <p>Tiap kali mau mulai, ujungnya bingung sendiri. Nonton video sana-sini, semua mentor udah dipelajarin, tapi begitu buka chart tetap gak tau harus ngapain.</p>
+        <ul class="flist">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Lo gak butuh sinyal baru, lo butuh logika di balik sinyalnya.</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Lo gak butuh indikator ajaib, lo butuh urutan belajar yang bener.</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Lo cuma butuh satu hal: ilmu strategi yang jelas, runtut, dan bisa dipelajari dari 0.</li>
+        </ul>
+      </div>
+      <div class="fvis">
+        <ul class="painlist">
+          <li><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Nonton video tutorial sampai habis, hasilnya nol.</li>
+          <li><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Join grup Telegram yang rame tapi gak ngerti arah.</li>
+          <li><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Entry pakai feeling, ujungnya nyangkut.</li>
+          <li><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Ikut sinyal, tapi gak ngerti kenapa disuruh beli.</li>
+        </ul>
+        <p class="painnote">Masalahnya bukan lo gak niat. Masalahnya <b>lo belum punya sistemnya.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEGALA KONDISI MARKET ===== -->
+<section class="band">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Emang bisa?</span>
+      <h2>Bisa kok, kalau lo punya cara main di <span class="hl">tiga kondisi market</span></h2>
+      <p class="lead" style="margin-top:12px">Kebanyakan orang cuma bisa cuan waktu market naik. Di sini lo belajar ketiganya.</p>
+    </div>
+    <div class="mkt reveal">
+      <div class="mktcell">
+        <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div>
+        <b>Bullish</b><span>Ngerti kapan ikut tren dan kapan udah kemahalan.</span>
+      </div>
+      <div class="mktcell">
+        <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 17v-5h-5"/></svg></div>
+        <b>Bearish</b><span>Tetap punya peluang waktu semua orang panik.</span>
+      </div>
+      <div class="mktcell">
+        <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-5 4 10 3-5h4"/></svg></div>
+        <b>Sideways</b><span>Gak maksa entry pas market lagi gak ke mana-mana.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE / AFTER ===== -->
+<section class="band soft">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Sebelum dan sesudah</span>
+      <h2>Bedanya kelihatan dari <span class="hl">cara lo ambil keputusan</span></h2>
+    </div>
+    <div class="bagrid reveal">
+      <div class="bacard before">
+        <div class="bahead">
+          <span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 17v-5h-5"/></svg></span>
+          <b>Before join Crypto Teknikal</b>
+        </div>
+        <ul class="balist">
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Bingung mulai dari mana, buta arah, semuanya keliatan ribet.</li>
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Udah coba sendiri tapi boncos, makin ragu buat lanjut.</li>
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Gak ngerti baca chart, indikator, apalagi nentuin entry dan exit.</li>
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Sering FOMO dan nyangkut karena trading tanpa strategi.</li>
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Cuma ngandelin feeling dan grup sinyal.</li>
+        </ul>
+      </div>
+      <div class="bacard after">
+        <div class="bahead">
+          <span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></span>
+          <b>After join Crypto Teknikal</b>
+        </div>
+        <ul class="balist">
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Punya roadmap jelas dari nol sampai konsisten.</li>
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Bisa baca chart dan indikator dengan percaya diri.</li>
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Paham cara entry dan exit yang tepat, gak asal-asalan.</li>
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Tau gaya trading mana yang cocok buat lifestyle lo.</li>
+          <li><span class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Trading lebih tenang karena ngerti ilmunya, bukan nebak.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODUL ===== -->
+<section class="band" id="modul">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Modul rahasia</span>
+      <h2>Step by step dari 0 sampai <span class="hl">profitable di segala kondisi market</span></h2>
+      <p class="lead" style="margin-top:12px">Lo belajar lewat bahasa simpel, real case, dan gaya santai kayak lagi nongkrong di coffee shop. Gak pakai istilah ribet, gak pakai rumus sakti.</p>
+    </div>
+
+    <div class="mgrid reveal">
+      <article class="mcard">
+        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></div>
+        <span class="mtag">Modul 01</span>
+        <h3>Price Action</h3>
+        <p>Memahami pergerakan harga untuk memprediksi arah pasar dengan lebih akurat di setiap waktu.</p>
+      </article>
+      <article class="mcard">
+        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M9 20V4M14 20v-7M19 20V8"/></svg></div>
+        <span class="mtag">Modul 02</span>
+        <h3>Auction Market Theory</h3>
+        <p>Materi dasar untuk membangun narasi dalam scalping, dan juga bisa diterapkan dalam swing trading.</p>
+      </article>
+      <article class="mcard">
+        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h11M4 7l3-3M4 7l3 3"/><path d="M20 17H9m11 0l-3-3m3 3l-3 3"/></svg></div>
+        <span class="mtag">Modul 03</span>
+        <h3>Orderflow</h3>
+        <p>Mengidentifikasi confluence bias, entry trigger, dan momentum lewat data yang gak keliatan dari chart harga doang.</p>
+      </article>
+      <article class="mcard">
+        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <span class="mtag">Modul 04</span>
+        <h3>Risk Management</h3>
+        <p>Manajemen risiko supaya profit trading lo maksimal dan akun lo tetap hidup waktu salah arah.</p>
+      </article>
+      <article class="mcard">
+        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+        <span class="mtag">Modul 05</span>
+        <h3>Applying Your Knowledge by Use Cases</h3>
+        <p>Buat memahami berbagai situasi dalam trading, karena gak ada satu formula yang berlaku untuk semua.</p>
+      </article>
+      <article class="mcard">
+        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></div>
+        <span class="mtag">Modul 06</span>
+        <h3>Train Your Skill in Demo Account</h3>
+        <p>Latihan di akun demo dulu buat minimalisir kerugian. Berkesempatan dapat reward kalau berhasil lewatin.</p>
+      </article>
+      <article class="mcard">
+        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15l-2 6 6-2"/><path d="M14.5 3.5C17 3 21 4 21 4s1 4 .5 6.5c-.6 3-4 6-7 7.5L11 15l-3-3.5c1.5-3 4.5-6.4 7.5-8z"/><circle cx="15" cy="9" r="1.6"/></svg></div>
+        <span class="mtag">Modul 07</span>
+        <h3>Leverage Your Capital With Prop Firm</h3>
+        <p>Belajar pakai prop firm buat lo yang modalnya minim, biar dapat tambahan modal buat trading.</p>
+      </article>
+      <article class="mcard valuecard">
+        <div class="vtext">
+          <h3>Nilai total modul</h3>
+          <p>Tujuh modul di atas, kalau dijual terpisah satu per satu, harganya segini. Semuanya udah termasuk di semua paket.</p>
+        </div>
+        <span class="valuepill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Senilai Rp5.000.000
+        </span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COCOK BUAT SIAPA ===== -->
+<section class="band soft">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Cocok buat siapa</span>
+      <h2>Kalau lo salah satu dari ini, <span class="hl">ini tempat lo</span></h2>
+    </div>
+    <div class="pgrid reveal">
+      <div class="pcell"><div class="pemoji">💼</div><h3>Karyawan yang pengen nambah penghasilan</h3><p>Capek ngandelin gaji doang? Ini bantu lo mulai cuan dari crypto sambil tetap kerja.</p></div>
+      <div class="pcell"><div class="pemoji">🎧</div><h3>Freelancer yang pengen income stabil</h3><p>Bosen pemasukan naik turun? Pelajari strategi cuan konsisten dari chart, bukan hoki.</p></div>
+      <div class="pcell"><div class="pemoji">📉</div><h3>Pemula yang sering nyangkut dan FOMO</h3><p>Lo bakal paham cara entry dan exit yang bener biar gak jadi korban market lagi.</p></div>
+      <div class="pcell"><div class="pemoji">🚀</div><h3>Anak muda yang mau punya skill cuan</h3><p>Daripada scroll medsos doang, mending belajar skill yang bisa jadi mesin uang.</p></div>
+      <div class="pcell"><div class="pemoji">🛑</div><h3>Korban sinyal gratisan dan pompom coin</h3><p>Ini bantu lo stop jadi follower dan mulai ngerti analisa lo sendiri.</p></div>
+      <div class="pcell"><div class="pemoji">⏱️</div><h3>Orang sibuk dengan waktu luang terbatas</h3><p>Materi padat, to the point, bisa dipelajarin di sela-sela waktu tanpa harus full time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BONUS ===== -->
+<section class="band" id="bonus">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Bonus spesial</span>
+      <h2>Gak cuma modul. Lo juga dapat <span class="hl">enam bonus ini</span></h2>
+      <p class="lead" style="margin-top:12px">Semuanya termasuk di semua paket, tanpa biaya tambahan.</p>
+    </div>
+
+    <div class="bgrid reveal">
+      <article class="bcard">
+        <div class="bbody">
+          <div class="bic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12l5-5"/><path d="M12 12l-4 3"/><circle cx="12" cy="12" r="1.6"/></svg></div>
+          <span class="btag">Bonus 01</span>
+          <h3>Market Alphas</h3>
+          <p>Berbagai calls dan outlook alt coin potensial setiap hari, plus info makro ekonomi yang berdampak ke market crypto.</p>
+          <span class="bval">Senilai Rp2.000.000</span>
+        </div>
+      </article>
+      <article class="bcard">
+        <div class="bbody">
+          <div class="bic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+          <span class="btag">Bonus 02</span>
+          <h3>Komunitas Crypto Eksklusif</h3>
+          <p>Lo bakal ketemu orang-orang yang sefrekuensi dan saling dukung buat diskusi sehat soal market crypto.</p>
+          <span class="bval">Senilai Rp1.000.000</span>
+        </div>
+      </article>
+      <article class="bcard">
+        <div class="bbody">
+          <div class="bic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <span class="btag">Bonus 03</span>
+          <h3>Private 1 on 1</h3>
+          <p>Konsultasi soal porto dan trading langsung ke mentor crypto lewat chat pribadi, setiap hari.</p>
+          <span class="bval">Senilai Rp4.000.000</span>
+        </div>
+      </article>
+      <article class="bcard">
+        <div class="bbody">
+          <div class="bic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 11l6-4v10l-6-4z"/></svg></div>
+          <span class="btag">Bonus 04</span>
+          <h3>Live Mentoring Mingguan</h3>
+          <p>Sesi live seminggu sekali buat bahas porto, review entry, dan nanya apa pun langsung ke mentor.</p>
+          <span class="bval">Senilai Rp3.000.000</span>
+        </div>
+      </article>
+      <article class="bcard">
+        <div class="bbody">
+          <div class="bic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-1.5z"/><path d="M8 7h7M8 11h7"/></svg></div>
+          <span class="btag">Bonus 05</span>
+          <h3>E-Book 30 Hari Jago Trading Crypto</h3>
+          <p>Strategi yang jelas dan runtut, bisa dipelajari dari 0 dan langsung dipraktekin. Gak cuma teori doang.</p>
+          <span class="bval">Senilai Rp499.000</span>
+        </div>
+      </article>
+      <article class="bcard">
+        <div class="bbody">
+          <div class="bic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <span class="btag">Bonus 06</span>
+          <h3>CustomGPT AI Profit Booster</h3>
+          <p>AI yang dirancang khusus buat lo yang baru mulai. Analisisnya simpel, santai, gampang dicerna.</p>
+          <span class="bval">Senilai Rp799.000</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="totalbox reveal">
+      <div class="tl">Total value yang lo dapatkan</div>
+      <div class="tv">Rp15.000.000</div>
+      <p class="tn">Tapi tenang, lo gak perlu keluar duit sebanyak itu. Cek harga sebenernya di bawah.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUKTI ===== -->
+<section class="band soft" id="bukti">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Masih belum yakin?</span>
+      <h2>Coba dengerin <span class="hl">member Crypto Teknikal Academy</span></h2>
+      <p class="lead" style="margin-top:12px">Screenshot asli dari channel dan chat member. Hasil tiap orang beda-beda.</p>
+    </div>
+    <div class="proofgrid reveal">
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/-ihY_uVKiojhdBD5JUtLrodZ/1753393944628-2%20digit%20pertama_cut.webp" alt="Testimoni member: dapat 2 digit pertama"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/uploads/1765101783/f0zUQtfwIV_-WAgP03GZvA/1765101783144-1761918021744-cuan-100-juta-adit.webp" alt="Screenshot hasil trading member"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/K1eY5_eO-s1L5C0c1eXZvnZ4/1753393951746-IMG_5939.webp" alt="Testimoni member Crypto Teknikal Academy"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/2-dFlOUnWfNzIi06n8j6CYfl/1753393957395-IMG_5940.webp" alt="Testimoni member Crypto Teknikal Academy"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/HUrj2h4CP8l2eWNixLT5J7qC/1753393960162-IMG_5941.webp" alt="Testimoni member Crypto Teknikal Academy"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/8IXbWlvD5yUZk51g4WVq8LP7/1753393962373-IMG_5942.webp" alt="Testimoni member Crypto Teknikal Academy"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/OoKy_gHydlNw1HwV7MUnlzVx/1753393964679-IMG_5943.webp" alt="Testimoni member Crypto Teknikal Academy"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/KT9e1b5EPLyULHeYItLMuHjx/1753397987265-Chat%203.webp" alt="Diskusi komunitas Crypto Teknikal"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/jshvsvkC_m-K_Z0dQz_Ah4hF/1753397989698-Chat%204.webp" alt="Diskusi komunitas Crypto Teknikal"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/dQSe5MDKWjYQosUEsVN3u-iN/1753398067034-chat%202.webp" alt="Konsultasi private 1 on 1"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/gv-wj5Yh2ZnbGHaQq1p2ft9-/1753398069554-chat%203.webp" alt="Konsultasi private 1 on 1"></figure>
+      <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/v1cnMtrmzqkI1ZTw54QdpcAx/1753397800316-market%20alpha%205.webp" alt="Contoh Market Alphas"></figure>
+    </div>
+    <p class="disclaim">Hasil di atas adalah pengalaman masing-masing member dan bukan jaminan hasil yang sama. Profit dan loss adalah hal wajar di financial market.</p>
+  </div>
+</section>
+
+<!-- ===== HARGA ===== -->
+<section class="band" id="harga">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow hot">Promo diskon up to 66%</span>
+      <h2>Pilih durasi akses lo. <span class="hl">Benefitnya sama semua.</span></h2>
+      <p class="lead" style="margin-top:12px">Semua paket dapat modul lengkap plus enam bonus. Yang beda cuma lama aksesnya.</p>
+    </div>
+
+    <div class="pricewrap reveal">
+      <!-- Paket 3 bulan -->
+      <div class="plan">
+        <div class="pname">3 Bulan</div>
+        <span class="pdisc">Diskon up to 60%</span>
+        <span class="pcoret">Rp1.995.000</span>
+        <div class="pprice">Rp799.000<small>untuk akses 3 bulan</small></div>
+        <p class="pdesc">Cocok buat lo yang mau nyobain sistemnya dulu sebelum komit panjang.</p>
+        <ul>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Tutorial dasar, lanjutan, dan airdrop</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Analisa teknikal, fundamental, naratif</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Market Alphas harian</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Grup komunitas crypto</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Private 1 on 1 dan live mentoring mingguan</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>E-Book 30 Hari dan CustomGPT AI Profit Booster</li>
+        </ul>
+        <a class="btn ghost" href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-3-bulan/">Belajar &amp; Profit Sekarang</a>
+      </div>
+
+      <!-- Paket 12 bulan -->
+      <div class="plan pro">
+        <span class="ptag">Best deal</span>
+        <div class="pname">12 Bulan</div>
+        <span class="pdisc">Diskon up to 60%</span>
+        <span class="pcoret">Rp4.995.000</span>
+        <div class="pprice">Rp1.999.000<small>untuk akses 12 bulan</small></div>
+        <p class="pdesc">Waktu paling pas buat bener-bener ngelewatin satu siklus market penuh.</p>
+        <ul>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Tutorial dasar, lanjutan, dan airdrop</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Analisa teknikal, fundamental, naratif</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Market Alphas harian</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Grup komunitas crypto</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Private 1 on 1 dan live mentoring mingguan</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>E-Book 30 Hari dan CustomGPT AI Profit Booster</li>
+        </ul>
+        <a class="btn primary" href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-1-tahun/">Belajar &amp; Profit Sekarang</a>
+      </div>
+
+      <!-- Paket lifetime -->
+      <div class="plan pro">
+        <span class="ptag amber">Best seller</span>
+        <div class="pname">Lifetime</div>
+        <span class="pdisc">Diskon up to 66%</span>
+        <span class="pcoret">Rp15.000.000</span>
+        <div class="pprice">Rp4.999.000<small>bayar sekali, akses selamanya</small></div>
+        <p class="pdesc">Sekali bayar, gak ada perpanjangan. Termasuk semua update materi berikutnya.</p>
+        <ul>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Tutorial dasar, lanjutan, dan airdrop</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Analisa teknikal, fundamental, naratif</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Market Alphas harian</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Grup komunitas crypto</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Private 1 on 1 dan live mentoring mingguan</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>E-Book 30 Hari dan CustomGPT AI Profit Booster</li>
+        </ul>
+        <a class="btn primary" href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-lifetime/">Belajar &amp; Profit Sekarang</a>
+      </div>
+    </div>
+    <p class="pricenote">Kalau paket habis, akses otomatis dicabut sistem dan perlu diperpanjang. Paket lifetime cukup bayar sekali.</p>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="band soft">
+  <div class="wrap quote reveal">
+    <div class="qm"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.6 5.5C4.9 7 3.3 9.7 3.3 13v5.5h6.4V13H6.6c0-2.3.9-3.9 2.6-4.9zM18.3 5.5C15.6 7 14 9.7 14 13v5.5h6.4V13h-3.1c0-2.3.9-3.9 2.6-4.9z"/></svg></div>
+    <p>"Semakin banyak lo belajar, maka semakin banyak juga yang lo hasilkan."</p>
+    <cite>Warren Buffett</cite>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Pertanyaan yang <span class="hl">paling sering masuk</span></h2>
+    </div>
+    <div class="faqlist reveal">
+      <div class="faq">
+        <button class="q" type="button">Apa itu Crypto Teknikal Academy?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Crypto Teknikal Academy adalah platform edukasi cryptocurrency untuk kamu pemula yang ingin belajar crypto dari 0 hingga bisa trading mandiri.</p></div>
+      </div>
+      <div class="faq">
+        <button class="q" type="button">Apa tujuan Crypto Teknikal Academy?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Kami bertujuan mencetak trader pemula agar bisa trading mandiri dan profitable di berbagai market, baik bull market maupun bear market.</p></div>
+      </div>
+      <div class="faq">
+        <button class="q" type="button">Bagaimana sistem belajarnya?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Admin memantau market sampai 16 jam per hari. Kalau ada coin yang berpotensi untuk ditradingkan, informasinya dibagikan lewat channel Telegram. Semua ini bukan ajakan membeli, jadi member tetap perlu riset mandiri terlebih dahulu.</p></div>
+      </div>
+      <div class="faq">
+        <button class="q" type="button">Bagaimana sistem trading Crypto Teknikal?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Sama seperti sistem belajarnya: admin memantau market sampai 16 jam per hari dan membagikan coin yang berpotensi lewat channel Telegram. Keputusan akhir tetap ada di tangan member setelah riset mandiri.</p></div>
+      </div>
+      <div class="faq">
+        <button class="q" type="button">Apakah saya bisa selalu mendapatkan profit?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Profit dan loss adalah hal yang umum di financial market, khususnya cryptocurrency. Crypto Teknikal hanya memberikan insight dan potensi di market. Segala keputusan finansial ada di tangan kamu sendiri, dan pihak Crypto Teknikal tidak bertanggung jawab atas keputusan finansial kamu.</p></div>
+      </div>
+      <div class="faq">
+        <button class="q" type="button">Exchange apa yang dipakai?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Member bebas memilih exchange, baik exchange global maupun lokal. Tidak ada paksaan dari kami untuk memakai exchange tertentu.</p></div>
+      </div>
+      <div class="faq">
+        <button class="q" type="button">Berapa modal awal yang dibutuhkan?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Untuk biaya bergabung, bisa dilihat dari paket membership yang tertera. Untuk modal trading, disesuaikan dengan kemampuan finansial masing-masing, tetapi disarankan minimal punya modal Rp1.500.000.</p></div>
+      </div>
+      <div class="faq">
+        <button class="q" type="button">Paket apa saja yang tersedia?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Ada 3 pilihan paket: 3 bulan, 1 tahun, dan lifetime. Kalau masa paket habis, kamu otomatis dikeluarkan oleh sistem dan perlu perpanjang lagi kalau mau lanjut akses. Kalau pilih lifetime, cukup bayar sekali tanpa perlu perpanjang.</p></div>
+      </div>
+      <div class="faq">
+        <button class="q" type="button">Apa saja keuntungan setiap paket?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="a"><p>Semua paket punya keuntungan yang sama, yang beda cuma durasi aksesnya. Tapi kamu dapat harga per bulan yang lebih murah kalau ambil paket yang lebih panjang.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="finalcta">
+  <div class="wrap">
+    <div class="ctabox reveal">
+      <h2>Market gak nunggu lo siap.</h2>
+      <p>Tiap bulan lo tunda, itu satu siklus market yang lewat begitu aja. Mulai belajar sistemnya sekarang, sambil promonya masih jalan.</p>
+      <a class="btn white" href="#harga">Gabung Crypto Teknikal Academy
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <div class="sub">Akses langsung setelah pembayaran terkonfirmasi</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <div class="brand">
+          <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></span>
+          CRYPTO <b>TEKNIKAL</b>
+        </div>
+        <p class="fabout">Platform edukasi cryptocurrency untuk pemula yang mau belajar trading dari 0 sampai bisa mandiri dan konsisten di segala kondisi market.</p>
+      </div>
+      <div class="fcol">
+        <h4>Halaman</h4>
+        <a href="#masalah">Masalah</a>
+        <a href="#modul">Modul</a>
+        <a href="#bonus">Bonus</a>
+        <a href="#bukti">Bukti</a>
+        <a href="#harga">Harga</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="fcol">
+        <h4>Paket</h4>
+        <a href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-3-bulan/">Membership 3 bulan</a>
+        <a href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-1-tahun/">Membership 12 bulan</a>
+        <a href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-lifetime/">Membership lifetime</a>
+        <a href="https://scalev.com/payment-instruction">Instruksi pembayaran</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p><b>Disclaimer.</b> Seluruh materi dan informasi di halaman ini bersifat edukasi, bukan ajakan atau saran untuk membeli maupun menjual aset apa pun. Trading cryptocurrency memiliki risiko tinggi dan bisa mengakibatkan kerugian. Profit maupun loss adalah hal yang wajar di financial market. Segala keputusan finansial sepenuhnya ada di tangan kamu sendiri dan Crypto Teknikal tidak bertanggung jawab atas keputusan tersebut. Testimoni yang ditampilkan adalah pengalaman masing-masing member dan bukan jaminan hasil yang sama.</p>
+      <p style="margin-top:14px">&copy; <span id="yr">2026</span> Crypto Teknikal Academy. Seluruh hak cipta dilindungi.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="stickycta">
+  <a class="btn primary" href="#harga">Gabung Sekarang, Diskon Up To 66%</a>
+</div>
+
+<script>
+(function(){
+  // nav shadow on scroll
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // mobile menu
+  var burger = document.getElementById('burger');
+  var mob = document.getElementById('mobmenu');
+  burger.addEventListener('click', function(){
+    var open = mob.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mob.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mob.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq').forEach(function(f){
+    var q = f.querySelector('.q');
+    var a = f.querySelector('.a');
+    q.addEventListener('click', function(){
+      var isOpen = f.classList.contains('open');
+      document.querySelectorAll('.faq.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        f.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // reveal on scroll. A plain rect check never misses an element the way an
+  // IntersectionObserver does when the page jumps (anchor links, fast wheel).
+  var pending = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var ticking = false;
+  function sweep(){
+    ticking = false;
+    var limit = window.innerHeight - 60;
+    pending = pending.filter(function(el){
+      if(el.getBoundingClientRect().top < limit){ el.classList.add('in'); return false; }
+      return true;
+    });
+    if(!pending.length){
+      window.removeEventListener('scroll', queue);
+      window.removeEventListener('resize', queue);
+    }
+  }
+  function queue(){ if(!ticking){ ticking = true; requestAnimationFrame(sweep); } }
+  window.addEventListener('scroll', queue, {passive:true});
+  window.addEventListener('resize', queue);
+  sweep();
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
