@@ -19,7 +19,7 @@
   --bg:#08060d; --soft:#0d0914; --soft2:#1f1129; --tint:#150e1e;
   --card:#130d1c; --card2:#191122;
   --line:#271b34; --line2:#3a2a4b;
-  --amber:#f7b955; --green:#3ddc84; --red:#ff5f52;
+  --amber:#f7b955; --red:#ff5f52;
   --grad:linear-gradient(135deg,#ff00ff,#a300cf);
   --grad-text:linear-gradient(110deg,#ff00ff,#ff87ff);
   --panel:linear-gradient(150deg,#1d0526,#0b0711 62%);
@@ -76,46 +76,14 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .hero:after{content:"";position:absolute;width:520px;height:520px;left:-240px;bottom:-260px;border-radius:50%;
   background:radial-gradient(circle,rgba(168,0,255,.12),transparent 62%);pointer-events:none}
 .herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;position:relative;z-index:2}
-.hero h1{font-size:clamp(2rem,4.9vw,3.25rem);margin-bottom:20px}
-.hero .lead{font-size:clamp(1.02rem,1.5vw,1.15rem);max-width:540px;margin-bottom:28px}
-.herobtns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
-.herochips{display:flex;gap:10px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:7px;font-size:.85rem;font-weight:700;color:var(--ink2);background:var(--soft);border:1px solid var(--line);border-radius:99px;padding:7px 14px}
-.chip svg{width:15px;height:15px;color:var(--brand);flex:none}
+.hero h1{font-size:clamp(1.75rem,3.9vw,2.6rem);margin-bottom:18px}
+.hero .lead{font-size:clamp(.95rem,1.2vw,1.05rem);max-width:500px;margin-bottom:26px}
+.herobtns{display:flex;gap:14px;flex-wrap:wrap}
 
-/* hero mockup */
-.mock{position:relative;z-index:2}
-.tgcard{background:var(--card2);border:1px solid var(--line2);border-radius:22px;box-shadow:var(--shadow);overflow:hidden;transform:rotate(.6deg)}
-.tgcard .tgbar{display:flex;align-items:center;gap:9px;padding:13px 16px;border-bottom:1px solid var(--line);background:#1f1529}
-.tgcard .tgav{width:26px;height:26px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex:none}
-.tgcard .tgav svg{width:14px;height:14px;color:#fff}
-.tgcard .tgnm{color:var(--ink);font-size:.84rem;font-weight:800;letter-spacing:-.01em}
-.tgcard .tgtime{margin-left:auto;color:var(--soft-mut);font-size:.68rem;font-weight:600}
-.tgbody{padding:24px 22px 20px;text-align:center;position:relative;overflow:hidden}
-.tgbody:after{content:"";position:absolute;width:260px;height:260px;right:-110px;top:-130px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.3),transparent 65%)}
-.tgex{position:relative;z-index:1;font-size:.7rem;font-weight:800;letter-spacing:.16em;color:var(--mut);text-transform:uppercase}
-.tgpnl{position:relative;z-index:1;font-size:clamp(2rem,4vw,2.7rem);font-weight:850;color:var(--green);letter-spacing:-.02em;margin:6px 0 2px;line-height:1.05}
-.tgpnl small{font-size:.85rem;font-weight:700;color:var(--green);opacity:.72;margin-left:6px;letter-spacing:.04em;vertical-align:.55em}
-.tgpair{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:99px;padding:6px 14px;margin-top:12px}
-.tgpair .cn{width:18px;height:18px;border-radius:50%;background:#f7931a;color:#fff;font-size:.6rem;font-weight:800;display:flex;align-items:center;justify-content:center}
-.tgpair span{color:var(--ink2);font-size:.78rem;font-weight:700}
-.tgpair em{font-style:normal;color:var(--mut);font-size:.72rem;font-weight:600}
-.tgrows{position:relative;z-index:1;margin-top:18px;border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:9px}
-.tgrow{display:flex;align-items:center;justify-content:space-between;font-size:.78rem}
-.tgrow .k{color:var(--mut);font-weight:600}
-.tgrow .v{color:var(--ink);font-weight:800}
-.tgfoot{background:#1f1529;border-top:1px solid var(--line);padding:11px 16px;display:flex;align-items:center;gap:8px}
-.tgfoot .fl{color:var(--soft-mut);font-size:.68rem;font-weight:600}
-.tgfoot .fr{margin-left:auto;display:flex;gap:5px}
-.tgfoot .fr i{width:6px;height:6px;border-radius:50%;background:var(--line2);display:block}
-.floatcard{position:absolute;background:var(--card2);border:1px solid var(--line2);border-radius:13px;box-shadow:var(--shadow-sm);padding:11px 14px;font-size:.76rem;font-weight:700;display:flex;align-items:center;gap:9px;z-index:3}
-.floatcard .ic{width:28px;height:28px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
-.floatcard .ic svg{width:15px;height:15px}
-.floatcard .sub{display:block;font-size:.66rem;color:var(--mut);font-weight:500;margin-top:1px}
-.floatcard .tx{display:block;line-height:1.25}
-.fc1{top:-54px;left:-30px;animation:bob 5s ease-in-out infinite}
-.fc2{bottom:-22px;right:-34px;animation:bob 5.6s ease-in-out infinite .6s}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* hero visual */
+.mock{position:relative;z-index:2;display:flex;justify-content:center}
+.mock img{display:block;width:100%;max-width:392px;height:auto;border-radius:20px;
+  border:1px solid var(--line2);box-shadow:var(--shadow),0 0 70px rgba(255,0,255,.16)}
 
 /* ===== BANDS / VALUE CARDS ===== */
 .band{padding:clamp(46px,6vw,74px) 0}
@@ -306,7 +274,6 @@ footer .fcol a:hover{color:var(--brand2)}
   .burger{display:block}
   .navcta .btn{display:none}
   .stickycta{display:block}
-  .floatcard{display:none}
   body{padding-bottom:70px}
 }
 @media(max-width:620px){
@@ -361,51 +328,18 @@ footer .fcol a:hover{color:var(--brand2)}
   <div class="wrap herogrid">
     <div>
       <span class="eyebrow hot">Buat lo yang rugi mulu</span>
-      <h1>Bongkar Rahasia Trading Crypto Dari 0 Hingga <span class="hl">Konsisten Profit</span> Tanpa Hoki</h1>
-      <p class="lead">Bukan grup sinyal, bukan pompom coin. Lo belajar sistem trading yang kepakai di segala kondisi market: bullish, bearish, sideways. Bahasa simpel, real case, langsung bisa dipraktekin hari itu juga.</p>
+      <h1>Bongkar Rahasia <span class="hl">Trading Crypto</span> Dari 0 Hingga <span class="hl">Konsisten Profit 100 Juta Per Bulan Tanpa HOKI!</span></h1>
+      <p class="lead">Telah Membantu 1000+ Member Cuan Konsisten Dua Digit Tiap Bulan</p>
       <div class="herobtns">
         <a class="btn primary" href="#harga">Gabung Sekarang
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn ghost" href="#modul">Lihat Modulnya</a>
-      </div>
-      <div class="herochips">
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>1000+ member aktif</span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>7 modul dari nol</span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Private 1 on 1 tiap hari</span>
       </div>
     </div>
 
     <div class="mock">
-      <div class="floatcard fc1">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
-        <span class="tx">1000+ member<span class="sub">komunitas aktif tiap hari</span></span>
-      </div>
-      <div class="tgcard">
-        <div class="tgbar">
-          <span class="tgav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/></svg></span>
-          <span class="tgnm">CryptoTeknikal</span>
-          <span class="tgtime">04.24 WIB</span>
-        </div>
-        <div class="tgbody">
-          <div class="tgex">Realized PnL</div>
-          <div class="tgpnl">+8.338,1<small>USDT</small></div>
-          <div class="tgpair"><span class="cn">B</span><span>BTCUSDT</span><em>Perpetual · 100x</em></div>
-          <div class="tgrows">
-            <div class="tgrow"><span class="k">Harga entri</span><span class="v">118.732,1</span></div>
-            <div class="tgrow"><span class="k">Harga keluar</span><span class="v">102.151,0</span></div>
-            <div class="tgrow"><span class="k">Arah posisi</span><span class="v">Short</span></div>
-          </div>
-        </div>
-        <div class="tgfoot">
-          <span class="fl">Channel member Crypto Teknikal Academy</span>
-          <span class="fr"><i></i><i></i><i></i></span>
-        </div>
-      </div>
-      <div class="floatcard fc2">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/></svg></span>
-        <span class="tx">ROI +114,57%<span class="sub">SOLUSDT, member CTA</span></span>
-      </div>
+      <img src="https://cdn.scalev.id/uploads/1765101783/f0zUQtfwIV_-WAgP03GZvA/1765101783144-1761918021744-cuan-100-juta-adit.webp"
+           width="640" height="818" alt="Screenshot channel member: realized PnL +8.338,1 USDT dari BTCUSDT">
     </div>
   </div>
 </section>
@@ -704,7 +638,6 @@ footer .fcol a:hover{color:var(--brand2)}
     </div>
     <div class="proofgrid reveal">
       <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/-ihY_uVKiojhdBD5JUtLrodZ/1753393944628-2%20digit%20pertama_cut.webp" alt="Testimoni member: dapat 2 digit pertama"></figure>
-      <figure><img loading="lazy" src="https://cdn.scalev.id/uploads/1765101783/f0zUQtfwIV_-WAgP03GZvA/1765101783144-1761918021744-cuan-100-juta-adit.webp" alt="Screenshot hasil trading member"></figure>
       <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/K1eY5_eO-s1L5C0c1eXZvnZ4/1753393951746-IMG_5939.webp" alt="Testimoni member Crypto Teknikal Academy"></figure>
       <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/2-dFlOUnWfNzIi06n8j6CYfl/1753393957395-IMG_5940.webp" alt="Testimoni member Crypto Teknikal Academy"></figure>
       <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/HUrj2h4CP8l2eWNixLT5J7qC/1753393960162-IMG_5941.webp" alt="Testimoni member Crypto Teknikal Academy"></figure>

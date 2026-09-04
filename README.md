@@ -76,15 +76,16 @@ glows and tints, which follow the same hue.
 
 ### Images
 
-The only images on the page are the real member screenshots in the "Bukti" section,
-served from the Scalev CDN where they already live. Every other visual - the hero
-trade card, module icons, bonus icons - is hand-built HTML/CSS/SVG, which is why the
-page stays fast and looks consistent in a way stock screenshots did not.
+The images on the page are real member screenshots served from the Scalev CDN where
+they already live: the hero visual (the same OKX +8.338,1 USDT screenshot the Scalev
+page leads with) and the gallery in the "Bukti" section. Every other visual - module
+icons, bonus icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
+fast and looks consistent.
 
 ## Section order
 
 1. Sticky nav
-2. Hero with live trade-result card
+2. Hero with the real PnL screenshot
 3. Why Crypto Teknikal (4 value cards)
 4. The problem ("lo pasti pernah ngerasa")
 5. Three market conditions (bullish / bearish / sideways)
