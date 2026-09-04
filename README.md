@@ -6,10 +6,11 @@ Scalev page at `crypto-teknikal.myscalev.com/lpctact`.
 - **Copy / offer data:** taken from the existing Scalev landing page (headline, problem
   framing, before-after, 7 modules, 6 bonuses with their values, 3 pricing tiers, FAQ).
   Nothing about the offer was invented - only the wording was tightened.
-- **Visual language:** modelled on [autofunnel.id](https://autofunnel.id) - light,
-  airy, single accent colour, rounded cards, soft shadows, pill badges, generous
-  whitespace, reveal-on-scroll. The accent was swapped from Autofunnel's teal to
-  Crypto Teknikal's brand violet.
+- **Visual language:** structure modelled on [autofunnel.id](https://autofunnel.id) -
+  single accent colour, rounded cards, pill badges, generous whitespace,
+  reveal-on-scroll - rendered as a dark theme: near-black surfaces with a pure
+  magenta (`#ff00ff`) accent, magenta gradients on CTAs and icon chips, and neon
+  glow instead of soft drop shadows.
 
 The whole thing is one self-contained file: `index.html`. No build step, no
 dependencies, no external CSS or JS.
@@ -20,6 +21,9 @@ dependencies, no external CSS or JS.
 python3 -m http.server 8899
 # open http://localhost:8899
 ```
+
+The published copy lives on GitHub Pages:
+<https://cryptoteknikal.github.io/cryptoteknikal-lp-rework/>
 
 ## Using it on Scalev
 
@@ -54,16 +58,21 @@ Everything is driven by the token block at the top of the `<style>` tag:
 
 ```css
 :root{
-  --brand:#8C3BD9; --brand2:#6B24B2;   /* accent + gradient end */
-  --grad:linear-gradient(135deg,#8C3BD9,#6B24B2);
-  --ink:#1a1425; --mut:#6e6580;         /* text */
-  --soft:#f8f6fc; --line:#eae5f2;       /* surfaces and borders */
+  --brand:#ff00ff; --brand2:#ff5cff;    /* accent + lighter accent for text */
+  --grad:linear-gradient(135deg,#ff00ff,#a300cf);   /* buttons, icon chips */
+  --grad-text:linear-gradient(110deg,#ff00ff,#ff87ff); /* gradient headline words */
+  --panel:linear-gradient(150deg,#1d0526,#0b0711 62%); /* total-value + final CTA */
+  --ink:#f5eff9; --ink2:#c9bed7; --mut:#968aa8;     /* text */
+  --bg:#08060d; --soft:#0d0914;         /* page + alternating band */
+  --card:#130d1c; --card2:#191122;      /* card surfaces */
+  --line:#271b34; --line2:#3a2a4b;      /* borders */
   --r:18px;                             /* card radius */
 }
 ```
 
-Changing `--brand`, `--brand2` and `--grad` re-themes the whole page. (Setting them
-to `#00A19B` / `#00817C` gives you Autofunnel's teal verbatim.)
+Changing `--brand`, `--brand2`, `--grad` and `--grad-text` re-themes the whole page.
+Nothing outside the token block hardcodes an accent colour, apart from the `rgba(255,0,255,…)`
+glows and tints, which follow the same hue.
 
 ### Images
 
