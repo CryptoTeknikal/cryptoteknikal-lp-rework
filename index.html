@@ -210,8 +210,8 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .faq .a p{padding:0 22px 20px;color:var(--mut);font-size:.94rem}
 
 /* ===== INTRO STING (trial section) =====
-   Three beats, 2.1s, silent. The monogram materialises alone in the middle of
-   the stage; it slides left towards its place in the lockup; and once it is
+   Three beats, 2.1s, a note to each. The monogram materialises alone in the
+   middle of the stage; it slides left towards its place in the lockup; and once it is
    most of the way there the divider and the "Academy" wordmark unfurl out of
    its right-hand side, left to right, riding the last of that slide.
 
@@ -455,7 +455,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           Replay
         </button>
       </div>
-      <p class="sting-note">Klik stage-nya untuk memutar ulang.</p>
+      <p class="sting-note">Klik stage-nya untuk memutar ulang dengan suara.</p>
     </div>
   </div>
 </section>
@@ -959,19 +959,111 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
     window.addEventListener('resize', measure);
 
-    function play(){
+    // ===== the sting's voice =====
+    // Three notes, synthesised here rather than sampled, one to a beat of the
+    // picture. They are the 1st, 2nd and 4th of an ascending D major arpeggio -
+    // D4, F#4, (A4 skipped), D5 - so the last one leaps instead of stepping and
+    // lands as an answer rather than a continuation.
+    var actx = null, master = null, verb = null, voice = null;
+
+    function audioReady(){
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if(!AC) return false;
+      if(!actx){
+        try{ actx = new AC(); }catch(e){ return false; }
+        master = actx.createGain();
+        master.gain.value = .85;
+        var limit = actx.createDynamicsCompressor();   // the last note is a chord
+        limit.threshold.value = -8; limit.ratio.value = 12; limit.attack.value = .003;
+        master.connect(limit).connect(actx.destination);
+        // A small hall: exponentially decaying noise used as an impulse
+        // response, so the notes sit in a room instead of arriving dry.
+        var n = Math.floor(actx.sampleRate * 2.2), ir = actx.createBuffer(2, n, actx.sampleRate);
+        for(var ch = 0; ch < 2; ch++){
+          var d = ir.getChannelData(ch);
+          for(var i = 0; i < n; i++)
+            d[i] = (Math.random()*2-1) * Math.pow(1 - i/n, 3.4) * Math.min(1, i/400);
+        }
+        verb = actx.createConvolver(); verb.buffer = ir;
+        var wet = actx.createGain(); wet.gain.value = .42;
+        verb.connect(wet).connect(master);
+      }
+      if(actx.state === 'suspended') actx.resume();
+      return true;
+    }
+
+    // One note: three lightly detuned triangles under a filter that opens on the
+    // attack and closes again as it decays, with a sine an octave down for body.
+    // Soft in, long out, so it swells rather than beeps.
+    function tone(at, hz, gain, dur, open){
+      var g = actx.createGain();
+      g.gain.setValueAtTime(.0001, at);
+      g.gain.exponentialRampToValueAtTime(gain, at + .04);
+      g.gain.exponentialRampToValueAtTime(.0001, at + dur);
+      g.connect(voice);
+      var lp = actx.createBiquadFilter();
+      lp.type = 'lowpass'; lp.Q.value = .8;
+      lp.frequency.setValueAtTime(hz * 1.5, at);
+      lp.frequency.exponentialRampToValueAtTime(hz * open, at + .14);
+      lp.frequency.exponentialRampToValueAtTime(hz * 1.3, at + dur);
+      lp.connect(g);
+      [-7, 0, 7].forEach(function(cents){
+        var o = actx.createOscillator();
+        o.type = 'triangle'; o.frequency.value = hz; o.detune.value = cents;
+        o.connect(lp); o.start(at); o.stop(at + dur + .1);
+      });
+      var body = actx.createOscillator(), bg = actx.createGain();
+      body.type = 'sine'; body.frequency.value = hz / 2;
+      bg.gain.setValueAtTime(.0001, at);
+      bg.gain.exponentialRampToValueAtTime(gain * .55, at + .06);
+      bg.gain.exponentialRampToValueAtTime(.0001, at + dur * .8);
+      body.connect(bg).connect(g);
+      body.start(at); body.stop(at + dur + .1);
+    }
+
+    // The entries are the picture's beats, not round numbers: the monogram
+    // settles at 16% of 2.1s, the divider is uncovered just before 48%, and the
+    // lockup is whole by 56%, the wordmark opaque a little before that.
+    function voiceOver(){
+      if(!audioReady()) return;
+      if(voice){                                   // a replay cuts the last one off
+        var n = actx.currentTime;
+        voice.gain.cancelScheduledValues(n);
+        voice.gain.setTargetAtTime(0, n, .05);
+      }
+      voice = actx.createGain(); voice.gain.value = 1;
+      voice.connect(master); voice.connect(verb);
+      var t = actx.currentTime + .02;
+      tone(t + .28, 293.66, .17, 1.30, 4.2);       // D4  as the monogram lands
+      tone(t + .94, 369.99, .18, 1.30, 4.4);       // F#4 as the divider arrives
+      tone(t + 1.30, 587.33, .19, 2.30, 4.6);      // D5  once the lockup is whole,
+      tone(t + 1.30, 739.99, .085, 2.30, 4.0);     // F#5   opened out into the
+      tone(t + 1.30, 880.00, .075, 2.30, 4.0);     // A5    full chord beneath it
+      var sub = actx.createOscillator(), sg = actx.createGain();
+      sub.type = 'sine'; sub.frequency.value = 73.42;         // and a slow D2 under
+      sg.gain.setValueAtTime(.0001, t + 1.30);                // the last note, for
+      sg.gain.exponentialRampToValueAtTime(.15, t + 1.42);    // weight rather than
+      sg.gain.exponentialRampToValueAtTime(.0001, t + 3.10);  // impact
+      sub.connect(sg).connect(voice);
+      sub.start(t + 1.30); sub.stop(t + 3.2);
+    }
+
+    function play(sound){
       if(quiet.matches) return;
       measure();
       sting.classList.remove('run');
       void sting.offsetWidth;              // reflow, so the animations restart
       sting.classList.add('run');
+      if(sound) voiceOver();
     }
-    sting.addEventListener('click', play);
+    // Browsers only let audio start on a gesture, so scrolling the stage into
+    // view plays the picture silently and a click plays it with its voice.
+    sting.addEventListener('click', function(){ play(true); });
     var armed = true;
     function maybePlay(){
       if(!armed) return;
       var r = sting.getBoundingClientRect();
-      if(r.top < window.innerHeight - 80 && r.bottom > 0){ armed = false; play(); }
+      if(r.top < window.innerHeight - 80 && r.bottom > 0){ armed = false; play(false); }
     }
     window.addEventListener('scroll', maybePlay, {passive:true});
     maybePlay();
