@@ -210,44 +210,73 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .faq .a p{padding:0 22px 20px;color:var(--mut);font-size:.94rem}
 
 /* ===== INTRO STING (trial section) =====
-   A 3.2s logo sting built from the CT monogram: the coin flies in edge-on,
-   turns to face the viewer, lands with a shockwave, then the lockup assembles
-   under it. Everything below is the settled end state, and the keyframes run
-   from the hidden state up to it - so under prefers-reduced-motion, where the
-   page kills every animation, the finished lockup is what shows. */
+   The logo's own vertical divider is the mechanism. A seam of light draws up
+   the middle of the stage, the monogram is pushed out of it to the left and the
+   "Academy" wordmark to the right, the seam flares and throws a streak and four
+   echoes, then retracts to the thin rule the nav lockup wears. About 1.9s.
+
+   Everything below is the settled lockup and the keyframes run from the hidden
+   state up to it - so under prefers-reduced-motion, where the page kills every
+   animation, the finished lockup is what shows. */
 .stingwrap{max-width:860px;margin:0 auto}
 .sting{position:relative;aspect-ratio:16/7;border-radius:28px;overflow:hidden;cursor:pointer;
-  background:radial-gradient(120% 150% at 50% 44%,#1b0726,#08060d 66%);
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(118% 148% at 50% 50%,#180724 0%,#0a0611 45%,#040309 100%);
   border:1px solid rgba(255,0,255,.22);
   box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 90px rgba(255,0,255,.09);
-  perspective:900px;
-  --cs:clamp(78px,12vw,124px)}
-.sting>*{position:absolute;left:50%;top:50%}
-.sting-glow{width:calc(var(--cs)*4);height:calc(var(--cs)*4);margin:calc(var(--cs)*-2) 0 0 calc(var(--cs)*-2);
-  border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(255,0,255,.34),rgba(163,0,207,.12) 42%,transparent 68%)}
-.sting-wave{width:var(--cs);height:var(--cs);margin:calc(var(--cs)/-2) 0 0 calc(var(--cs)/-2);
-  border-radius:50%;border:2px solid rgba(255,92,255,.75);opacity:0;pointer-events:none}
-.sting-coinwrap{width:var(--cs);height:var(--cs);margin:calc(var(--cs)/-2) 0 0 calc(var(--cs)/-2);
-  pointer-events:none}
-.sting-coin{display:block;position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;
-  background:linear-gradient(148deg,#ffc2ff 0%,#ff5cff 26%,#ff00ff 58%,#c400e8 84%,#8f00b8 100%);
-  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55),inset 0 -12px 24px rgba(90,0,120,.32),0 0 60px rgba(255,0,255,.6)}
-/* the light that rakes across the face as the coin turns */
-.sting-coin:before{content:"";position:absolute;inset:-40%;
-  background:linear-gradient(102deg,transparent 38%,rgba(255,255,255,.72) 50%,transparent 62%);
-  transform:translateX(120%);pointer-events:none}
-.sting-flash{position:absolute;inset:0;border-radius:50%;background:#fff;opacity:0;pointer-events:none}
-.sting-mark{position:absolute;left:50%;top:50%;width:52%;height:45%;transform:translate(-50%,-50%);
-  --ctmarkfill:#0a0610}
-.sting-rulewrap{width:calc(var(--cs)*1.15);height:1px;margin-left:calc(var(--cs)*-.575);
-  transform:translateY(calc(var(--cs)*.78));pointer-events:none}
-.sting-rule{display:block;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent)}
-.sting-wordwrap{transform:translate(-50%,calc(var(--cs)*.95));pointer-events:none}
+  --mh:clamp(46px,8.6vw,96px);          /* monogram height - the lockup's unit */
+  --rw:max(1px,calc(var(--mh)*.022))}   /* divider width */
+.sting-lockup{position:relative;z-index:0;display:flex;align-items:center;
+  gap:calc(var(--mh)*.27);pointer-events:none}
+
+/* Mark and wordmark each sit in a padded box: the seam-side padding is exactly
+   the lockup gap, so the reveal edge lands on the rule, and the rest gives the
+   glow somewhere to fall instead of being cut into a rectangle. The reveal is an
+   oversized gradient mask slid across that box - a soft edge, because a hard one
+   turns the motion blur into a visible block. */
+.sting-markwrap,.sting-wordwrap{-webkit-mask-size:250% 100%;mask-size:250% 100%;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.sting-markwrap{padding:calc(var(--mh)*.55) calc(var(--mh)*.27) calc(var(--mh)*.55) calc(var(--mh)*.6);
+  margin:calc(var(--mh)*-.55) calc(var(--mh)*-.27) calc(var(--mh)*-.55) calc(var(--mh)*-.6);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 40%,#000 60%,#000 100%);
+  mask-image:linear-gradient(90deg,transparent 0,transparent 40%,#000 60%,#000 100%);
+  -webkit-mask-position:100% 0;mask-position:100% 0}
+.sting-wordwrap{padding:calc(var(--mh)*.55) calc(var(--mh)*.6) calc(var(--mh)*.55) calc(var(--mh)*.27);
+  margin:calc(var(--mh)*-.55) calc(var(--mh)*-.6) calc(var(--mh)*-.55) calc(var(--mh)*-.27);
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 40%,transparent 60%,transparent 100%);
+  mask-image:linear-gradient(90deg,#000 0,#000 40%,transparent 60%,transparent 100%);
+  -webkit-mask-position:0 0;mask-position:0 0}
+.sting-mark{display:block;width:calc(var(--mh)*1.1524);height:var(--mh);
+  filter:blur(0) brightness(1) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
 .sting-word{display:block;font-family:'Poppins',var(--font);font-weight:600;
-  font-size:clamp(.82rem,1.5vw,1.12rem);letter-spacing:.055em;color:#fff;white-space:nowrap;
-  text-shadow:0 0 24px rgba(255,0,255,.55)}
-.sting-replay{position:absolute;right:14px;bottom:14px;left:auto;top:auto;z-index:3;
+  font-size:calc(var(--mh)*.47);line-height:1.2;letter-spacing:.01em;color:#fff;white-space:nowrap;
+  filter:blur(0) brightness(1) drop-shadow(0 0 18px rgba(255,0,255,.45))}
+
+/* The divider is a fixed box the size of the resting rule; the live bar and
+   every impact effect are positioned off its centre so the lockup never moves. */
+.sting-rule{position:relative;flex:none;width:var(--rw);height:calc(var(--mh)*.7)}
+.sting-bar{position:absolute;inset:0;background:#fff;opacity:.45;border-radius:2px}
+.sting-aura{position:absolute;left:50%;top:50%;z-index:-1;
+  width:calc(var(--mh)*7);height:calc(var(--mh)*7);
+  transform:translate(-50%,-50%) scale(1);border-radius:50%;opacity:.5;
+  background:radial-gradient(circle,rgba(255,0,255,.42),rgba(163,0,207,.14) 40%,transparent 68%)}
+.sting-streak{position:absolute;left:50%;top:50%;width:calc(var(--mh)*9);height:1px;
+  transform:translate(-50%,-50%) scaleX(1);opacity:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.9) 50%,transparent)}
+.sting-echo{position:absolute;left:50%;top:50%;z-index:-1;width:var(--rw);height:170%;
+  transform:translate(-50%,-50%) translateX(0) scaleY(1);background:#fff;opacity:0;border-radius:2px}
+.sting-echo.e1{--dx:calc(var(--mh)*3)}
+.sting-echo.e2{--dx:calc(var(--mh)*-3)}
+.sting-echo.e3{--dx:calc(var(--mh)*5.2)}
+.sting-echo.e4{--dx:calc(var(--mh)*-5.2)}
+
+/* Grade, so the magenta has somewhere to sit: vignette plus a little grain. */
+.sting-vig{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(80% 92% at 50% 50%,transparent 40%,rgba(0,0,0,.55) 100%)}
+.sting-vig:after{content:"";position:absolute;inset:0;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.sting-replay{position:absolute;right:14px;bottom:14px;z-index:3;
   display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:99px;
   background:rgba(255,255,255,.07);border:1px solid var(--line2);color:var(--ink2);
   font:inherit;font-size:.76rem;font-weight:600;cursor:pointer;
@@ -258,55 +287,81 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 
 @media(prefers-reduced-motion:no-preference){
   /* hidden start states - only worth applying where the sting can actually run */
-  .sting-glow{opacity:0}
-  .sting-coinwrap{opacity:0}
-  .sting-rulewrap{transform:translateY(calc(var(--cs)*.78)) scaleX(0)}
-  .sting-wordwrap{opacity:0;transform:translate(-50%,calc(var(--cs)*1.25))}
+  .sting-bar{opacity:0;transform:scaleY(0)}
+  .sting-aura{opacity:0;transform:translate(-50%,-50%) scale(.45)}
+  .sting-markwrap{opacity:0;transform:translateX(calc(var(--mh)*.22));
+    -webkit-mask-position:0 0;mask-position:0 0}
+  .sting-wordwrap{opacity:0;transform:translateX(calc(var(--mh)*-.2));
+    -webkit-mask-position:100% 0;mask-position:100% 0}
 
-  .sting.run .sting-glow{animation:st-glow 3.2s cubic-bezier(.22,1,.36,1) forwards}
-  .sting.run .sting-coinwrap{animation:st-fly 2.1s cubic-bezier(.2,.72,.3,1) forwards}
-  .sting.run .sting-coin:before{animation:st-rake 2.1s cubic-bezier(.2,.72,.3,1) forwards}
-  .sting.run .sting-flash{animation:st-flash 2.1s linear forwards}
-  .sting.run .sting-wave{animation:st-wave 1.5s cubic-bezier(.16,.84,.36,1) 1.28s forwards}
-  .sting.run .sting-wave.w2{animation-delay:1.44s}
-  .sting.run .sting-rulewrap{animation:st-rule .6s cubic-bezier(.22,1,.36,1) 1.95s forwards}
-  .sting.run .sting-wordwrap{animation:st-word .7s cubic-bezier(.22,1,.36,1) 2.2s forwards}
+  .sting.run .sting-bar{animation:st-bar 1.9s cubic-bezier(.16,.84,.36,1) forwards}
+  .sting.run .sting-aura{animation:st-aura 1.9s cubic-bezier(.16,.84,.36,1) forwards}
+  .sting.run .sting-markwrap{animation:st-push-l 1.9s cubic-bezier(.16,.9,.28,1) forwards}
+  .sting.run .sting-wordwrap{animation:st-push-r 1.9s cubic-bezier(.16,.9,.28,1) forwards}
+  .sting.run .sting-mark{animation:st-lit-mark 1.9s linear forwards}
+  .sting.run .sting-word{animation:st-lit-word 1.9s linear forwards}
+  .sting.run .sting-streak{animation:st-streak 1.9s cubic-bezier(.1,.8,.3,1) forwards}
+  .sting.run .sting-echo{animation:st-echo 1.9s cubic-bezier(.12,.78,.3,1) forwards}
+  .sting.run .sting-echo.e3,.sting.run .sting-echo.e4{animation-delay:.05s}
 }
-@keyframes st-fly{
-  0%{opacity:0;transform:translate3d(-165%,-125%,0) rotateZ(-32deg) rotateX(80deg) scale(.5)}
-  10%{opacity:1}
-  28%{transform:translate3d(0,0,0) rotateZ(-9deg) rotateX(72deg) scale(1.34)}
-  60%{transform:translate3d(0,0,0) rotateZ(0deg) rotateX(0deg) scale(1.34)}
-  68%{opacity:1;transform:translate3d(0,0,0) rotateZ(0) rotateX(0) scale(1.46)}
-  100%{opacity:1;transform:translate3d(0,0,0) rotateZ(0) rotateX(0) scale(1)}
+/* The seam: draws tall, kicks on impact, then retracts to the nav's thin rule. */
+@keyframes st-bar{
+  0%{opacity:0;transform:scaleY(0)}
+  7%{opacity:1}
+  22%{transform:scaleY(1.72);animation-timing-function:linear}
+  44%{transform:scaleY(1.72);animation-timing-function:cubic-bezier(.3,0,.15,1)}
+  48%{transform:scaleY(1.95)}
+  66%{opacity:1;transform:scaleY(1)}
+  84%{opacity:.45}
+  100%{opacity:.45;transform:scaleY(1)}
 }
-@keyframes st-rake{
-  0%,26%{transform:translateX(-125%)}
-  62%{transform:translateX(125%)}
-  100%{transform:translateX(125%)}
+@keyframes st-aura{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.45)}
+  22%{opacity:.3;transform:translate(-50%,-50%) scale(.76)}
+  44%{opacity:.26;transform:translate(-50%,-50%) scale(.82)}
+  49%{opacity:1;transform:translate(-50%,-50%) scale(1.32)}
+  72%{opacity:.58;transform:translate(-50%,-50%) scale(1.02)}
+  100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}
 }
-@keyframes st-flash{
-  0%,60%{opacity:0}
-  65%{opacity:.85}
-  78%,100%{opacity:0}
+/* Both halves are revealed from the edge that touches the seam, so they read as
+   being pushed out of the divider rather than sliding in from off stage. */
+@keyframes st-push-l{
+  0%,19%{opacity:0;transform:translateX(calc(var(--mh)*.22));
+    -webkit-mask-position:0 0;mask-position:0 0}
+  25%{opacity:1}
+  50%,100%{opacity:1;transform:translateX(0);
+    -webkit-mask-position:100% 0;mask-position:100% 0}
 }
-@keyframes st-wave{
-  0%{opacity:.8;transform:scale(.55)}
-  100%{opacity:0;transform:scale(3.4)}
+@keyframes st-push-r{
+  0%,23%{opacity:0;transform:translateX(calc(var(--mh)*-.2));
+    -webkit-mask-position:100% 0;mask-position:100% 0}
+  29%{opacity:1}
+  55%,100%{opacity:1;transform:translateX(0);
+    -webkit-mask-position:0 0;mask-position:0 0}
 }
-@keyframes st-glow{
-  0%{opacity:0;transform:scale(.5)}
-  60%{opacity:.55;transform:scale(.9)}
-  68%{opacity:1;transform:scale(1.12)}
-  100%{opacity:.72;transform:scale(1)}
+/* Blur stands in for motion blur on the way out; the brightness spike is the
+   seam's flash lighting the lockup. */
+@keyframes st-lit-mark{
+  0%,19%{filter:blur(4.5px) brightness(1.7) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
+  44%{filter:blur(.4px) brightness(1.15) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
+  48%{filter:blur(0) brightness(2.6) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
+  66%,100%{filter:blur(0) brightness(1) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
 }
-@keyframes st-rule{
-  0%{transform:translateY(calc(var(--cs)*.78)) scaleX(0)}
-  100%{transform:translateY(calc(var(--cs)*.78)) scaleX(1)}
+@keyframes st-lit-word{
+  0%,23%{filter:blur(4.5px) brightness(1.7) drop-shadow(0 0 18px rgba(255,0,255,.45))}
+  44%{filter:blur(.4px) brightness(1.15) drop-shadow(0 0 18px rgba(255,0,255,.45))}
+  48%{filter:blur(0) brightness(2.4) drop-shadow(0 0 18px rgba(255,0,255,.45))}
+  68%,100%{filter:blur(0) brightness(1) drop-shadow(0 0 18px rgba(255,0,255,.45))}
 }
-@keyframes st-word{
-  0%{opacity:0;transform:translate(-50%,calc(var(--cs)*1.25))}
-  100%{opacity:1;transform:translate(-50%,calc(var(--cs)*.95))}
+@keyframes st-streak{
+  0%,45%{opacity:0;transform:translate(-50%,-50%) scaleX(.04)}
+  49%{opacity:1}
+  80%,100%{opacity:0;transform:translate(-50%,-50%) scaleX(1)}
+}
+@keyframes st-echo{
+  0%,45%{opacity:0;transform:translate(-50%,-50%) translateX(0) scaleY(1)}
+  50%{opacity:.5}
+  85%,100%{opacity:0;transform:translate(-50%,-50%) translateX(var(--dx,0px)) scaleY(.3)}
 }
 
 /* ===== FOOTER ===== */
@@ -350,7 +405,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   body{padding-bottom:70px}
 }
 @media(max-width:620px){
-  .sting{aspect-ratio:4/3}
+  .sting{aspect-ratio:16/9}
   .sting-replay{top:12px;right:12px;bottom:auto}
   .vgrid,.mgrid,.bgrid,.pgrid{grid-template-columns:1fr}
   .mkt{grid-template-columns:1fr}
@@ -422,17 +477,20 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     </div>
     <div class="stingwrap reveal">
       <div class="sting" id="sting" role="img" aria-label="Animasi pembuka logo Crypto Teknikal Academy">
-        <span class="sting-glow" aria-hidden="true"></span>
-        <span class="sting-wave" aria-hidden="true"></span>
-        <span class="sting-wave w2" aria-hidden="true"></span>
-        <span class="sting-coinwrap" aria-hidden="true">
-          <span class="sting-coin">
+        <span class="sting-lockup" aria-hidden="true">
+          <span class="sting-markwrap">
             <svg class="sting-mark"><use href="#ctmark"/></svg>
-            <span class="sting-flash"></span>
           </span>
+          <span class="sting-rule">
+            <i class="sting-aura"></i>
+            <i class="sting-bar"></i>
+            <i class="sting-streak"></i>
+            <i class="sting-echo e1"></i><i class="sting-echo e2"></i>
+            <i class="sting-echo e3"></i><i class="sting-echo e4"></i>
+          </span>
+          <span class="sting-wordwrap"><span class="sting-word">Academy</span></span>
         </span>
-        <span class="sting-rulewrap" aria-hidden="true"><i class="sting-rule"></i></span>
-        <span class="sting-wordwrap" aria-hidden="true"><span class="sting-word">Academy</span></span>
+        <span class="sting-vig" aria-hidden="true"></span>
         <button class="sting-replay" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>
           Replay
@@ -945,7 +1003,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       var out = actx.createGain();
       out.gain.value = .9;
       out.connect(actx.destination);
-      var t = actx.currentTime + .02, hit = t + 1.24;
+      var t = actx.currentTime + .02, hit = t + .9;   // the seam's flare, at 48% of 1.9s
 
       var n = actx.sampleRate * 1.5, buf = actx.createBuffer(1, n, actx.sampleRate), d = buf.getChannelData(0);
       for(var i=0;i<n;i++) d[i] = Math.random()*2-1;
