@@ -115,7 +115,7 @@ fast and looks consistent.
 11. Warren Buffett quote
 12. FAQ accordion
 13. Final CTA
-14. Footer with risk disclaimer
+14. Footer with legal disclaimer
 
 ## Notes
 
@@ -123,6 +123,8 @@ fast and looks consistent.
 - Reveal animations use a plain rect check rather than `IntersectionObserver`, so
   sections never stay blank after an anchor jump or a fast scroll.
 - `prefers-reduced-motion` disables all animation.
-- The risk disclaimer in the footer and under the proof gallery is deliberate: the
-  page claims profit figures, so it needs to say plainly that results vary and that
-  none of it is financial advice.
+- Both disclaimers are deliberate. The one under the proof gallery covers the profit
+  figures the page claims: results vary, none of it is financial advice. The footer one
+  covers scope of service - the academy sells education, not lending, fund management or
+  any licensed financial product - and warns that anyone offering those in its name is an
+  impostor.
