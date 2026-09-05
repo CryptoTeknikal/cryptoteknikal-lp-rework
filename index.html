@@ -210,18 +210,22 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .faq .a p{padding:0 22px 20px;color:var(--mut);font-size:.94rem}
 
 /* ===== INTRO STING (trial section) =====
-   Three beats, 2.1s, a note to each. The monogram materialises alone in the
-   middle of the stage; it slides left towards its place in the lockup; and once it is
-   most of the way there the divider and the "Academy" wordmark unfurl out of
-   its right-hand side, left to right, riding the last of that slide.
+   Three beats, a note to each, and the picture answers to the sound: every beat
+   finishes one piece of the lockup exactly as its note strikes, so the notes
+   read as the thing putting the lockup on screen a piece at a time. The
+   monogram materialises alone in the middle of the stage (note 1); it slides
+   left into its place and the divider draws itself open out of its side, both
+   settled, and no wordmark yet (note 2); then, with the lockup at rest, the
+   "Academy" wordmark is wiped in left to right and is whole (note 3).
 
    The monogram has to start centred on the stage, which means offsetting it by
    half the rest of the lockup - a distance that depends on how wide "Academy"
    renders. That one number is measured in script and handed to CSS as --stdx.
 
-   Everything below is the settled lockup and the keyframes run from the hidden
-   state up to it - so under prefers-reduced-motion, where the page kills every
-   animation, the finished lockup is what shows. */
+   The beats live in one place, --b1/--b2/--b3 below, which the script reads back
+   out to schedule the notes at. Everything else is the settled lockup, and the
+   keyframes run from the hidden state up to it - so under prefers-reduced-motion,
+   where the page kills every animation, the finished lockup is what shows. */
 .stingwrap{max-width:860px;margin:0 auto}
 .sting{position:relative;aspect-ratio:16/7;border-radius:28px;overflow:hidden;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
@@ -229,7 +233,11 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   border:1px solid rgba(255,0,255,.22);
   box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 90px rgba(255,0,255,.09);
   --mh:clamp(46px,8.6vw,96px);          /* monogram height - the lockup's unit */
-  --rw:max(1px,calc(var(--mh)*.022))}   /* divider width */
+  --rw:max(1px,calc(var(--mh)*.022));   /* divider width */
+  --b1:.30s;                            /* beat 1 - the monogram has landed */
+  --b2:.96s;                            /* beat 2 - slide over, divider drawn */
+  --b3:1.32s;                           /* beat 3 - "Academy" is whole */
+  --lead:.04s}                          /* settled this long before its note */
 
 /* the bloom sits on the stage rather than on the lockup, so it reads for both
    the lone monogram at the start and the finished lockup at the end. It fades
@@ -246,26 +254,28 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .sting-mark{display:block;width:calc(var(--mh)*1.1524);height:var(--mh);
   filter:blur(0) brightness(1) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
 
-/* Divider and wordmark travel and are revealed as one piece: an oversized
-   gradient mask slides across the tail from left to right, so the rule lands
-   first and the letters follow it out. Padded on three sides - never on the
-   left, where the reveal has to start exactly on the rule - so the wordmark's
-   glow has somewhere to fall instead of being cut into a rectangle. */
-.sting-tail{display:flex;align-items:center;gap:calc(var(--mh)*.27);
-  padding:calc(var(--mh)*.5) calc(var(--mh)*.6) calc(var(--mh)*.5) 0;
-  margin:calc(var(--mh)*-.5) calc(var(--mh)*-.6) calc(var(--mh)*-.5) 0;
-  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 46%,transparent 56%,transparent 100%);
-  mask-image:linear-gradient(90deg,#000 0,#000 46%,transparent 56%,transparent 100%);
-  -webkit-mask-size:250% 100%;mask-size:250% 100%;
-  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-  -webkit-mask-position:0 0;mask-position:0 0}
+/* Divider and wordmark travel together on the monogram's slide, but they are
+   revealed one beat apart: the rule draws itself open vertically, and only after
+   its note has struck is the wordmark uncovered by an oversized gradient mask
+   sliding across it, left to right. The mask clips to the box it is given, so
+   the wordmark is padded all round - and pulled back by the same amount in
+   margin, leaving the layout alone - to give its glow somewhere to fall instead
+   of being cut into a rectangle. */
+.sting-tail{display:flex;align-items:center;gap:calc(var(--mh)*.27)}
 .sting-rule{position:relative;flex:none;width:var(--rw);height:calc(var(--mh)*.7)}
-/* the rule wears its resting look throughout - the wipe is its whole entrance,
+/* the rule wears its resting look throughout - the draw is its whole entrance,
    so there is no flare of its own left to settle once the wordmark has landed */
 .sting-bar{position:absolute;inset:0;background:#fff;opacity:.45;border-radius:2px}
 .sting-word{display:block;font-family:'Poppins',var(--font);font-weight:600;
   font-size:calc(var(--mh)*.47);line-height:1.2;letter-spacing:.01em;color:#fff;white-space:nowrap;
-  filter:drop-shadow(0 0 18px rgba(255,0,255,.45))}
+  filter:drop-shadow(0 0 18px rgba(255,0,255,.45));
+  padding:calc(var(--mh)*.5) calc(var(--mh)*.6) calc(var(--mh)*.5) calc(var(--mh)*.3);
+  margin:calc(var(--mh)*-.5) calc(var(--mh)*-.6) calc(var(--mh)*-.5) calc(var(--mh)*-.3);
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 40%,transparent 50%,transparent 100%);
+  mask-image:linear-gradient(90deg,#000 0,#000 40%,transparent 50%,transparent 100%);
+  -webkit-mask-size:250% 100%;mask-size:250% 100%;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:0 0;mask-position:0 0}
 
 /* grade, so the magenta has somewhere to sit: vignette plus a little grain */
 .sting-vig{position:absolute;inset:0;pointer-events:none;
@@ -285,45 +295,56 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 @media(prefers-reduced-motion:no-preference){
   /* hidden start states - only worth applying where the sting can actually run */
   .sting-aura{opacity:0;transform:translate(-50%,-50%) scale(.5)}
-  .sting-markwrap{opacity:0;transform:translateX(var(--stdx,0px)) scale(.86)}
-  .sting-tail{opacity:0;transform:translateX(var(--stdx,0px));
-    -webkit-mask-position:100% 0;mask-position:100% 0}
+  .sting-mark{opacity:0;transform:scale(.86);
+    filter:blur(9px) brightness(1.6) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
+  .sting-markwrap,.sting-tail{transform:translateX(var(--stdx,0px))}
+  .sting-bar{transform:scaleY(0)}
+  .sting-word{-webkit-mask-position:100% 0;mask-position:100% 0}
 
-  .sting.run .sting-aura{animation:st-aura 2.1s cubic-bezier(.22,1,.36,1) forwards}
-  .sting.run .sting-markwrap{animation:st-mark 2.1s cubic-bezier(.22,1,.36,1) forwards}
-  .sting.run .sting-mark{animation:st-mark-lit 2.1s linear forwards}
-  .sting.run .sting-tail{animation:st-tail-move 2.1s cubic-bezier(.65,0,.25,1) forwards,
-                                   st-tail-wipe 2.1s cubic-bezier(.2,.85,.3,1) forwards}
+  /* Every piece is hung off the beat it belongs to and set to finish --lead
+     before it, so each note strikes something that has just come to rest -
+     hence the duration turning up again in the delay. Nothing overlaps two
+     beats: the wordmark's wipe does not start until beat 2 has been and gone,
+     which is why the window it has to cross in is the short one. */
+  .sting.run .sting-aura{animation:st-aura .42s cubic-bezier(.22,1,.36,1) forwards}
+  .sting.run .sting-mark{animation:st-mark-in calc(var(--b1) - var(--lead))
+                                   cubic-bezier(.22,1,.36,1) forwards,
+                                   st-mark-lit calc(var(--b1) - var(--lead)) linear forwards}
+  .sting.run .sting-markwrap,
+  .sting.run .sting-tail{animation:st-slide .42s cubic-bezier(.65,0,.25,1)
+                                   calc(var(--b2) - var(--lead) - .42s) forwards}
+  .sting.run .sting-bar{animation:st-rule .22s cubic-bezier(.22,1,.36,1)
+                                  calc(var(--b2) - var(--lead) - .22s) forwards}
+  .sting.run .sting-word{animation:st-word .28s cubic-bezier(.33,.25,.3,1)
+                                   calc(var(--b3) - var(--lead) - .28s) forwards}
 }
-/* beat 1, to 16%: the monogram resolves out of the glow, centred on the stage.
-   beat 2, 30% to 56%: it slides left into its place in the lockup. */
-@keyframes st-mark{
-  0%{opacity:0;transform:translateX(var(--stdx,0px)) scale(.86)}
-  16%{opacity:1;transform:translateX(var(--stdx,0px)) scale(1)}
-  30%{transform:translateX(var(--stdx,0px)) scale(1);animation-timing-function:cubic-bezier(.65,0,.25,1)}
-  56%{transform:translateX(0) scale(1)}
-  100%{opacity:1;transform:translateX(0) scale(1)}
+/* beat 1: the monogram resolves out of the glow, centred on the stage */
+@keyframes st-mark-in{
+  from{opacity:0;transform:scale(.86)}
+  to{opacity:1;transform:scale(1)}
 }
 @keyframes st-mark-lit{
-  0%{filter:blur(9px) brightness(1.6) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
-  18%,100%{filter:blur(0) brightness(1) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
+  from{filter:blur(9px) brightness(1.6) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
+  to{filter:blur(0) brightness(1) drop-shadow(0 6px 20px rgba(255,0,255,.42))}
 }
-/* the tail rides the same slide as the monogram, so the gap between them never
-   opens or closes - only the wipe over it moves */
-@keyframes st-tail-move{
-  0%,30%{transform:translateX(var(--stdx,0px))}
-  56%,100%{transform:translateX(0)}
+/* beat 2: monogram and tail slide left as one piece, so the gap between them
+   never opens or closes, and the rule draws itself open as the slide runs out */
+@keyframes st-slide{
+  from{transform:translateX(var(--stdx,0px))}
+  to{transform:translateX(0)}
 }
-/* beat 3, from 44%: with the monogram three quarters of the way across, the
-   rule and then the wordmark are wiped in behind it, left to right */
-@keyframes st-tail-wipe{
-  0%,44%{opacity:0;-webkit-mask-position:100% 0;mask-position:100% 0}
-  48%{opacity:1}
-  74%,100%{opacity:1;-webkit-mask-position:0 0;mask-position:0 0}
+@keyframes st-rule{
+  from{transform:scaleY(0)}
+  to{transform:scaleY(1)}
+}
+/* beat 3: with the lockup already at rest, the wordmark is uncovered */
+@keyframes st-word{
+  from{-webkit-mask-position:100% 0;mask-position:100% 0}
+  to{-webkit-mask-position:0 0;mask-position:0 0}
 }
 @keyframes st-aura{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}
-  18%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}
+  from{opacity:0;transform:translate(-50%,-50%) scale(.5)}
+  to{opacity:.5;transform:translate(-50%,-50%) scale(1)}
 }
 
 /* ===== FOOTER ===== */
@@ -964,6 +985,12 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     // picture. They are the 1st, 2nd and 4th of an ascending D major arpeggio -
     // D4, F#4, (A4 skipped), D5 - so the last one leaps instead of stepping and
     // lands as an answer rather than a continuation.
+    //
+    // All three are the same single voice: one pitch each, nothing stacked on
+    // the last one, decays short enough that a note is spent before the next
+    // arrives, and only a touch of room over the top. Notes left ringing into
+    // each other beat against their own detuning and lean on the limiter, and
+    // that swirl is what stops them sounding like three clean strikes.
     var actx = null, master = null, verb = null, voice = null;
 
     function audioReady(){
@@ -972,20 +999,25 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       if(!actx){
         try{ actx = new AC(); }catch(e){ return false; }
         master = actx.createGain();
-        master.gain.value = .85;
-        var limit = actx.createDynamicsCompressor();   // the last note is a chord
-        limit.threshold.value = -8; limit.ratio.value = 12; limit.attack.value = .003;
+        master.gain.value = .95;
+        // Purely a safety net against clipping: the notes are scheduled to sit
+        // under it, so it should never actually pull at the level - a limiter
+        // working audibly here would pump the tails and smear the attacks.
+        var limit = actx.createDynamicsCompressor();
+        limit.threshold.value = -1; limit.knee.value = 4; limit.ratio.value = 8;
+        limit.attack.value = .004; limit.release.value = .18;
         master.connect(limit).connect(actx.destination);
-        // A small hall: exponentially decaying noise used as an impulse
-        // response, so the notes sit in a room instead of arriving dry.
-        var n = Math.floor(actx.sampleRate * 2.2), ir = actx.createBuffer(2, n, actx.sampleRate);
+        // A small room: exponentially decaying noise used as an impulse
+        // response. Short, and mixed low - enough that the notes are not dry,
+        // not so much that its tail is still there under the next one.
+        var n = Math.floor(actx.sampleRate * 1.0), ir = actx.createBuffer(2, n, actx.sampleRate);
         for(var ch = 0; ch < 2; ch++){
           var d = ir.getChannelData(ch);
           for(var i = 0; i < n; i++)
-            d[i] = (Math.random()*2-1) * Math.pow(1 - i/n, 3.4) * Math.min(1, i/400);
+            d[i] = (Math.random()*2-1) * Math.pow(1 - i/n, 4.2) * Math.min(1, i/400);
         }
         verb = actx.createConvolver(); verb.buffer = ir;
-        var wet = actx.createGain(); wet.gain.value = .42;
+        var wet = actx.createGain(); wet.gain.value = .14;
         verb.connect(wet).connect(master);
       }
       if(actx.state === 'suspended') actx.resume();
@@ -994,11 +1026,11 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 
     // One note: three lightly detuned triangles under a filter that opens on the
     // attack and closes again as it decays, with a sine an octave down for body.
-    // Soft in, long out, so it swells rather than beeps.
+    // Quick in, short out, so it strikes and then gets out of the way.
     function tone(at, hz, gain, dur, open){
       var g = actx.createGain();
       g.gain.setValueAtTime(.0001, at);
-      g.gain.exponentialRampToValueAtTime(gain, at + .04);
+      g.gain.exponentialRampToValueAtTime(gain, at + .012);
       g.gain.exponentialRampToValueAtTime(.0001, at + dur);
       g.connect(voice);
       var lp = actx.createBiquadFilter();
@@ -1012,18 +1044,27 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         o.type = 'triangle'; o.frequency.value = hz; o.detune.value = cents;
         o.connect(lp); o.start(at); o.stop(at + dur + .1);
       });
+      // bg feeds g, which already carries the note's level, so its own gain is
+      // the body's share of the note rather than an absolute one.
       var body = actx.createOscillator(), bg = actx.createGain();
       body.type = 'sine'; body.frequency.value = hz / 2;
       bg.gain.setValueAtTime(.0001, at);
-      bg.gain.exponentialRampToValueAtTime(gain * .55, at + .06);
-      bg.gain.exponentialRampToValueAtTime(.0001, at + dur * .8);
+      bg.gain.exponentialRampToValueAtTime(.45, at + .02);
+      bg.gain.exponentialRampToValueAtTime(.0001, at + dur * .6);
       body.connect(bg).connect(g);
       body.start(at); body.stop(at + dur + .1);
     }
 
-    // The entries are the picture's beats, not round numbers: the monogram
-    // settles at 16% of 2.1s, the divider is uncovered just before 48%, and the
-    // lockup is whole by 56%, the wordmark opaque a little before that.
+    // The beats the keyframes are hung off, in seconds, read back out of the
+    // stylesheet so the notes and the picture cannot drift apart.
+    function beats(){
+      var cs = getComputedStyle(sting), fallback = [.30, .96, 1.32];
+      return fallback.map(function(def, i){
+        var v = parseFloat(cs.getPropertyValue('--b' + (i + 1)));
+        return isFinite(v) ? v : def;
+      });
+    }
+
     function voiceOver(){
       if(!audioReady()) return;
       if(voice){                                   // a replay cuts the last one off
@@ -1033,20 +1074,13 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       }
       voice = actx.createGain(); voice.gain.value = 1;
       voice.connect(master); voice.connect(verb);
-      var t = actx.currentTime + .02;
-      tone(t + .28, 293.66, .17, 1.30, 4.2);       // D4  as the monogram lands
-      tone(t + .94, 369.99, .18, 1.30, 4.4);       // F#4 as the divider arrives
-      tone(t + 1.30, 587.33, .19, 2.30, 4.6);      // D5  once the lockup is whole,
-      tone(t + 1.30, 739.99, .085, 2.30, 4.0);     // F#5   opened out into the
-      tone(t + 1.30, 880.00, .075, 2.30, 4.0);     // A5    full chord beneath it
-      var sub = actx.createOscillator(), sg = actx.createGain();
-      sub.type = 'sine'; sub.frequency.value = 73.42;         // and a slow D2 under
-      sg.gain.setValueAtTime(.0001, t + 1.30);                // the last note, for
-      sg.gain.exponentialRampToValueAtTime(.15, t + 1.42);    // weight rather than
-      sg.gain.exponentialRampToValueAtTime(.0001, t + 3.10);  // impact
-      sub.connect(sg).connect(voice);
-      sub.start(t + 1.30); sub.stop(t + 3.2);
-    }
+      // The couple of frames of lead-in also buy the picture a moment: each
+      // piece of the lockup has settled by the time its note speaks.
+      var b = beats(), t = actx.currentTime + .02;
+      tone(t + b[0], 293.66, .15, .95, 4.2);       // D4  the monogram has landed
+      tone(t + b[1], 369.99, .155, .85, 4.4);      // F#4 the divider is drawn
+      tone(t + b[2], 587.33, .17, 1.70, 4.6);      // D5  "Academy" is whole - the
+    }                                              //     one note left to ring on
 
     function play(sound){
       if(quiet.matches) return;
