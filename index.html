@@ -232,8 +232,9 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   --rw:max(1px,calc(var(--mh)*.022))}   /* divider width */
 
 /* the bloom sits on the stage rather than on the lockup, so it reads for both
-   the lone monogram at the start and the finished lockup at the end. It only
-   ever fades up to its resting level - no pulse on the landing. */
+   the lone monogram at the start and the finished lockup at the end. It fades
+   up once, with that monogram, and then holds: nothing on this stage changes
+   brightness after the lockup has arrived. */
 .sting-aura{position:absolute;left:50%;top:50%;pointer-events:none;
   width:calc(var(--mh)*7);height:calc(var(--mh)*7);
   transform:translate(-50%,-50%) scale(1);border-radius:50%;opacity:.5;
@@ -259,6 +260,8 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   -webkit-mask-position:0 0;mask-position:0 0}
 .sting-rule{position:relative;flex:none;width:var(--rw);height:calc(var(--mh)*.7)}
+/* the rule wears its resting look throughout - the wipe is its whole entrance,
+   so there is no flare of its own left to settle once the wordmark has landed */
 .sting-bar{position:absolute;inset:0;background:#fff;opacity:.45;border-radius:2px}
 .sting-word{display:block;font-family:'Poppins',var(--font);font-weight:600;
   font-size:calc(var(--mh)*.47);line-height:1.2;letter-spacing:.01em;color:#fff;white-space:nowrap;
@@ -285,14 +288,12 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   .sting-markwrap{opacity:0;transform:translateX(var(--stdx,0px)) scale(.86)}
   .sting-tail{opacity:0;transform:translateX(var(--stdx,0px));
     -webkit-mask-position:100% 0;mask-position:100% 0}
-  .sting-bar{transform:scaleY(.5)}
 
   .sting.run .sting-aura{animation:st-aura 2.1s cubic-bezier(.22,1,.36,1) forwards}
   .sting.run .sting-markwrap{animation:st-mark 2.1s cubic-bezier(.22,1,.36,1) forwards}
   .sting.run .sting-mark{animation:st-mark-lit 2.1s linear forwards}
   .sting.run .sting-tail{animation:st-tail-move 2.1s cubic-bezier(.65,0,.25,1) forwards,
                                    st-tail-wipe 2.1s cubic-bezier(.2,.85,.3,1) forwards}
-  .sting.run .sting-bar{animation:st-bar 2.1s cubic-bezier(.16,.84,.36,1) forwards}
 }
 /* beat 1, to 16%: the monogram resolves out of the glow, centred on the stage.
    beat 2, 30% to 56%: it slides left into its place in the lockup. */
@@ -320,18 +321,9 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   48%{opacity:1}
   74%,100%{opacity:1;-webkit-mask-position:0 0;mask-position:0 0}
 }
-@keyframes st-bar{
-  0%,44%{opacity:1;transform:scaleY(.5)}
-  54%{transform:scaleY(1.08)}
-  64%{transform:scaleY(1)}
-  70%{opacity:1}
-  88%{opacity:.45}
-  100%{opacity:.45;transform:scaleY(1)}
-}
 @keyframes st-aura{
   0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}
-  18%{opacity:.4;transform:translate(-50%,-50%) scale(.88)}
-  100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}
+  18%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}
 }
 
 /* ===== FOOTER ===== */
