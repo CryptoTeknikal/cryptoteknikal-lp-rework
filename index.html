@@ -54,10 +54,11 @@ h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
 nav{position:sticky;top:0;z-index:100;background:rgba(8,6,13,.72);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border .25s,box-shadow .25s}
 nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.5)}
 .navin{display:flex;align-items:center;justify-content:space-between;height:66px;gap:18px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:1.08rem;letter-spacing:-.01em;white-space:nowrap}
-.brand .mark{width:34px;height:34px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(255,0,255,.4);flex:none}
-.brand .mark svg{width:19px;height:19px;display:block}
-.brand b{color:var(--brand2)}
+.brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.brand .mark{width:39px;height:34px;flex:none;display:block;filter:drop-shadow(0 5px 16px rgba(255,0,255,.3))}
+.brand .btxt{display:flex;flex-direction:column;justify-content:center}
+.brand .bt{font-weight:800;font-size:1rem;line-height:1.2;letter-spacing:-.005em;color:#fff}
+.brand .bs{font-weight:400;font-size:.85rem;line-height:1.2;color:#fff}
 .navlinks{display:flex;align-items:center;gap:28px}
 .navlinks a.nl{font-size:.94rem;font-weight:600;color:var(--ink2);transition:color .15s}
 .navlinks a.nl:hover{color:var(--brand2)}
@@ -97,23 +98,6 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .vcard h3{font-size:1.05rem;margin-bottom:7px}
 .vcard p{font-size:.9rem;color:var(--mut)}
 
-/* ===== MASALAH ===== */
-.feat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);align-items:center;padding:clamp(20px,3vw,32px) 0}
-.feat h3{font-size:clamp(1.35rem,2.6vw,1.85rem);margin-bottom:14px}
-.feat p{color:var(--mut);margin-bottom:20px;max-width:470px}
-.ftag{display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
-.ftag svg{width:15px;height:15px}
-.flist{list-style:none;display:flex;flex-direction:column;gap:11px}
-.flist li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;color:var(--ink2);font-weight:500}
-.flist .ck{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(255,0,255,.14);color:var(--brand2);display:flex;align-items:center;justify-content:center;margin-top:1px}
-.flist .ck svg{width:13px;height:13px}
-.fvis{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:26px;min-height:270px;display:flex;flex-direction:column;justify-content:center}
-.painlist{list-style:none;display:flex;flex-direction:column;gap:10px}
-.painlist li{display:flex;gap:12px;align-items:flex-start;background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.88rem;font-weight:600;color:var(--ink2)}
-.painlist .x{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(255,95,82,.13);color:var(--red);display:flex;align-items:center;justify-content:center;margin-top:1px}
-.painlist .x svg{width:12px;height:12px}
-.painnote{margin-top:16px;font-size:.86rem;color:var(--mut);text-align:center;font-weight:600}
-.painnote b{color:var(--brand2)}
 
 /* market condition pills */
 .mkt{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:760px;margin:0 auto}
@@ -241,8 +225,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 /* ===== FOOTER ===== */
 footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);padding:56px 0 30px;font-size:.9rem}
 .footgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;margin-bottom:36px}
-footer .brand{color:var(--ink);margin-bottom:14px}
-footer .brand b{color:var(--brand2)}
+footer .brand{margin-bottom:14px}
 footer .fabout{color:var(--mut);max-width:360px;font-size:.88rem}
 footer h4{color:var(--ink);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;font-weight:800}
 footer .fcol a{display:block;color:var(--mut);padding:6px 0;transition:color .15s}
@@ -266,8 +249,6 @@ footer .fcol a:hover{color:var(--brand2)}
   .herogrid{grid-template-columns:1fr;gap:40px}
   .mock{max-width:420px;margin:0 auto;width:100%}
   .vgrid{grid-template-columns:repeat(2,1fr)}
-  .feat{grid-template-columns:1fr;gap:26px}
-  .fvis{order:-1}
   .bagrid{grid-template-columns:1fr}
   .footgrid{grid-template-columns:1fr 1fr}
   .navlinks{display:none}
@@ -291,14 +272,27 @@ footer .fcol a:hover{color:var(--brand2)}
 </head>
 <body>
 
+<!-- The CT monogram, traced from the brand logo so it keeps its own
+     purple-to-pink gradient and stays crisp at any size. Defined once, used in
+     the nav and the footer. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ctmark" viewBox="0 0 310 269">
+    <linearGradient id="ctmarkgrad" gradientUnits="userSpaceOnUse" x1="277" y1="2303" x2="1862" y2="92">
+      <stop offset="0" stop-color="#5f44c6"/><stop offset="1" stop-color="#db2a7c"/>
+    </linearGradient>
+    <g transform="translate(0,269) scale(.1,-.1)" fill="url(#ctmarkgrad)">
+      <path d="M1115 2664 c-534 -95 -941 -481 -1076 -1018 -30 -119 -37 -379 -14 -518 89 -532 469 -945 994 -1080 195 -50 462 -50 660 -1 108 27 101 -4 101 428 0 450 9 424 -123 343 -128 -79 -331 -106 -472 -64 -285 85 -475 354 -451 638 22 260 188 457 467 553 32 11 49 23 53 38 3 12 6 165 6 340 0 304 -1 318 -20 337 -23 23 -19 23 -125 4z M1465 2655 c-19 -18 -25 -35 -26 -67 -1 -62 -1 -535 0 -585 1 -43 1 -43 174 -43 188 0 230 -7 278 -47 72 -61 69 -17 69 -904 0 -605 3 -798 12 -807 22 -22 56 -12 130 37 280 188 488 503 560 851 16 79 20 151 25 428 5 318 7 334 27 364 44 65 64 73 213 78 118 4 136 7 149 24 11 16 14 79 14 338 0 305 -1 319 -20 338 -20 20 -33 20 -800 20 -781 0 -781 0 -805 -25z"/>
+    </g>
+  </symbol>
+</svg>
+
 <nav id="nav">
   <div class="wrap navin">
-    <a href="#top" class="brand">
-      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></span>
-      CRYPTO <b>TEKNIKAL</b>
+    <a href="#top" class="brand" aria-label="Crypto Teknikal Academy">
+      <svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
+      <span class="btxt"><span class="bt">Crypto Teknikal</span><span class="bs">Academy</span></span>
     </a>
     <div class="navlinks">
-      <a class="nl" href="#masalah">Masalah</a>
       <a class="nl" href="#modul">Modul</a>
       <a class="nl" href="#bonus">Bonus</a>
       <a class="nl" href="#bukti">Bukti</a>
@@ -313,7 +307,6 @@ footer .fcol a:hover{color:var(--brand2)}
     </div>
   </div>
   <div class="mobmenu" id="mobmenu">
-    <a href="#masalah">Masalah</a>
     <a href="#modul">Modul</a>
     <a href="#bonus">Bonus</a>
     <a href="#bukti">Bukti</a>
@@ -377,38 +370,8 @@ footer .fcol a:hover{color:var(--brand2)}
   </div>
 </section>
 
-<!-- ===== MASALAH ===== -->
-<section class="band soft" id="masalah">
-  <div class="wrap">
-    <div class="feat reveal">
-      <div class="ftext">
-        <span class="ftag">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-          Kelihatan familiar?
-        </span>
-        <h3>Lo pasti pernah ngerasa: <span class="hl">"kok orang lain bisa, gue enggak?"</span></h3>
-        <p>Tiap kali mau mulai, ujungnya bingung sendiri. Nonton video sana-sini, semua mentor udah dipelajarin, tapi begitu buka chart tetap gak tau harus ngapain.</p>
-        <ul class="flist">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Lo gak butuh sinyal baru, lo butuh logika di balik sinyalnya.</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Lo gak butuh indikator ajaib, lo butuh urutan belajar yang bener.</li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Lo cuma butuh satu hal: ilmu strategi yang jelas, runtut, dan bisa dipelajari dari 0.</li>
-        </ul>
-      </div>
-      <div class="fvis">
-        <ul class="painlist">
-          <li><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Nonton video tutorial sampai habis, hasilnya nol.</li>
-          <li><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Join grup Telegram yang rame tapi gak ngerti arah.</li>
-          <li><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Entry pakai feeling, ujungnya nyangkut.</li>
-          <li><span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>Ikut sinyal, tapi gak ngerti kenapa disuruh beli.</li>
-        </ul>
-        <p class="painnote">Masalahnya bukan lo gak niat. Masalahnya <b>lo belum punya sistemnya.</b></p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== SEGALA KONDISI MARKET ===== -->
-<section class="band">
+<section class="band soft">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Emang bisa?</span>
@@ -433,7 +396,7 @@ footer .fcol a:hover{color:var(--brand2)}
 </section>
 
 <!-- ===== BEFORE / AFTER ===== -->
-<section class="band soft">
+<section class="band">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Sebelum dan sesudah</span>
@@ -471,7 +434,7 @@ footer .fcol a:hover{color:var(--brand2)}
 </section>
 
 <!-- ===== MODUL ===== -->
-<section class="band" id="modul">
+<section class="band soft" id="modul">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Modul rahasia</span>
@@ -537,7 +500,7 @@ footer .fcol a:hover{color:var(--brand2)}
 </section>
 
 <!-- ===== COCOK BUAT SIAPA ===== -->
-<section class="band soft">
+<section class="band">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Cocok buat siapa</span>
@@ -555,7 +518,7 @@ footer .fcol a:hover{color:var(--brand2)}
 </section>
 
 <!-- ===== BONUS ===== -->
-<section class="band" id="bonus">
+<section class="band soft" id="bonus">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Bonus spesial</span>
@@ -629,7 +592,7 @@ footer .fcol a:hover{color:var(--brand2)}
 </section>
 
 <!-- ===== BUKTI ===== -->
-<section class="band soft" id="bukti">
+<section class="band" id="bukti">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Masih belum yakin?</span>
@@ -654,7 +617,7 @@ footer .fcol a:hover{color:var(--brand2)}
 </section>
 
 <!-- ===== HARGA ===== -->
-<section class="band" id="harga">
+<section class="band soft" id="harga">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow hot">Promo diskon up to 66%</span>
@@ -724,7 +687,7 @@ footer .fcol a:hover{color:var(--brand2)}
 </section>
 
 <!-- ===== QUOTE ===== -->
-<section class="band soft">
+<section class="band">
   <div class="wrap quote reveal">
     <div class="qm"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.6 5.5C4.9 7 3.3 9.7 3.3 13v5.5h6.4V13H6.6c0-2.3.9-3.9 2.6-4.9zM18.3 5.5C15.6 7 14 9.7 14 13v5.5h6.4V13h-3.1c0-2.3.9-3.9 2.6-4.9z"/></svg></div>
     <p>"Semakin banyak lo belajar, maka semakin banyak juga yang lo hasilkan."</p>
@@ -733,7 +696,7 @@ footer .fcol a:hover{color:var(--brand2)}
 </section>
 
 <!-- ===== FAQ ===== -->
-<section class="band" id="faq">
+<section class="band soft" id="faq">
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">FAQ</span>
@@ -799,14 +762,13 @@ footer .fcol a:hover{color:var(--brand2)}
     <div class="footgrid">
       <div>
         <div class="brand">
-          <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></span>
-          CRYPTO <b>TEKNIKAL</b>
+          <svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
+          <span class="btxt"><span class="bt">Crypto Teknikal</span><span class="bs">Academy</span></span>
         </div>
         <p class="fabout">Platform edukasi cryptocurrency untuk pemula yang mau belajar trading dari 0 sampai bisa mandiri dan konsisten di segala kondisi market.</p>
       </div>
       <div class="fcol">
         <h4>Halaman</h4>
-        <a href="#masalah">Masalah</a>
         <a href="#modul">Modul</a>
         <a href="#bonus">Bonus</a>
         <a href="#bukti">Bukti</a>
