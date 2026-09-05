@@ -13,14 +13,32 @@ Scalev page at `crypto-teknikal.myscalev.com/lpctact`.
   glow instead of soft drop shadows.
 
 The whole thing is one self-contained file: `index.html`. No build step, no
-dependencies, no external CSS or JS.
+dependencies, no external CSS or JS. (`dev.mjs` is a local preview server, not
+part of the page - see below.)
 
 ## Preview locally
 
 ```sh
-python3 -m http.server 8899
-# open http://localhost:8899
+node dev.mjs          # http://localhost:8899, opens the browser for you
 ```
+
+`dev.mjs` is a dev-only static server with live reload, written against Node's
+standard library alone - nothing to install, no `package.json`, no
+`node_modules`. Save `index.html` and the open tab updates immediately:
+
+- **CSS-only edits are swapped in place.** Touch anything inside the `<style>`
+  block - a token, a shadow, a breakpoint - and the new CSS is applied without a
+  reload, so scroll position, the open FAQ item and the reveal-on-scroll state
+  survive. Handy when tuning something far down the page.
+- **Everything else reloads,** restoring the scroll position afterwards.
+- A small pill in the bottom-left flashes on each update, and turns amber if the
+  dev server goes away.
+
+Flags: `--port 9000` (falls forward if the port is taken) and `--no-open`.
+
+The injection happens in the response, never on disk, so `index.html` stays the
+plain self-contained file that gets deployed. For a byte-exact preview of the
+deployed page, `python3 -m http.server 8899` still works.
 
 The published copy lives on GitHub Pages:
 <https://cryptoteknikal.github.io/cryptoteknikal-lp-rework/>
