@@ -58,7 +58,7 @@ The page is a complete standalone HTML document, so there are two options:
 ### Checkout links
 
 All three buy buttons currently point at the same WooCommerce product URLs the old
-page used. They appear in exactly four places (three pricing cards and the footer):
+page used. They appear once each, in the three pricing cards:
 
 ```
 https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-3-bulan/
@@ -102,21 +102,20 @@ fast and looks consistent.
 
 ## Section order
 
-1. Sticky nav
+1. Sticky nav (brand lockup + a single CTA, no link menu)
 2. Hero with the real PnL screenshot
 3. Why Crypto Teknikal (4 value cards)
-4. The problem ("lo pasti pernah ngerasa")
-5. Three market conditions (bullish / bearish / sideways)
-6. Before and after
-7. 7 modules + total module value
-8. Who it is for (6 personas)
-9. 6 bonuses + total value Rp15.000.000
-10. Proof (member screenshots)
-11. Pricing (3 bulan / 12 bulan / lifetime)
-12. Warren Buffett quote
-13. FAQ accordion
-14. Final CTA
-15. Footer with risk disclaimer
+4. Three market conditions (bullish / bearish / sideways)
+5. Before and after
+6. 7 modules + total module value
+7. Who it is for (6 personas)
+8. 6 bonuses + total value Rp15.000.000
+9. Proof (member screenshots)
+10. Pricing (3 bulan / 12 bulan / lifetime)
+11. Warren Buffett quote
+12. FAQ accordion
+13. Final CTA
+14. Footer with risk disclaimer
 
 ## Notes
 

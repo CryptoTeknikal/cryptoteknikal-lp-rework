@@ -59,16 +59,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .brand .btxt{display:flex;flex-direction:column;justify-content:center}
 .brand .bt{font-weight:800;font-size:1rem;line-height:1.2;letter-spacing:-.005em;color:#fff}
 .brand .bs{font-weight:400;font-size:.85rem;line-height:1.2;color:#fff}
-.navlinks{display:flex;align-items:center;gap:28px}
-.navlinks a.nl{font-size:.94rem;font-weight:600;color:var(--ink2);transition:color .15s}
-.navlinks a.nl:hover{color:var(--brand2)}
 .navcta{display:flex;align-items:center;gap:14px}
-.burger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
-.burger svg{width:26px;height:26px;display:block}
-.mobmenu{display:none;flex-direction:column;gap:4px;padding:10px 22px 20px;border-bottom:1px solid var(--line);background:var(--card)}
-.mobmenu.open{display:flex}
-.mobmenu a{padding:12px 4px;font-weight:600;color:var(--ink2);border-bottom:1px solid var(--line)}
-.mobmenu .btn{margin-top:12px;justify-content:center}
 
 /* ===== HERO ===== */
 .hero{position:relative;padding:clamp(44px,6.5vw,86px) 0 clamp(40px,6vw,70px);overflow:hidden}
@@ -224,12 +215,8 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 
 /* ===== FOOTER ===== */
 footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);padding:56px 0 30px;font-size:.9rem}
-.footgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;margin-bottom:36px}
-footer .brand{margin-bottom:14px}
-footer .fabout{color:var(--mut);max-width:360px;font-size:.88rem}
-footer h4{color:var(--ink);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;font-weight:800}
-footer .fcol a{display:block;color:var(--mut);padding:6px 0;transition:color .15s}
-footer .fcol a:hover{color:var(--brand2)}
+.foothead{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-bottom:32px}
+footer .fabout{color:var(--mut);max-width:560px;font-size:.88rem;line-height:1.7}
 .foot-legal{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;color:var(--soft-mut);font-size:.78rem;line-height:1.7}
 .foot-legal a{color:var(--brand2)}
 
@@ -250,19 +237,16 @@ footer .fcol a:hover{color:var(--brand2)}
   .mock{max-width:420px;margin:0 auto;width:100%}
   .vgrid{grid-template-columns:repeat(2,1fr)}
   .bagrid{grid-template-columns:1fr}
-  .footgrid{grid-template-columns:1fr 1fr}
-  .navlinks{display:none}
-  .burger{display:block}
-  .navcta .btn{display:none}
   .stickycta{display:block}
   body{padding-bottom:70px}
 }
 @media(max-width:620px){
   .vgrid,.mgrid,.bgrid,.pgrid{grid-template-columns:1fr}
   .mkt{grid-template-columns:1fr}
-  .footgrid{grid-template-columns:1fr}
+  .foothead{gap:18px}
   .proofgrid{columns:1}
   .herobtns .btn{flex:1;justify-content:center}
+  .navcta .btn{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -292,27 +276,9 @@ footer .fcol a:hover{color:var(--brand2)}
       <svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
       <span class="btxt"><span class="bt">Crypto Teknikal</span><span class="bs">Academy</span></span>
     </a>
-    <div class="navlinks">
-      <a class="nl" href="#modul">Modul</a>
-      <a class="nl" href="#bonus">Bonus</a>
-      <a class="nl" href="#bukti">Bukti</a>
-      <a class="nl" href="#harga">Harga</a>
-      <a class="nl" href="#faq">FAQ</a>
-    </div>
     <div class="navcta">
       <a class="btn primary sm" href="#harga">Gabung Sekarang</a>
-      <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
     </div>
-  </div>
-  <div class="mobmenu" id="mobmenu">
-    <a href="#modul">Modul</a>
-    <a href="#bonus">Bonus</a>
-    <a href="#bukti">Bukti</a>
-    <a href="#harga">Harga</a>
-    <a href="#faq">FAQ</a>
-    <a class="btn primary" href="#harga">Gabung Sekarang</a>
   </div>
 </nav>
 
@@ -321,8 +287,8 @@ footer .fcol a:hover{color:var(--brand2)}
   <div class="wrap herogrid">
     <div>
       <span class="eyebrow hot">Buat lo yang rugi mulu</span>
-      <h1>Bongkar Rahasia <span class="hl">Trading Crypto</span> Dari 0 Hingga <span class="hl">Konsisten Profit 100 Juta Per Bulan Tanpa HOKI!</span></h1>
-      <p class="lead">Telah Membantu 1000+ Member Cuan Konsisten Dua Digit Tiap Bulan</p>
+      <h1>Bongkar Rahasia <span class="hl">Trading Crypto</span> Dari 0 Hingga <span class="hl">Konsisten Profit Tanpa HOKI!</span></h1>
+      <p class="lead">Telah Membantu 1000+ Member Cuan Konsisten Tiap Bulan</p>
       <div class="herobtns">
         <a class="btn primary" href="#harga">Gabung Sekarang
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -759,33 +725,16 @@ footer .fcol a:hover{color:var(--brand2)}
 
 <footer>
   <div class="wrap">
-    <div class="footgrid">
-      <div>
-        <div class="brand">
-          <svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
-          <span class="btxt"><span class="bt">Crypto Teknikal</span><span class="bs">Academy</span></span>
-        </div>
-        <p class="fabout">Platform edukasi cryptocurrency untuk pemula yang mau belajar trading dari 0 sampai bisa mandiri dan konsisten di segala kondisi market.</p>
+    <div class="foothead">
+      <div class="brand">
+        <svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
+        <span class="btxt"><span class="bt">Crypto Teknikal</span><span class="bs">Academy</span></span>
       </div>
-      <div class="fcol">
-        <h4>Halaman</h4>
-        <a href="#modul">Modul</a>
-        <a href="#bonus">Bonus</a>
-        <a href="#bukti">Bukti</a>
-        <a href="#harga">Harga</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="fcol">
-        <h4>Paket</h4>
-        <a href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-3-bulan/">Membership 3 bulan</a>
-        <a href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-1-tahun/">Membership 12 bulan</a>
-        <a href="https://cryptoteknikal.id/index.php/product/crypto-teknikal-academy-lifetime/">Membership lifetime</a>
-        <a href="https://scalev.com/payment-instruction">Instruksi pembayaran</a>
-      </div>
+      <p class="fabout">Platform edukasi cryptocurrency untuk belajar trading dari 0 sampai konsisten profit per bulan tanpa hoki.</p>
     </div>
     <div class="foot-legal">
-      <p><b>Disclaimer.</b> Seluruh materi dan informasi di halaman ini bersifat edukasi, bukan ajakan atau saran untuk membeli maupun menjual aset apa pun. Trading cryptocurrency memiliki risiko tinggi dan bisa mengakibatkan kerugian. Profit maupun loss adalah hal yang wajar di financial market. Segala keputusan finansial sepenuhnya ada di tangan kamu sendiri dan Crypto Teknikal tidak bertanggung jawab atas keputusan tersebut. Testimoni yang ditampilkan adalah pengalaman masing-masing member dan bukan jaminan hasil yang sama.</p>
-      <p style="margin-top:14px">&copy; <span id="yr">2026</span> Crypto Teknikal Academy. Seluruh hak cipta dilindungi.</p>
+      <p><b>Disclaimer.</b> Seluruh materi dan informasi di halaman ini bersifat edukasi, bukan ajakan atau saran untuk membeli maupun menjual aset apa pun. Trading cryptocurrency memiliki risiko tinggi dan bisa mengakibatkan kerugian. Profit maupun loss adalah hal yang wajar di financial market. Segala keputusan finansial sepenuhnya ada di tangan kamu sendiri dan Crypto Teknikal Academy tidak bertanggung jawab atas keputusan tersebut. Testimoni yang ditampilkan adalah pengalaman masing-masing member dan bukan jaminan hasil yang sama.</p>
+      <p style="margin-top:14px">Copyright &copy; <span id="yr">2026</span> All rights reserved</p>
     </div>
   </div>
 </footer>
@@ -800,20 +749,6 @@ footer .fcol a:hover{color:var(--brand2)}
   var nav = document.getElementById('nav');
   var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
-
-  // mobile menu
-  var burger = document.getElementById('burger');
-  var mob = document.getElementById('mobmenu');
-  burger.addEventListener('click', function(){
-    var open = mob.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  mob.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      mob.classList.remove('open');
-      burger.setAttribute('aria-expanded','false');
-    });
-  });
 
   // FAQ accordion
   document.querySelectorAll('.faq').forEach(function(f){
