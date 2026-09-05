@@ -92,6 +92,31 @@ Changing `--brand`, `--brand2`, `--grad` and `--grad-text` re-themes the whole p
 Nothing outside the token block hardcodes an accent colour, apart from the `rgba(255,0,255,…)`
 glows and tints, which follow the same hue.
 
+### Brand lockup
+
+The nav and the footer share one lockup: the CT monogram, a hairline white divider, then
+the word **Academy** in white. It is defined once as `.brand` near the top of the
+stylesheet (`.brand`, `.brand .mark`, `.brand .bdiv`, `.brand .bt`) and used twice in the
+markup.
+
+The previous lockup - the monogram beside a stacked *Crypto Teknikal* / *Academy*
+wordmark - is preserved on the `logo-v1-stacked-wordmark` tag, so the whole page can be
+put back by checking `index.html` out of that tag. To move only the lockup back, drop the
+`.bdiv` span from the two `.brand` blocks and restore these rules:
+
+```css
+.brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.brand .mark{width:39px;height:34px;flex:none;display:block;filter:drop-shadow(0 5px 16px rgba(255,0,255,.3))}
+.brand .btxt{display:flex;flex-direction:column;justify-content:center}
+.brand .bt{font-weight:800;font-size:1rem;line-height:1.2;letter-spacing:-.005em;color:#fff}
+.brand .bs{font-weight:400;font-size:.85rem;line-height:1.2;color:#fff}
+```
+
+```html
+<svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
+<span class="btxt"><span class="bt">Crypto Teknikal</span><span class="bs">Academy</span></span>
+```
+
 ### Images
 
 The images on the page are real member screenshots served from the Scalev CDN where
@@ -115,7 +140,7 @@ fast and looks consistent.
 11. Warren Buffett quote
 12. FAQ accordion
 13. Final CTA
-14. Footer with legal disclaimer
+14. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 ## Notes
 

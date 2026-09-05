@@ -56,11 +56,10 @@ h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
 nav{position:sticky;top:0;z-index:100;background:rgba(8,6,13,.72);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border .25s,box-shadow .25s}
 nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.5)}
 .navin{display:flex;align-items:center;justify-content:space-between;height:66px;gap:18px}
-.brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.brand{display:flex;align-items:center;gap:13px;white-space:nowrap}
 .brand .mark{width:39px;height:34px;flex:none;display:block;filter:drop-shadow(0 5px 16px rgba(255,0,255,.3))}
-.brand .btxt{display:flex;flex-direction:column;justify-content:center}
-.brand .bt{font-weight:800;font-size:1rem;line-height:1.2;letter-spacing:-.005em;color:#fff}
-.brand .bs{font-weight:400;font-size:.85rem;line-height:1.2;color:#fff}
+.brand .bdiv{flex:none;width:1px;height:26px;background:#fff;opacity:.5}
+.brand .bt{font-weight:800;font-size:1.02rem;line-height:1.2;letter-spacing:.03em;color:#fff}
 .navcta{display:flex;align-items:center;gap:14px}
 
 /* ===== HERO ===== */
@@ -217,19 +216,19 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 
 /* ===== FOOTER ===== */
 footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);padding:56px 0 30px;font-size:.9rem}
-.foothead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:start;margin-bottom:40px}
+.foothead{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:clamp(38px,8vw,110px);align-items:start;margin-bottom:44px}
 .footbrand .brand{margin-bottom:16px}
-.footbrand .blurb{color:var(--mut);max-width:400px;line-height:1.75}
-.socials{display:flex;gap:10px;margin-top:22px}
-.socials a{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--line);color:var(--ink2);transition:transform .16s,border .16s,color .16s,background .16s}
-.socials a:hover{transform:translateY(-2px);border-color:rgba(255,0,255,.55);background:rgba(255,0,255,.09);color:#fff}
-.socials svg{width:18px;height:18px}
-.footcol h4{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--brand2);margin-bottom:16px}
-.footcol ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-.footcol a{display:inline-flex;align-items:center;gap:11px;color:var(--ink2);transition:color .16s}
-.footcol a:hover{color:var(--brand2)}
-.footcol .ico{flex:none;width:32px;height:32px;border-radius:10px;background:var(--soft2);color:var(--brand2);display:flex;align-items:center;justify-content:center}
-.footcol .ico svg{width:15px;height:15px}
+.footbrand .blurb{color:var(--mut);max-width:340px;line-height:1.75}
+.footcol h4{font-size:1rem;font-weight:600;letter-spacing:0;color:#fff;margin-bottom:24px}
+.socials{display:flex;gap:22px}
+.socials a{display:flex;color:#fff;transition:opacity .16s,transform .16s}
+.socials a:hover{opacity:.7;transform:translateY(-2px)}
+.socials svg{width:22px;height:22px}
+.footcol ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+.footcol a{display:inline-flex;align-items:center;gap:12px;color:#fff;transition:opacity .16s}
+.footcol a:hover{opacity:.7}
+.footcol .ico{flex:none;display:flex;color:#fff}
+.footcol .ico svg{width:20px;height:20px}
 .foot-legal{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;color:var(--soft-mut);font-size:.78rem;line-height:1.7}
 .foot-legal a{color:var(--brand2)}
 
@@ -287,7 +286,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   <div class="wrap navin">
     <a href="#top" class="brand" aria-label="Crypto Teknikal Academy">
       <svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
-      <span class="btxt"><span class="bt">Crypto Teknikal</span><span class="bs">Academy</span></span>
+      <span class="bdiv" aria-hidden="true"></span>
+      <span class="bt">Academy</span>
     </a>
     <div class="navcta">
       <a class="btn primary sm" href="#harga">Gabung Sekarang</a>
@@ -742,12 +742,16 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <div class="footbrand">
         <div class="brand">
           <svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
-          <span class="btxt"><span class="bt">Crypto Teknikal</span><span class="bs">Academy</span></span>
+          <span class="bdiv" aria-hidden="true"></span>
+          <span class="bt">Academy</span>
         </div>
         <p class="blurb">Tempat belajar trading crypto dari 0 hingga konsisten profit per bulan tanpa hoki</p>
+      </div>
+      <div class="footcol">
+        <h4>Social Media</h4>
         <div class="socials">
           <a href="https://www.instagram.com/cryptoteknikal_id/" target="_blank" rel="noopener" aria-label="Instagram Crypto Teknikal Academy">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.59-.07 4.86c-.06 1.17-.26 1.8-.42 2.22-.23.56-.48.96-.9 1.38-.42.42-.83.68-1.38.9-.42.16-1.07.36-2.24.41-1.27.06-1.65.07-4.86.07s-3.59-.01-4.86-.07c-1.17-.06-1.82-.26-2.24-.42-.57-.22-.96-.48-1.38-.9-.42-.42-.69-.82-.9-1.38-.16-.42-.36-1.07-.42-2.24-.04-1.26-.06-1.65-.06-4.84s.02-3.59.06-4.86c.06-1.17.26-1.82.42-2.24.21-.57.48-.96.9-1.38.42-.42.81-.69 1.38-.9.42-.17 1.05-.36 2.22-.42 1.28-.05 1.65-.06 4.86-.06ZM12 0C8.74 0 8.33.02 7.05.07c-1.28.06-2.15.26-2.91.56-.79.3-1.46.72-2.13 1.38C1.34 2.68.93 3.35.63 4.14c-.3.77-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.02 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.67 1.34 1.08 2.13 1.38.77.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.02 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.77.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.02-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.77-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm7.85-10.41a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></svg>
           </a>
           <a href="https://discord.com/invite/Df7Zzs2egs" target="_blank" rel="noopener" aria-label="Discord Crypto Teknikal Academy">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.94A19.4 19.4 0 0 0 15.5 3.4a.07.07 0 0 0-.08.04c-.2.37-.44.86-.6 1.24a17.9 17.9 0 0 0-5.38 0c-.17-.39-.4-.87-.61-1.24a.08.08 0 0 0-.08-.04A19.35 19.35 0 0 0 3.93 4.94a.07.07 0 0 0-.03.03C.84 9.52 0 13.96.41 18.34c0 .02.02.04.04.06a19.55 19.55 0 0 0 5.9 3 .08.08 0 0 0 .09-.03c.45-.62.86-1.28 1.21-1.97a.08.08 0 0 0-.04-.11c-.64-.24-1.25-.54-1.85-.88a.08.08 0 0 1 0-.13c.13-.1.25-.2.37-.29a.07.07 0 0 1 .08-.01c3.88 1.78 8.09 1.78 11.93 0a.07.07 0 0 1 .08 0c.12.1.24.2.37.3a.08.08 0 0 1 0 .13c-.6.35-1.21.64-1.85.88a.08.08 0 0 0-.04.11c.36.69.77 1.35 1.2 1.97a.08.08 0 0 0 .09.03 19.49 19.49 0 0 0 5.91-3 .08.08 0 0 0 .04-.06c.5-5.06-.84-9.47-3.53-13.37a.06.06 0 0 0-.04-.03ZM8.02 15.67c-1.17 0-2.13-1.08-2.13-2.4 0-1.31.94-2.39 2.13-2.39 1.2 0 2.15 1.09 2.13 2.4 0 1.31-.94 2.39-2.13 2.39Zm7.87 0c-1.17 0-2.13-1.08-2.13-2.4 0-1.31.94-2.39 2.13-2.39 1.2 0 2.15 1.09 2.13 2.4 0 1.31-.93 2.39-2.13 2.39Z"/></svg>
@@ -755,7 +759,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         </div>
       </div>
       <div class="footcol">
-        <h4>Kontak</h4>
+        <h4>Contact</h4>
         <ul>
           <li>
             <a href="mailto:tanya@cryptoteknikal.id">
@@ -765,9 +769,9 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           </li>
           <li>
             <!-- TODO: swap in the real admin WhatsApp number. -->
-            <a href="https://wa.me/6280000000000" target="_blank" rel="noopener">
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">
               <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.83 9.83 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86A9.8 9.8 0 0 0 19 4.87 9.8 9.8 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.15 8.15 0 0 1-1.25-4.36c0-4.52 3.68-8.2 8.2-8.2a8.15 8.15 0 0 1 5.8 2.41 8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.25-8.15 8.25Zm4.5-6.15c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.07a6.7 6.7 0 0 1-1.98-1.22 7.42 7.42 0 0 1-1.37-1.7c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.2-.58.2-1.08.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg></span>
-              WhatsApp Admin
+              0812 3456 7890
             </a>
           </li>
         </ul>
