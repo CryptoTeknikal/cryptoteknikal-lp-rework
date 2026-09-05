@@ -208,6 +208,106 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .faq .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
 .faq .a p{padding:0 22px 20px;color:var(--mut);font-size:.94rem}
 
+/* ===== INTRO STING (trial section) =====
+   A 3.2s logo sting built from the CT monogram: the coin flies in edge-on,
+   turns to face the viewer, lands with a shockwave, then the lockup assembles
+   under it. Everything below is the settled end state, and the keyframes run
+   from the hidden state up to it - so under prefers-reduced-motion, where the
+   page kills every animation, the finished lockup is what shows. */
+.stingwrap{max-width:860px;margin:0 auto}
+.sting{position:relative;aspect-ratio:16/7;border-radius:28px;overflow:hidden;cursor:pointer;
+  background:radial-gradient(120% 150% at 50% 44%,#1b0726,#08060d 66%);
+  border:1px solid rgba(255,0,255,.22);
+  box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 90px rgba(255,0,255,.09);
+  perspective:900px;
+  --cs:clamp(78px,12vw,124px)}
+.sting>*{position:absolute;left:50%;top:50%}
+.sting-glow{width:calc(var(--cs)*4);height:calc(var(--cs)*4);margin:calc(var(--cs)*-2) 0 0 calc(var(--cs)*-2);
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,0,255,.34),rgba(163,0,207,.12) 42%,transparent 68%)}
+.sting-wave{width:var(--cs);height:var(--cs);margin:calc(var(--cs)/-2) 0 0 calc(var(--cs)/-2);
+  border-radius:50%;border:2px solid rgba(255,92,255,.75);opacity:0;pointer-events:none}
+.sting-coinwrap{width:var(--cs);height:var(--cs);margin:calc(var(--cs)/-2) 0 0 calc(var(--cs)/-2);
+  pointer-events:none}
+.sting-coin{display:block;position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;
+  background:linear-gradient(148deg,#ffc2ff 0%,#ff5cff 26%,#ff00ff 58%,#c400e8 84%,#8f00b8 100%);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55),inset 0 -12px 24px rgba(90,0,120,.32),0 0 60px rgba(255,0,255,.6)}
+/* the light that rakes across the face as the coin turns */
+.sting-coin:before{content:"";position:absolute;inset:-40%;
+  background:linear-gradient(102deg,transparent 38%,rgba(255,255,255,.72) 50%,transparent 62%);
+  transform:translateX(120%);pointer-events:none}
+.sting-flash{position:absolute;inset:0;border-radius:50%;background:#fff;opacity:0;pointer-events:none}
+.sting-mark{position:absolute;left:50%;top:50%;width:52%;height:45%;transform:translate(-50%,-50%);
+  --ctmarkfill:#0a0610}
+.sting-rulewrap{width:calc(var(--cs)*1.15);height:1px;margin-left:calc(var(--cs)*-.575);
+  transform:translateY(calc(var(--cs)*.78));pointer-events:none}
+.sting-rule{display:block;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent)}
+.sting-wordwrap{transform:translate(-50%,calc(var(--cs)*.95));pointer-events:none}
+.sting-word{display:block;font-family:'Poppins',var(--font);font-weight:600;
+  font-size:clamp(.82rem,1.5vw,1.12rem);letter-spacing:.055em;color:#fff;white-space:nowrap;
+  text-shadow:0 0 24px rgba(255,0,255,.55)}
+.sting-replay{position:absolute;right:14px;bottom:14px;left:auto;top:auto;z-index:3;
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:99px;
+  background:rgba(255,255,255,.07);border:1px solid var(--line2);color:var(--ink2);
+  font:inherit;font-size:.76rem;font-weight:600;cursor:pointer;
+  transition:background .18s,color .18s,border-color .18s}
+.sting-replay:hover{background:rgba(255,0,255,.16);border-color:rgba(255,0,255,.5);color:#fff}
+.sting-replay svg{width:13px;height:13px}
+.sting-note{text-align:center;color:var(--soft-mut);font-size:.8rem;margin-top:16px}
+
+@media(prefers-reduced-motion:no-preference){
+  /* hidden start states - only worth applying where the sting can actually run */
+  .sting-glow{opacity:0}
+  .sting-coinwrap{opacity:0}
+  .sting-rulewrap{transform:translateY(calc(var(--cs)*.78)) scaleX(0)}
+  .sting-wordwrap{opacity:0;transform:translate(-50%,calc(var(--cs)*1.25))}
+
+  .sting.run .sting-glow{animation:st-glow 3.2s cubic-bezier(.22,1,.36,1) forwards}
+  .sting.run .sting-coinwrap{animation:st-fly 2.1s cubic-bezier(.2,.72,.3,1) forwards}
+  .sting.run .sting-coin:before{animation:st-rake 2.1s cubic-bezier(.2,.72,.3,1) forwards}
+  .sting.run .sting-flash{animation:st-flash 2.1s linear forwards}
+  .sting.run .sting-wave{animation:st-wave 1.5s cubic-bezier(.16,.84,.36,1) 1.28s forwards}
+  .sting.run .sting-wave.w2{animation-delay:1.44s}
+  .sting.run .sting-rulewrap{animation:st-rule .6s cubic-bezier(.22,1,.36,1) 1.95s forwards}
+  .sting.run .sting-wordwrap{animation:st-word .7s cubic-bezier(.22,1,.36,1) 2.2s forwards}
+}
+@keyframes st-fly{
+  0%{opacity:0;transform:translate3d(-165%,-125%,0) rotateZ(-32deg) rotateX(80deg) scale(.5)}
+  10%{opacity:1}
+  28%{transform:translate3d(0,0,0) rotateZ(-9deg) rotateX(72deg) scale(1.34)}
+  60%{transform:translate3d(0,0,0) rotateZ(0deg) rotateX(0deg) scale(1.34)}
+  68%{opacity:1;transform:translate3d(0,0,0) rotateZ(0) rotateX(0) scale(1.46)}
+  100%{opacity:1;transform:translate3d(0,0,0) rotateZ(0) rotateX(0) scale(1)}
+}
+@keyframes st-rake{
+  0%,26%{transform:translateX(-125%)}
+  62%{transform:translateX(125%)}
+  100%{transform:translateX(125%)}
+}
+@keyframes st-flash{
+  0%,60%{opacity:0}
+  65%{opacity:.85}
+  78%,100%{opacity:0}
+}
+@keyframes st-wave{
+  0%{opacity:.8;transform:scale(.55)}
+  100%{opacity:0;transform:scale(3.4)}
+}
+@keyframes st-glow{
+  0%{opacity:0;transform:scale(.5)}
+  60%{opacity:.55;transform:scale(.9)}
+  68%{opacity:1;transform:scale(1.12)}
+  100%{opacity:.72;transform:scale(1)}
+}
+@keyframes st-rule{
+  0%{transform:translateY(calc(var(--cs)*.78)) scaleX(0)}
+  100%{transform:translateY(calc(var(--cs)*.78)) scaleX(1)}
+}
+@keyframes st-word{
+  0%{opacity:0;transform:translate(-50%,calc(var(--cs)*1.25))}
+  100%{opacity:1;transform:translate(-50%,calc(var(--cs)*.95))}
+}
+
 /* ===== FOOTER ===== */
 footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);padding:56px 0 30px;font-size:.9rem}
 .foothead{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:clamp(38px,8vw,110px);align-items:start;margin-bottom:44px}
@@ -248,6 +348,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   body{padding-bottom:70px}
 }
 @media(max-width:620px){
+  .sting{aspect-ratio:4/3}
+  .sting-replay{top:12px;right:12px;bottom:auto}
   .vgrid,.mgrid,.bgrid,.pgrid{grid-template-columns:1fr}
   .mkt{grid-template-columns:1fr}
   .proofgrid{columns:1}
@@ -270,7 +372,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <linearGradient id="ctmarkgrad" gradientUnits="userSpaceOnUse" x1="277" y1="2303" x2="1862" y2="92">
       <stop offset="0" stop-color="#5f44c6"/><stop offset="1" stop-color="#db2a7c"/>
     </linearGradient>
-    <g transform="translate(0,269) scale(.1,-.1)" fill="url(#ctmarkgrad)">
+    <g transform="translate(0,269) scale(.1,-.1)" style="fill:var(--ctmarkfill,url(#ctmarkgrad))">
       <path d="M1115 2664 c-534 -95 -941 -481 -1076 -1018 -30 -119 -37 -379 -14 -518 89 -532 469 -945 994 -1080 195 -50 462 -50 660 -1 108 27 101 -4 101 428 0 450 9 424 -123 343 -128 -79 -331 -106 -472 -64 -285 85 -475 354 -451 638 22 260 188 457 467 553 32 11 49 23 53 38 3 12 6 165 6 340 0 304 -1 318 -20 337 -23 23 -19 23 -125 4z M1465 2655 c-19 -18 -25 -35 -26 -67 -1 -62 -1 -535 0 -585 1 -43 1 -43 174 -43 188 0 230 -7 278 -47 72 -61 69 -17 69 -904 0 -605 3 -798 12 -807 22 -22 56 -12 130 37 280 188 488 503 560 851 16 79 20 151 25 428 5 318 7 334 27 364 44 65 64 73 213 78 118 4 136 7 149 24 11 16 14 79 14 338 0 305 -1 319 -20 338 -20 20 -33 20 -800 20 -781 0 -781 0 -805 -25z"/>
     </g>
   </symbol>
@@ -305,6 +407,36 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <div class="mock">
       <img src="https://cdn.scalev.id/uploads/1765101783/f0zUQtfwIV_-WAgP03GZvA/1765101783144-1761918021744-cuan-100-juta-adit.webp"
            width="640" height="818" alt="Screenshot channel member: realized PnL +8.338,1 USDT dari BTCUSDT">
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTRO STING (trial section) ===== -->
+<section class="band soft" id="intro">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Trial section</span>
+      <h2>Introduction to <span class="hl">Crypto Teknikal Academy</span></h2>
+    </div>
+    <div class="stingwrap reveal">
+      <div class="sting" id="sting" role="img" aria-label="Animasi pembuka logo Crypto Teknikal Academy">
+        <span class="sting-glow" aria-hidden="true"></span>
+        <span class="sting-wave" aria-hidden="true"></span>
+        <span class="sting-wave w2" aria-hidden="true"></span>
+        <span class="sting-coinwrap" aria-hidden="true">
+          <span class="sting-coin">
+            <svg class="sting-mark"><use href="#ctmark"/></svg>
+            <span class="sting-flash"></span>
+          </span>
+        </span>
+        <span class="sting-rulewrap" aria-hidden="true"><i class="sting-rule"></i></span>
+        <span class="sting-wordwrap" aria-hidden="true"><span class="sting-word">Academy</span></span>
+        <button class="sting-replay" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>
+          Replay
+        </button>
+      </div>
+      <p class="sting-note">Klik stage-nya untuk memutar ulang.</p>
     </div>
   </div>
 </section>
@@ -822,6 +954,86 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   window.addEventListener('scroll', queue, {passive:true});
   window.addEventListener('resize', queue);
   sweep();
+
+
+  // Intro sting. Scroll-in plays it silently; a click or the Replay button
+  // restarts it with the audio, since browsers only allow sound on a gesture.
+  var sting = document.getElementById('sting');
+  if(sting){
+    var quiet = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var actx = null;
+    function play(sound){
+      if(quiet.matches) return;
+      sting.classList.remove('run');
+      void sting.offsetWidth;              // reflow, so the animations restart
+      sting.classList.add('run');
+      if(sound) chime();
+    }
+    // The sting's own sound, built from oscillators rather than a sample file:
+    // a rising band of noise, an impact, and a two-note tail that rings out.
+    function chime(){
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if(!AC) return;
+      try{ actx = actx || new AC(); }catch(e){ return; }
+      if(actx.state === 'suspended') actx.resume();
+      var out = actx.createGain();
+      out.gain.value = .9;
+      out.connect(actx.destination);
+      var t = actx.currentTime + .02, hit = t + 1.24;
+
+      var n = actx.sampleRate * 1.5, buf = actx.createBuffer(1, n, actx.sampleRate), d = buf.getChannelData(0);
+      for(var i=0;i<n;i++) d[i] = Math.random()*2-1;
+      var noise = actx.createBufferSource(); noise.buffer = buf;
+      var bp = actx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 1.2;
+      bp.frequency.setValueAtTime(200, t);
+      bp.frequency.exponentialRampToValueAtTime(4600, hit);
+      var ng = actx.createGain();
+      ng.gain.setValueAtTime(.0001, t);
+      ng.gain.exponentialRampToValueAtTime(.26, hit - .03);
+      ng.gain.exponentialRampToValueAtTime(.0001, hit + .34);
+      noise.connect(bp).connect(ng).connect(out);
+      noise.start(t); noise.stop(hit + .4);
+
+      var sub = actx.createOscillator(); sub.type = 'sine';
+      sub.frequency.setValueAtTime(190, hit);
+      sub.frequency.exponentialRampToValueAtTime(44, hit + .5);
+      var sg = actx.createGain();
+      sg.gain.setValueAtTime(.0001, hit);
+      sg.gain.exponentialRampToValueAtTime(.5, hit + .02);
+      sg.gain.exponentialRampToValueAtTime(.0001, hit + .95);
+      sub.connect(sg).connect(out);
+      sub.start(hit); sub.stop(hit + 1);
+
+      var ping = actx.createOscillator(); ping.type = 'triangle';
+      ping.frequency.setValueAtTime(1500, hit);
+      ping.frequency.exponentialRampToValueAtTime(720, hit + .32);
+      var pg = actx.createGain();
+      pg.gain.setValueAtTime(.0001, hit);
+      pg.gain.exponentialRampToValueAtTime(.17, hit + .012);
+      pg.gain.exponentialRampToValueAtTime(.0001, hit + .8);
+      ping.connect(pg).connect(out);
+      ping.start(hit); ping.stop(hit + .85);
+
+      [523.25, 783.99].forEach(function(hz){
+        var o = actx.createOscillator(); o.type = 'sine'; o.frequency.value = hz;
+        var g = actx.createGain();
+        g.gain.setValueAtTime(.0001, hit + .06);
+        g.gain.exponentialRampToValueAtTime(.055, hit + .26);
+        g.gain.exponentialRampToValueAtTime(.0001, hit + 1.5);
+        o.connect(g).connect(out);
+        o.start(hit + .06); o.stop(hit + 1.55);
+      });
+    }
+    sting.addEventListener('click', function(){ play(true); });
+    var armed = true;
+    function maybePlay(){
+      if(!armed) return;
+      var r = sting.getBoundingClientRect();
+      if(r.top < window.innerHeight - 80 && r.bottom > 0){ armed = false; play(false); }
+    }
+    window.addEventListener('scroll', maybePlay, {passive:true});
+    maybePlay();
+  }
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
