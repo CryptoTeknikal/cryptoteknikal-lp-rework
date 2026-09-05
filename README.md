@@ -13,7 +13,7 @@ Scalev page at `crypto-teknikal.myscalev.com/lpctact`.
   glow instead of soft drop shadows.
 
 The whole thing is one self-contained file: `index.html`. No build step, no
-dependencies, no external CSS or JS. (`dev.mjs` is a local preview server, not
+dependencies, no external CSS, JS or fonts. (`dev.mjs` is a local preview server, not
 part of the page - see below.)
 
 ## Preview locally
@@ -98,6 +98,20 @@ The nav and the footer share one lockup: the CT monogram, a hairline white divid
 the word **Academy** in white. It is defined once as `.brand` near the top of the
 stylesheet (`.brand`, `.brand .mark`, `.brand .bdiv`, `.brand .bt`) and used twice in the
 markup.
+
+The wordmark is **Poppins SemiBold (600)** - the only text on the page not set in the
+system stack. Google Fonts subsets a face down to whatever glyphs you ask for, so the
+`@font-face` at the top of the stylesheet carries just the seven letters in "Academy" as a
+1 KB base64 `woff2`. That keeps the page self-contained: no stylesheet link, no font
+request, nothing to go missing. Changing the word means re-fetching a subset that covers
+its letters:
+
+```sh
+curl -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36" \
+  "https://fonts.googleapis.com/css2?family=Poppins:wght@600&text=Academy"
+```
+
+then base64 the `woff2` it points at and swap it into the `@font-face` rule.
 
 The previous lockup - the monogram beside a stacked *Crypto Teknikal* / *Academy*
 wordmark - is preserved on the `logo-v1-stacked-wordmark` tag, so the whole page can be

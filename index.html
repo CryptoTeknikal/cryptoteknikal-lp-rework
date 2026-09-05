@@ -15,6 +15,10 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='-20%20-40%20350%20350'%3E%3ClinearGradient%20id='g'%20gradientUnits='userSpaceOnUse'%20x1='277'%20y1='2303'%20x2='1862'%20y2='92'%3E%3Cstop%20offset='0'%20stop-color='%235f44c6'/%3E%3Cstop%20offset='1'%20stop-color='%23db2a7c'/%3E%3C/linearGradient%3E%3Cg%20transform='translate(0,269)%20scale(.1,-.1)'%20fill='url(%23g)'%3E%3Cpath%20d='M1115%202664%20c-534%20-95%20-941%20-481%20-1076%20-1018%20-30%20-119%20-37%20-379%20-14%20-518%2089%20-532%20469%20-945%20994%20-1080%20195%20-50%20462%20-50%20660%20-1%20108%2027%20101%20-4%20101%20428%200%20450%209%20424%20-123%20343%20-128%20-79%20-331%20-106%20-472%20-64%20-285%2085%20-475%20354%20-451%20638%2022%20260%20188%20457%20467%20553%2032%2011%2049%2023%2053%2038%203%2012%206%20165%206%20340%200%20304%20-1%20318%20-20%20337%20-23%2023%20-19%2023%20-125%204z%20M1465%202655%20c-19%20-18%20-25%20-35%20-26%20-67%20-1%20-62%20-1%20-535%200%20-585%201%20-43%201%20-43%20174%20-43%20188%200%20230%20-7%20278%20-47%2072%20-61%2069%20-17%2069%20-904%200%20-605%203%20-798%2012%20-807%2022%20-22%2056%20-12%20130%2037%20280%20188%20488%20503%20560%20851%2016%2079%2020%20151%2025%20428%205%20318%207%20334%2027%20364%2044%2065%2064%2073%20213%2078%20118%204%20136%207%20149%2024%2011%2016%2014%2079%2014%20338%200%20305%20-1%20319%20-20%20338%20-20%2020%20-33%2020%20-800%2020%20-781%200%20-781%200%20-805%20-25z'/%3E%3C/g%3E%3C/svg%3E">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+/* Poppins SemiBold, subset by Google Fonts to the seven letters in "Academy".
+   The lockup wordmark is the only text on the page not set in the system stack, so
+   the 1 KB face is inlined rather than fetched - no round-trip, no external CSS. */
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;src:url(data:font/woff2;base64,d09GMgABAAAAAAP8AAwAAAAAByQAAAOsAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGx4cLgZgAFwKhSSEOgsUAAE2AiQDJAQgBYNUByAb0wXIBAJ4z/oJquSMHBfOrdj6tEpzIPAlPPCLaub/cnqL9JPcO4WxRm1bg4rujnqJxWF2du9bWDh5WcKBRMYNYxeXsYQAKDRgKgSvv62BExniWpYtlCjxWJPgbJ2+/cbr1MBIL640V7NalnqLHbGBuFjsiPU27pzQHV1oiyIHWjag4dEhw1/MTTQmyfUiu+krjxDHaLAGd8RY8RqjaaMooqxIsFYDaV69GsgE4SmVcCJiR6OIXvRjGJPmw8eJPlDrC+uWtdvaZW22VrQs1DQXQquhVUb3QYgtxWXNNnpDRLA/TpAlSZKcUvUq9atXqeNo5rRVlCsMqRDu2MHsJxmdTKNPBUPpoXZTzM4d379+rS55mSCosiIcfaEsfvVK+OrVK2XxixfMfPlSXfL6tfC+eC6sbH+uLM4Zqks6qC+qCS2pSlu/1qmwqzo+q/sSc3edFe3fl4iKNCvMcV2bygl0fsqJ1+qEiUqX7mqnLld/u/rbnkXGociDuEORQ5EV/0cORZbI/yX8NLdWwtw1/1ze88/lteW/9W3WtxnaYPes0b5AfteUc8XLYpeV7u+u5/tHB9yzw2eSo4KellFRRS2ig7oe3dod1TLK0zIq2AptsG/mFH/JgPn9a3XdcGZhbK7PLCn2mbnhum021Oq0YFD/kil+30wTbbB71hhfIL1X4n3H8q+Xl23slpLvHxNwzw6fSY7q9+0BMWNdm5Anvb3m3lC7eEH/PiXT/f5ZYdM3a5qvrHiqxzu1dGWUrU1hRqo/fwJpp/WpU0f6lupFRd6sLLe3SId49t2xSz27jahWRf3ST5/on5WLGVNzTPK6CdU/1t+2fPbK2byPQ7Jg/3yaO9Kjcu7vTkn6Pqv7Zu+hey70fa30Z/9/8f8J13PZc+dNsQV/z0u7rv7/xd+Zrue3MXEJv2HlBw72lHrifpqInWniIoNm5Dr4xG6YbVHOxUoqMBZ7e00aJ3XS/6Wo8s1u7OZpCAQ0jgKRSmwHEvn0XJfLgQ0Fk31jRjpMKpEOHzmQsYxlJGPIJokkxtCH0QxiJGMZQyJjGMRQEhnBaAaQRDF+2lLCCEbCZBDDmVoC5a/21wbhZgRD6UsqiSSTTCohDPwUk4PWglxjcabV9/UmkzL6MYBxDKUXo9tqnjJt0ty1AasaaOgkm/tpGAyk3wyUErQ4gsH0o0/txSLGMZaBq2XLNkfvT20Ag2T4OHqTSB9GMIykdNKfEezscPoymkmwYBwt5vdj+F3WOXQ0AAAA) format('woff2')}
 :root{
   --ink:#f5eff9; --ink2:#c9bed7; --mut:#968aa8; --soft-mut:#847a94;
   --brand:#ff00ff; --brand2:#ff5cff; --branddk:#a300cf;
@@ -56,10 +60,10 @@ h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
 nav{position:sticky;top:0;z-index:100;background:rgba(8,6,13,.72);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border .25s,box-shadow .25s}
 nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.5)}
 .navin{display:flex;align-items:center;justify-content:space-between;height:66px;gap:18px}
-.brand{display:flex;align-items:center;gap:13px;white-space:nowrap}
+.brand{display:flex;align-items:center;gap:9px;white-space:nowrap}
 .brand .mark{width:39px;height:34px;flex:none;display:block;filter:drop-shadow(0 5px 16px rgba(255,0,255,.3))}
-.brand .bdiv{flex:none;width:1px;height:26px;background:#fff;opacity:.5}
-.brand .bt{font-weight:800;font-size:1.02rem;line-height:1.2;letter-spacing:.03em;color:#fff}
+.brand .bdiv{flex:none;width:1px;height:24px;background:#fff;opacity:.45}
+.brand .bt{font-family:'Poppins',var(--font);font-weight:600;font-size:1.05rem;line-height:1.2;letter-spacing:.01em;color:#fff}
 .navcta{display:flex;align-items:center;gap:14px}
 
 /* ===== HERO ===== */
