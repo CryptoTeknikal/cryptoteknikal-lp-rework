@@ -225,7 +225,10 @@ fast and looks consistent.
 
 ## Notes
 
-- Responsive down to 360px, with a sticky bottom CTA bar on mobile.
+- Responsive down to 360px, with a sticky bottom CTA bar on mobile. The bar stays
+  parked below the fold until the hero CTA has gone behind the nav, so the reader is
+  never offered the same button twice at once; the threshold is the nav's own height,
+  measured rather than hardcoded.
 - The nav is the one full-bleed band on the page: `.navin` carries its own
   `clamp(22px,3.6vw,56px)` gutter instead of sitting in the 1140px `.wrap` column, so
   the lockup and the WhatsApp pair reach for the window edges.

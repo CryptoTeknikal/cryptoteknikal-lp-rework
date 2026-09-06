@@ -416,7 +416,13 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 @keyframes pillin{from{opacity:0;transform:translateY(12px)}}
 
 /* sticky mobile CTA */
-.stickycta{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(8,6,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;box-shadow:0 -6px 24px rgba(0,0,0,.5)}
+.stickycta{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(8,6,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;box-shadow:0 -6px 24px rgba(0,0,0,.5);
+  transform:translateY(110%);visibility:hidden;
+  transition:transform .28s cubic-bezier(.22,1,.36,1),visibility .28s}
+/* raised by the script once the hero CTA is behind the nav - until then the two
+   would be asking for the same tap at the same time. Hidden rather than merely
+   pushed off, so it takes no focus while it is parked. */
+.stickycta.up{transform:none;visibility:visible}
 .stickycta .btn{width:100%;justify-content:center}
 
 @media(max-width:980px){
@@ -958,10 +964,22 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 
 <script>
 (function(){
-  // nav shadow on scroll
+  // nav shadow on scroll, and the sticky buy bar that rides with it. The bar is
+  // only worth its space once the hero CTA has gone behind the nav, so the reader
+  // is never offered the same button twice at once - measured against the nav's
+  // own height, because that is the point the hero button stops being visible.
   var nav = document.getElementById('nav');
-  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
-  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+  var stickycta = document.querySelector('.stickycta');
+  var heroCta = document.querySelector('.herobtns .btn');
+  var onScroll = function(){
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+    if(stickycta && heroCta){
+      stickycta.classList.toggle('up', heroCta.getBoundingClientRect().bottom < nav.offsetHeight);
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
 
   // FAQ accordion
   document.querySelectorAll('.faq').forEach(function(f){
