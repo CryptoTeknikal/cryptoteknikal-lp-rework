@@ -210,7 +210,7 @@ fast and looks consistent.
 
 1. Sticky nav (brand lockup + *Ada Pertanyaan?* and a WhatsApp button, no link menu)
 2. Hero with the real PnL screenshot
-3. Why Crypto Teknikal (4 value cards)
+3. Why Crypto Teknikal - eyebrow, the logo sting, then the heading and 4 value cards
 4. Three market conditions (bullish / bearish / sideways)
 5. Before and after
 6. 7 modules + total module value

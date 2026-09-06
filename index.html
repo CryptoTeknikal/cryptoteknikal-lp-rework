@@ -256,7 +256,11 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    out to schedule the notes at. Everything else is the settled lockup, and the
    keyframes run from the hidden state up to it - so under prefers-reduced-motion,
    where the page kills every animation, the finished lockup is what shows. */
-.stingwrap{max-width:860px;margin:0 auto}
+/* The stage opens the Kenapa section, sitting between that section's eyebrow and
+   its heading, so it carries the gap down to the heading; the gap above it is the
+   eyebrow's own, which is why .stagehead gives up its bottom margin. */
+.stingwrap{max-width:860px;margin:0 auto clamp(30px,3.6vw,44px)}
+.center.stagehead{margin-bottom:0}
 .sting{position:relative;aspect-ratio:16/7;border-radius:28px;overflow:hidden;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   background:radial-gradient(118% 148% at 50% 50%,#180724 0%,#0a0611 45%,#040309 100%);
@@ -512,12 +516,11 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   </div>
 </section>
 
-<!-- ===== INTRO STING (trial section) ===== -->
-<section class="band soft" id="intro">
+<!-- ===== KENAPA CTA ===== -->
+<section class="band">
   <div class="wrap">
-    <div class="center reveal">
-      <span class="eyebrow">Trial section</span>
-      <h2>Introduction to <span class="hl">Crypto Teknikal Academy</span></h2>
+    <div class="center stagehead reveal">
+      <span class="eyebrow">Kenapa Crypto Teknikal</span>
     </div>
     <div class="stingwrap reveal">
       <div class="sting" id="sting" role="img" aria-label="Animasi pembuka logo Crypto Teknikal Academy">
@@ -539,14 +542,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       </div>
       <p class="sting-note">Klik stage-nya untuk memutar ulang dengan suara.</p>
     </div>
-  </div>
-</section>
-
-<!-- ===== KENAPA CTA ===== -->
-<section class="band">
-  <div class="wrap">
     <div class="center reveal">
-      <span class="eyebrow">Kenapa Crypto Teknikal</span>
       <h2>Bukan kelas teori. Ini sistem yang <span class="hl">dipakai tiap hari</span>.</h2>
       <p class="lead" style="margin-top:12px">Empat hal yang bikin member bertahan, dan balik lagi tiap kali market berubah arah.</p>
     </div>
