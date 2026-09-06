@@ -134,6 +134,44 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .mktcell b{display:block;font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
 .mktcell span{font-size:.89rem;color:var(--mut)}
 
+/* ===== LO PASTI PERNAH NGERASA (pain + testimonial video) =====
+   The panel is the page's one red card - these are the reader's problems, and
+   red is what the before/after card already uses for them. The video under it
+   is a facade: the poster and a play button until it is clicked, so the page
+   still loads without pulling YouTube's player in. */
+.painwrap{max-width:760px;margin:0 auto}
+.paincard{border-radius:22px;padding:28px 26px;border:1px solid rgba(255,95,82,.24);
+  background:linear-gradient(160deg,rgba(255,95,82,.07),var(--card) 52%);box-shadow:var(--shadow-sm)}
+.paincard h2{font-size:clamp(1.15rem,2.2vw,1.4rem);margin-bottom:20px}
+.painlist{list-style:none;display:flex;flex-direction:column;gap:14px}
+.painlist li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;color:var(--ink2)}
+.painlist li:first-child{font-style:italic;color:var(--ink)}
+.painlist .d{flex:none;width:20px;height:20px;border-radius:50%;margin-top:3px;
+  background:rgba(255,95,82,.14);border:1.5px solid rgba(255,95,82,.5);
+  display:flex;align-items:center;justify-content:center}
+.painlist .d i{width:7px;height:7px;border-radius:50%;background:var(--red);display:block}
+.painsay{text-align:center;color:var(--mut);font-size:clamp(1rem,1.4vw,1.1rem);margin-top:30px}
+.painsay + .painsay{margin-top:16px}
+.painsay b{font-weight:600}
+
+/* Click-to-play YouTube facade. The poster is the video's own thumbnail; the
+   click swaps in the real player already playing, which is why the iframe is
+   only ever written with autoplay on. */
+.vidwrap{max-width:760px;margin:clamp(30px,3.6vw,42px) auto 0}
+.ytlite{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;cursor:pointer;
+  border:1px solid var(--line2);background:#000 50% 50%/cover no-repeat;
+  box-shadow:var(--shadow),0 0 60px rgba(255,0,255,.07)}
+.ytlite::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 50%,transparent 40%,rgba(0,0,0,.35) 100%);
+  opacity:0;transition:opacity .25s}
+.ytlite:hover::after{opacity:1}
+.ytlite iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2}
+.ytplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;
+  width:78px;height:54px;border-radius:15px;border:none;padding:0;cursor:pointer;
+  background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 34px rgba(255,0,255,.42);transition:transform .18s,box-shadow .18s}
+.ytlite:hover .ytplay{transform:translate(-50%,-50%) scale(1.07);box-shadow:0 18px 44px rgba(255,0,255,.55)}
+.ytplay svg{width:26px;height:26px;margin-left:3px}
+
 /* ===== BEFORE / AFTER ===== */
 .bagrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .bacard{border-radius:22px;padding:28px 26px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow-sm)}
@@ -522,6 +560,34 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <div class="mock">
       <img src="https://cdn.scalev.id/uploads/1765101783/f0zUQtfwIV_-WAgP03GZvA/1765101783144-1761918021744-cuan-100-juta-adit.webp"
            width="640" height="818" alt="Screenshot channel member: realized PnL +8.338,1 USDT dari BTCUSDT">
+    </div>
+  </div>
+</section>
+
+<!-- ===== LO PASTI PERNAH NGERASA ===== -->
+<section class="band soft">
+  <div class="wrap">
+    <div class="painwrap reveal">
+      <div class="paincard">
+        <h2>Lo pasti pernah ngerasa:</h2>
+        <ul class="painlist">
+          <li><span class="d"><i></i></span>&ldquo;Kayaknya banyak banget orang udah bisa kaya dari crypto deh&hellip;&rdquo;</li>
+          <li><span class="d"><i></i></span>tiap kali lo mau coba, ujungnya bingung sendiri.</li>
+          <li><span class="d"><i></i></span>Nonton video sana-sini, semua mentor udah di pelajarin.</li>
+          <li><span class="d"><i></i></span>join grup Telegram yang isinya rame tapi gak ngerti arah.</li>
+          <li><span class="d"><i></i></span>Udah coba entry pake feeling, eh malah nyangkut.</li>
+          <li><span class="d"><i></i></span>Coba ikut sinyal? Gak ngerti kenapa disuruh beli.</li>
+        </ul>
+      </div>
+      <p class="painsay">Mungkin lo belum tahu <b class="hl">rahasia</b> yang bisa membantu lo untuk <b class="hl">menaklukan market crypto</b> &#128184;</p>
+      <p class="painsay">Lo cuma butuh satu hal: ilmu <b class="hl">strategi yang jelas, runtut, masuk akal, dan bisa dipelajari dari 0.</b></p>
+    </div>
+    <div class="vidwrap reveal">
+      <div class="ytlite" data-yt="TR5gM_2Vz4k" style="background-image:url(https://i.ytimg.com/vi/TR5gM_2Vz4k/maxresdefault.jpg)">
+        <button class="ytplay" type="button" aria-label="Putar video testimoni member">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -996,6 +1062,23 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         f.classList.add('open');
         a.style.maxHeight = a.scrollHeight + 'px';
       }
+    });
+  });
+
+  // Click-to-play video. The poster stands in for the player until someone asks
+  // for it, so a page nobody watches the video on costs nothing to load. The
+  // click is the gesture the autoplay policy wants, so the swapped-in player
+  // starts on its own.
+  document.querySelectorAll('.ytlite').forEach(function(box){
+    box.addEventListener('click', function(){
+      if(box.querySelector('iframe')) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.yt +
+              '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title = 'Testimoni member Crypto Teknikal Academy';
+      f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      f.allowFullscreen = true;
+      box.appendChild(f);
     });
   });
 
