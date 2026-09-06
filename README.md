@@ -226,6 +226,9 @@ fast and looks consistent.
 ## Notes
 
 - Responsive down to 360px, with a sticky bottom CTA bar on mobile.
+- The nav is the one full-bleed band on the page: `.navin` carries its own
+  `clamp(22px,3.6vw,56px)` gutter instead of sitting in the 1140px `.wrap` column, so
+  the lockup and the WhatsApp pair reach for the window edges.
 - Two persistent contact affordances, both modelled on the ones on
   [tradewithsuli.com](https://tradewithsuli.com): the nav pair (*Ada Pertanyaan?* + a
   green WhatsApp button) and `.joinpill`, the floating *Gabung Komunitas Gratis* pill
