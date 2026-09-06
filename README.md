@@ -11,10 +11,14 @@ Scalev page at `crypto-teknikal.myscalev.com/lpctact`.
   reveal-on-scroll - rendered as a dark theme: near-black surfaces with a pure
   magenta (`#ff00ff`) accent, magenta gradients on CTAs and icon chips, and neon
   glow instead of soft drop shadows.
+- **Type:** PP Neue Montreal, the face Suli's own site sets everything in
+  (`tradewithsuli.com` applies `* { font-family: "Neue Montreal" }` sitewide). Three
+  cuts are inlined - see [Typography](#typography).
 
 The whole thing is one self-contained file: `index.html`. No build step, no
-dependencies, no external CSS, JS or fonts. (`dev.mjs` is a local preview server, not
-part of the page - see below.)
+dependencies, no external CSS, JS or fonts - the webfonts are inlined as base64, so the
+page still makes no font request. (`dev.mjs` is a local preview server, not part of the
+page - see below.)
 
 ## Preview locally
 
@@ -92,6 +96,52 @@ Changing `--brand`, `--brand2`, `--grad` and `--grad-text` re-themes the whole p
 Nothing outside the token block hardcodes an accent colour, apart from the `rgba(255,0,255,…)`
 glows and tints, which follow the same hue.
 
+### Typography
+
+The page is set in **PP Neue Montreal** - the same face `tradewithsuli.com` puts on
+everything - with the system stack behind it as a fallback:
+
+```css
+--font:'Neue Montreal',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+```
+
+The family ships six cuts; the page carries three, subset to Latin and inlined as base64
+`woff2` at the top of the stylesheet - about 16 KB each, and no font request at runtime.
+They are declared over weight *ranges* so the page's existing ladder lands on a real cut
+and the browser never synthesises one:
+
+| cut    | declared        | what lands on it                                  |
+|--------|-----------------|---------------------------------------------------|
+| Book   | `100 400`       | body copy, card text, the default                 |
+| Medium | `500 600`       | footer headings, struck-through prices, replay pill |
+| Bold   | `700 900`       | headings, buttons, eyebrows, prices, FAQ questions |
+
+Italics and the Thin cut are not shipped, because nothing on the page asks for them.
+
+#### Rebuilding the faces
+
+The `.otf` originals are **not** in the repo - PP Neue Montreal is a Pangram Pangram
+commercial release and only the rendered subsets are embedded here. To rebuild from a
+copy of the originals:
+
+```sh
+pip install "fonttools[woff]"
+
+RANGE="U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,\
+U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-2193,U+2212,U+2215,U+2713,U+2717,U+FEFF,U+FFFD"
+
+for w in book medium bold; do
+  pyftsubset "ppneuemontreal-$w.otf" --output-file="nm-$w.woff2" --flavor=woff2 \
+    --unicodes="$RANGE" \
+    --layout-features="kern,liga,clig,calt,ccmp,locl,mark,mkmk,frac,tnum,onum,dnom,numr" \
+    --no-hinting --desubroutinize --name-IDs='' --drop-tables+=FFTM
+done
+```
+
+then `base64` each `.woff2` and swap it into the matching `@font-face` rule. The unicode
+range is the standard Google Fonts `latin` subset plus arrows, a check and a cross, so
+copy edits have room to move without hitting a missing glyph.
+
 ### Brand lockup
 
 The nav and the footer share one lockup: the CT monogram, a hairline white divider, then
@@ -99,12 +149,13 @@ the word **Academy** in white. It is defined once as `.brand` near the top of th
 stylesheet (`.brand`, `.brand .mark`, `.brand .bdiv`, `.brand .bt`) and used twice in the
 markup.
 
-The wordmark is **Poppins SemiBold (600)** - the only text on the page not set in the
-system stack. Google Fonts subsets a face down to whatever glyphs you ask for, so the
+The wordmark is **Poppins SemiBold (600)** - the one piece of text on the page that is
+not Neue Montreal. It stays Poppins deliberately: the lockup is a mark, and the sting
+videos that were already exported carry it, so changing the face here would desync the
+page from them. Google Fonts subsets a face down to whatever glyphs you ask for, so the
 `@font-face` at the top of the stylesheet carries just the seven letters in "Academy" as a
-1 KB base64 `woff2`. That keeps the page self-contained: no stylesheet link, no font
-request, nothing to go missing. Changing the word means re-fetching a subset that covers
-its letters:
+1 KB base64 `woff2`. Changing the word means re-fetching a subset that covers its
+letters:
 
 ```sh
 curl -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36" \
