@@ -261,13 +261,17 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    keyframes run from the hidden state up to it - so under prefers-reduced-motion,
    where the page kills every animation, the finished lockup is what shows. */
 /* The stage opens the Kenapa section, sitting between that section's eyebrow and
-   its heading. It has to sit the same distance from both, so the gap is one value:
+   its cards. It has to sit the same distance from both, so the gap is one value:
    .stagehead gives up its bottom margin and the eyebrow above and the stage below
    each spend --stagegap. */
 :root{--stagegap:clamp(28px,3.2vw,38px)}
 .stingwrap{max-width:860px;margin:0 auto var(--stagegap)}
+/* This section's eyebrow is its only heading, so it is the h2 - .eyebrow outranks
+   the h1,h2,h3 rule on every property they share, and the chip looks unchanged.
+   It is also the longest eyebrow on the page, long enough to wrap inside its own
+   pill on a phone, so below ~450px it takes its size from the viewport instead. */
 .center.stagehead{margin-bottom:0}
-.stagehead .eyebrow{margin-bottom:var(--stagegap)}
+.stagehead .eyebrow{margin-bottom:var(--stagegap);white-space:nowrap;font-size:min(.74rem,2.8vw)}
 .sting{position:relative;aspect-ratio:16/7;border-radius:28px;overflow:hidden;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   background:radial-gradient(118% 148% at 50% 50%,#180724 0%,#0a0611 45%,#040309 100%);
@@ -551,7 +555,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 <section class="band soft">
   <div class="wrap">
     <div class="center stagehead reveal">
-      <span class="eyebrow">Kenapa Crypto Teknikal</span>
+      <h2 class="eyebrow">Kenapa Pilih Crypto Teknikal Academy</h2>
     </div>
     <div class="stingwrap reveal">
       <div class="sting" id="sting" role="img" aria-label="Animasi pembuka logo Crypto Teknikal Academy">
@@ -571,10 +575,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           Replay
         </button>
       </div>
-    </div>
-    <div class="center reveal">
-      <h2>Bukan kelas teori. Ini sistem yang <span class="hl">dipakai tiap hari</span>.</h2>
-      <p class="lead" style="margin-top:12px">Empat hal yang bikin member bertahan, dan balik lagi tiap kali market berubah arah.</p>
     </div>
     <div class="vgrid reveal">
       <div class="vcard">
