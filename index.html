@@ -69,6 +69,14 @@ h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
 .btn.ghost{background:var(--card2);color:var(--ink);border:1.5px solid var(--line2)}
 .btn.ghost:hover{border-color:var(--brand);color:var(--brand2);background:rgba(255,0,255,.07);transform:translateY(-2px)}
 .btn.sm{padding:11px 20px;font-size:.92rem;border-radius:11px}
+/* WhatsApp green, lifted from tradewithsuli: mostly flat green with the white end
+   of the gradient bleeding into the bottom-right corner, plus an inset white rim.
+   Set lighter than the buy buttons on purpose - it is a support action, not the CTA. */
+.btn.wa{background:linear-gradient(316deg,#fff 0%,#2bcf40 18%);color:#fff;font-weight:600;
+  box-shadow:inset 0 0 9px 3px rgba(255,255,255,.37)}
+.btn.wa:hover{transform:translateY(-2px);
+  box-shadow:inset 0 0 9px 3px rgba(255,255,255,.5),0 12px 26px rgba(43,207,64,.32)}
+.btn.wa svg{width:18px;height:18px;flex:none}
 
 /* ===== NAV ===== */
 nav{position:sticky;top:0;z-index:100;background:rgba(8,6,13,.72);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border .25s,box-shadow .25s}
@@ -79,6 +87,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .brand .bdiv{flex:none;width:1px;height:24px;background:#fff;opacity:.45}
 .brand .bt{font-family:'Poppins',var(--font);font-weight:600;font-size:1.05rem;line-height:1.2;letter-spacing:.01em;color:#fff}
 .navcta{display:flex;align-items:center;gap:14px}
+.asktxt{font-size:.95rem;font-weight:400;color:#fff;white-space:nowrap}
 
 /* ===== HERO ===== */
 .hero{position:relative;padding:clamp(44px,6.5vw,86px) 0 clamp(40px,6vw,70px);overflow:hidden}
@@ -385,6 +394,23 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
 .reveal.in{opacity:1;transform:none}
 
+/* floating community pill, bottom right - the free Telegram group. Same shape as
+   the one on tradewithsuli: a light pill riding above the page on a deep shadow,
+   with the full-colour mark filling its left end. Hidden below 900px, where the
+   sticky buy bar takes the bottom of the screen. */
+.joinpill{position:fixed;right:20px;bottom:20px;z-index:91;
+  display:inline-flex;align-items:center;gap:12px;
+  padding:8px 22px 8px 8px;border-radius:99px;
+  background:linear-gradient(180deg,#fff,#e7e6ec);color:#0b0810;
+  font-size:1rem;font-weight:700;line-height:1;white-space:nowrap;
+  box-shadow:0 12px 34px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.45);
+  animation:pillin .45s .7s backwards;
+  transition:transform .18s,box-shadow .18s}
+.joinpill:hover{transform:translateY(-2px);
+  box-shadow:0 18px 42px rgba(0,0,0,.66),0 2px 6px rgba(0,0,0,.5)}
+.joinpill svg{width:38px;height:38px;flex:none;display:block}
+@keyframes pillin{from{opacity:0;transform:translateY(12px)}}
+
 /* sticky mobile CTA */
 .stickycta{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(8,6,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;box-shadow:0 -6px 24px rgba(0,0,0,.5)}
 .stickycta .btn{width:100%;justify-content:center}
@@ -402,6 +428,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .bagrid{grid-template-columns:1fr}
   .foothead{grid-template-columns:1fr;gap:34px}
   .stickycta{display:block}
+  .joinpill{display:none}
   body{padding-bottom:70px}
 }
 @media(max-width:620px){
@@ -411,7 +438,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .mkt{grid-template-columns:1fr}
   .proofgrid{columns:1}
   .herobtns .btn{flex:1;justify-content:center}
-  .navcta .btn{display:none}
+  .asktxt{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -433,6 +460,9 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <path d="M1115 2664 c-534 -95 -941 -481 -1076 -1018 -30 -119 -37 -379 -14 -518 89 -532 469 -945 994 -1080 195 -50 462 -50 660 -1 108 27 101 -4 101 428 0 450 9 424 -123 343 -128 -79 -331 -106 -472 -64 -285 85 -475 354 -451 638 22 260 188 457 467 553 32 11 49 23 53 38 3 12 6 165 6 340 0 304 -1 318 -20 337 -23 23 -19 23 -125 4z M1465 2655 c-19 -18 -25 -35 -26 -67 -1 -62 -1 -535 0 -585 1 -43 1 -43 174 -43 188 0 230 -7 278 -47 72 -61 69 -17 69 -904 0 -605 3 -798 12 -807 22 -22 56 -12 130 37 280 188 488 503 560 851 16 79 20 151 25 428 5 318 7 334 27 364 44 65 64 73 213 78 118 4 136 7 149 24 11 16 14 79 14 338 0 305 -1 319 -20 338 -20 20 -33 20 -800 20 -781 0 -781 0 -805 -25z"/>
     </g>
   </symbol>
+  <symbol id="wamark" viewBox="0 0 24 24">
+    <path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.83 9.83 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86A9.8 9.8 0 0 0 19 4.87 9.8 9.8 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.15 8.15 0 0 1-1.25-4.36c0-4.52 3.68-8.2 8.2-8.2a8.15 8.15 0 0 1 5.8 2.41 8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.25-8.15 8.25Zm4.5-6.15c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.07a6.7 6.7 0 0 1-1.98-1.22 7.42 7.42 0 0 1-1.37-1.7c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.2-.58.2-1.08.14-1.18-.06-.1-.22-.17-.47-.29Z"/>
+  </symbol>
 </svg>
 
 <nav id="nav">
@@ -443,7 +473,11 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <span class="bt">Academy</span>
     </a>
     <div class="navcta">
-      <a class="btn primary sm" href="#harga">Gabung Sekarang</a>
+      <span class="asktxt">Ada Pertanyaan?</span>
+      <a class="btn wa sm" href="https://api.whatsapp.com/send?phone=628139426038&amp;text=Halo%20Admin%2C%20saya%20ingin%20tanya%20mengenai%20Crypto%20Teknikal%20Academy." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wamark"/></svg>
+        Whatsapp
+      </a>
     </div>
   </div>
 </nav>
@@ -799,7 +833,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <h2>Frequently <span class="hl">Asked Question</span></h2>
       <p class="lead">Pertanyaan yang sering diajukan.<br>Punya pertanyaan lain?</p>
       <a class="btn primary" href="https://api.whatsapp.com/send?phone=628139426038&amp;text=Halo%20Admin%2C%20saya%20ingin%20tanya%20mengenai%20Crypto%20Teknikal%20Academy." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="19" height="19"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.83 9.83 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86A9.8 9.8 0 0 0 19 4.87 9.8 9.8 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.15 8.15 0 0 1-1.25-4.36c0-4.52 3.68-8.2 8.2-8.2a8.15 8.15 0 0 1 5.8 2.41 8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.25-8.15 8.25Zm4.5-6.15c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.07a6.7 6.7 0 0 1-1.98-1.22 7.42 7.42 0 0 1-1.37-1.7c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.2-.58.2-1.08.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="19" height="19"><use href="#wamark"/></svg>
         Langsung aja tanya!
       </a>
     </div>
@@ -858,8 +892,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <div class="footcol">
         <h4>Social Media</h4>
         <div class="socials">
-          <a href="https://discord.com/invite/Df7Zzs2egs" target="_blank" rel="noopener" aria-label="Discord Crypto Teknikal Academy">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.94A19.4 19.4 0 0 0 15.5 3.4a.07.07 0 0 0-.08.04c-.2.37-.44.86-.6 1.24a17.9 17.9 0 0 0-5.38 0c-.17-.39-.4-.87-.61-1.24a.08.08 0 0 0-.08-.04A19.35 19.35 0 0 0 3.93 4.94a.07.07 0 0 0-.03.03C.84 9.52 0 13.96.41 18.34c0 .02.02.04.04.06a19.55 19.55 0 0 0 5.9 3 .08.08 0 0 0 .09-.03c.45-.62.86-1.28 1.21-1.97a.08.08 0 0 0-.04-.11c-.64-.24-1.25-.54-1.85-.88a.08.08 0 0 1 0-.13c.13-.1.25-.2.37-.29a.07.07 0 0 1 .08-.01c3.88 1.78 8.09 1.78 11.93 0a.07.07 0 0 1 .08 0c.12.1.24.2.37.3a.08.08 0 0 1 0 .13c-.6.35-1.21.64-1.85.88a.08.08 0 0 0-.04.11c.36.69.77 1.35 1.2 1.97a.08.08 0 0 0 .09.03 19.49 19.49 0 0 0 5.91-3 .08.08 0 0 0 .04-.06c.5-5.06-.84-9.47-3.53-13.37a.06.06 0 0 0-.04-.03ZM8.02 15.67c-1.17 0-2.13-1.08-2.13-2.4 0-1.31.94-2.39 2.13-2.39 1.2 0 2.15 1.09 2.13 2.4 0 1.31-.94 2.39-2.13 2.39Zm7.87 0c-1.17 0-2.13-1.08-2.13-2.4 0-1.31.94-2.39 2.13-2.39 1.2 0 2.15 1.09 2.13 2.4 0 1.31-.93 2.39-2.13 2.39Z"/></svg>
+          <a href="https://t.me/cryptoteknikal_id" target="_blank" rel="noopener" aria-label="Telegram Crypto Teknikal Academy">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
           </a>
           <a href="https://www.instagram.com/cryptoteknikal_id/" target="_blank" rel="noopener" aria-label="Instagram Crypto Teknikal Academy">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></svg>
@@ -889,7 +923,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           </li>
           <li>
             <a href="https://api.whatsapp.com/send?phone=628139426038&amp;text=Halo%20Admin%2C%20saya%20ingin%20tanya%20mengenai%20Crypto%20Teknikal%20Academy." target="_blank" rel="noopener">
-              <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.83 9.83 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86A9.8 9.8 0 0 0 19 4.87 9.8 9.8 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.15 8.15 0 0 1-1.25-4.36c0-4.52 3.68-8.2 8.2-8.2a8.15 8.15 0 0 1 5.8 2.41 8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.25-8.15 8.25Zm4.5-6.15c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.07a6.7 6.7 0 0 1-1.98-1.22 7.42 7.42 0 0 1-1.37-1.7c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.2-.58.2-1.08.14-1.18-.06-.1-.22-.17-.47-.29Z"/></svg></span>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wamark"/></svg></span>
               0813 9426 038
             </a>
           </li>
@@ -902,6 +936,17 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     </div>
   </div>
 </footer>
+
+<a class="joinpill" href="https://t.me/cryptoteknikal_id" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <linearGradient id="tggrad" gradientUnits="userSpaceOnUse" x1="12" y1="0" x2="12" y2="24">
+      <stop offset="0" stop-color="#2aabee"/><stop offset="1" stop-color="#229ed9"/>
+    </linearGradient>
+    <circle cx="12" cy="12" r="12" fill="url(#tggrad)"/>
+    <path fill="#fff" transform="translate(11.73 12.71) scale(.72) translate(-12 -12)" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 12.3 3.64 11c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 15.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+  </svg>
+  Gabung Komunitas Gratis
+</a>
 
 <div class="stickycta">
   <a class="btn primary" href="#harga">Gabung Sekarang, Diskon Up To 66%</a>
