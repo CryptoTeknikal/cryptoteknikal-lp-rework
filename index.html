@@ -1069,12 +1069,18 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   // for it, so a page nobody watches the video on costs nothing to load. The
   // click is the gesture the autoplay policy wants, so the swapped-in player
   // starts on its own.
+  // Deliberately youtube.com and not youtube-nocookie.com: the nocookie domain
+  // is a separate cookie jar, so the player never sees the viewer's YouTube
+  // session and treats every visit as anonymous. Anonymous embeds get served
+  // "Sign in to confirm you're not a bot", and signing in cannot clear it -
+  // the next load is cookieless again. Nothing loads until the click anyway,
+  // so the privacy the nocookie domain buys is already covered by the facade.
   document.querySelectorAll('.ytlite').forEach(function(box){
     box.addEventListener('click', function(){
       if(box.querySelector('iframe')) return;
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.yt +
-              '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.src = 'https://www.youtube.com/embed/' + box.dataset.yt +
+              '?autoplay=1&rel=0&playsinline=1';
       f.title = 'Testimoni member Crypto Teknikal Academy';
       f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
       f.allowFullscreen = true;
