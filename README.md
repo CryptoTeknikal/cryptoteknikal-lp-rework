@@ -205,7 +205,12 @@ put back by checking `index.html` out of that tag. To move only the lockup back,
 
 The images on the page are real member screenshots served from the Scalev CDN where
 they already live: the hero visual (the same OKX +8.338,1 USDT screenshot the Scalev
-page leads with) and the gallery in the "Bukti" section. Every other visual - module
+page leads with) and the gallery in the "Bukti" section. The eight brand marks in the
+marquee are the exception that stays in the file: each is a `data:` URI, five of them
+SVG taken from the brand's own site and three PNG, and the PNGs carry no colour at all -
+the strip paints every mark flat white, so they were reduced to a white-plus-alpha
+silhouette, which is a third of the weight of the colour art. Together they are about
+35KB. Every other visual - module
 icons, bonus icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
 fast and looks consistent.
 
@@ -213,17 +218,20 @@ fast and looks consistent.
 
 1. Sticky nav (brand lockup only, no link menu)
 2. Hero with the real PnL screenshot
-3. Why Crypto Teknikal - eyebrow, the logo sting, then the heading and 4 value cards
-4. Three market conditions (bullish / bearish / sideways)
-5. Before and after
-6. 7 modules + total module value
-7. Who it is for (6 personas)
-8. 6 bonuses + total value Rp15.000.000
-9. Proof (member screenshots)
-10. Pricing (3 bulan / 12 bulan / lifetime)
-11. Warren Buffett quote
-12. FAQ - centred head over the accordion
-13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
+3. *Dipercaya Oleh Berbagai Brand* - the brand marquee
+4. *Lo pasti pernah ngerasa* - the reader's own problem, then a member's video
+5. Three market conditions (bullish / bearish / sideways)
+6. *Kenapa Pilih Crypto Teknikal Academy* - the eyebrow is the whole heading, then
+   the logo sting and 4 value cards
+7. Before and after
+8. Proof (member screenshots)
+9. 7 modules + total module value
+10. Who it is for (6 personas)
+11. 6 bonuses + total value Rp15.000.000
+12. Pricing (3 bulan / 12 bulan / lifetime)
+13. Warren Buffett quote
+14. FAQ - centred head over the accordion
+15. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 ## Notes
 
@@ -251,9 +259,21 @@ fast and looks consistent.
   726px, comfortably more than the 340px the two ramps need. The hero earns a mention of
   its own: it clips (`overflow:hidden`), so its bottom-left glow used to be cut off square
   at exactly that join - it now sits far enough up to have faded before the edge arrives.
+- The **brand marquee** runs the full window, not the 1140px column, so a mark enters and
+  leaves off-screen; the ends are faded with a `mask-image` so nothing pops at the edge.
+  The track carries the set twice and slides exactly one set's width, landing on a frame
+  identical to the one it left, which is what makes the loop seamless. That only holds
+  while a set is exactly half the track, so the spacing is a `margin-right` on every mark
+  rather than a flex `gap`: a gap falls between marks and not after the last one, and the
+  odd half-gap would show as a jump once a lap. It runs left to right, which is why the
+  keyframes go from `-50%` up to `0`. The second set is cloned by the script rather than
+  written into the markup, so the eight data URIs sit in the file once; the clone keeps
+  its `alt`, because three marks are sized by an `[alt=...]` rule and a clone without one
+  would be sized differently from its original. Under `prefers-reduced-motion` the track
+  stops being a track: it wraps, centres, and drops the cloned set.
 - Four of the joins between bands carry a **seam wash**, `.band.seam`: a wide, soft
   ellipse of `#ff00ff` straddling the band's top edge, so the page changes gear through
-  colour and not only through lightness. It is on the band below the hero, on *Kenapa
+  colour and not only through lightness. It is on the brand marquee below the hero, on *Kenapa
   Pilih Crypto Teknikal Academy*, on *Modul rahasia* and on the membership prices - the
   points the page most wants the reader to feel a change of gear. The idea is
   [fortiscircle.id](https://fortiscircle.id)'s, which hangs a 600px disc of its accent off
