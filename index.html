@@ -72,30 +72,19 @@ h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(255,0,255,.42)}
 .btn.ghost{background:var(--card2);color:var(--ink);border:1.5px solid var(--line2)}
 .btn.ghost:hover{border-color:var(--brand);color:var(--brand2);background:rgba(255,0,255,.07);transform:translateY(-2px)}
-.btn.sm{padding:11px 20px;font-size:.95rem;border-radius:11px}
-/* WhatsApp green, lifted from tradewithsuli: mostly flat green with the white end
-   of the gradient bleeding into the bottom-right corner, plus an inset white rim.
-   Set lighter than the buy buttons on purpose - it is a support action, not the CTA. */
-.btn.wa{background:linear-gradient(316deg,#fff 0%,#2bcf40 18%);color:#fff;font-weight:600;
-  box-shadow:inset 0 0 9px 3px rgba(255,255,255,.37)}
-.btn.wa:hover{transform:translateY(-2px);
-  box-shadow:inset 0 0 9px 3px rgba(255,255,255,.5),0 12px 26px rgba(43,207,64,.32)}
-.btn.wa svg{width:18px;height:18px;flex:none}
 
 /* ===== NAV ===== */
 nav{position:sticky;top:0;z-index:100;background:rgba(8,6,13,.72);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border .25s,box-shadow .25s}
 nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.5)}
 /* the bar spans the window rather than the 1140px column the rest of the page keeps
-   to, so the lockup and the WhatsApp pair sit near the edges - the tradewithsuli
-   arrangement. It carries its own gutter, which is why it is not a .wrap. */
-.navin{display:flex;align-items:center;justify-content:space-between;height:66px;gap:18px;
+   to, so the lockup sits near the edge - the tradewithsuli arrangement. It carries
+   its own gutter, which is why it is not a .wrap. */
+.navin{display:flex;align-items:center;height:66px;
   padding:0 clamp(22px,3.6vw,56px)}
 .brand{display:flex;align-items:center;gap:9px;white-space:nowrap}
 .brand .mark{width:39px;height:34px;flex:none;display:block;filter:drop-shadow(0 5px 16px rgba(255,0,255,.3))}
 .brand .bdiv{flex:none;width:1px;height:24px;background:#fff;opacity:.45}
 .brand .bt{font-family:'Poppins',var(--font);font-weight:600;font-size:1.05rem;line-height:1.2;letter-spacing:.01em;color:#fff}
-.navcta{display:flex;align-items:center;gap:14px}
-.asktxt{font-size:.95rem;font-weight:600;color:#fff;white-space:nowrap}
 
 /* ===== HERO ===== */
 .hero{position:relative;padding:clamp(44px,6.5vw,86px) 0 clamp(40px,6vw,70px);overflow:hidden}
@@ -450,23 +439,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
 .reveal.in{opacity:1;transform:none}
 
-/* floating community pill, bottom right - the free Telegram group. Same shape as
-   the one on tradewithsuli: a light pill riding above the page on a deep shadow,
-   with the full-colour mark filling its left end. Hidden below 900px, where the
-   sticky buy bar takes the bottom of the screen. */
-.joinpill{position:fixed;right:20px;bottom:20px;z-index:91;
-  display:inline-flex;align-items:center;gap:14px;
-  padding:10px 28px 10px 10px;border-radius:99px;
-  background:linear-gradient(180deg,#fff,#e7e6ec);color:#0b0810;
-  font-size:1.35rem;font-weight:600;line-height:1;white-space:nowrap;
-  box-shadow:0 12px 34px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.45);
-  animation:pillin .45s .7s backwards;
-  transition:transform .18s,box-shadow .18s}
-.joinpill:hover{transform:translateY(-2px);
-  box-shadow:0 18px 42px rgba(0,0,0,.66),0 2px 6px rgba(0,0,0,.5)}
-.joinpill svg{width:46px;height:46px;flex:none;display:block}
-@keyframes pillin{from{opacity:0;transform:translateY(12px)}}
-
 /* sticky mobile CTA */
 .stickycta{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(8,6,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;box-shadow:0 -6px 24px rgba(0,0,0,.5);
   transform:translateY(110%);visibility:hidden;
@@ -490,7 +462,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .bagrid{grid-template-columns:1fr}
   .foothead{grid-template-columns:1fr;gap:34px}
   .stickycta{display:block}
-  .joinpill{display:none}
   body{padding-bottom:70px}
 }
 @media(max-width:620px){
@@ -500,7 +471,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .mkt{grid-template-columns:1fr}
   .proofgrid{columns:1}
   .herobtns .btn{flex:1;justify-content:center}
-  .asktxt{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -534,13 +504,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <span class="bdiv" aria-hidden="true"></span>
       <span class="bt">Academy</span>
     </a>
-    <div class="navcta">
-      <span class="asktxt">Ada Pertanyaan?</span>
-      <a class="btn wa sm" href="https://api.whatsapp.com/send?phone=628139426038&amp;text=Halo%20Admin%2C%20saya%20ingin%20tanya%20mengenai%20Crypto%20Teknikal%20Academy." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wamark"/></svg>
-        Whatsapp
-      </a>
-    </div>
   </div>
 </nav>
 
@@ -1013,17 +976,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     </div>
   </div>
 </footer>
-
-<a class="joinpill" href="https://t.me/cryptoteknikal_id" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <linearGradient id="tggrad" gradientUnits="userSpaceOnUse" x1="12" y1="0" x2="12" y2="24">
-      <stop offset="0" stop-color="#2aabee"/><stop offset="1" stop-color="#229ed9"/>
-    </linearGradient>
-    <circle cx="12" cy="12" r="12" fill="url(#tggrad)"/>
-    <path fill="#fff" transform="translate(11.73 12.71) scale(.72) translate(-12 -12)" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 12.3 3.64 11c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 15.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
-  </svg>
-  Gabung Komunitas Gratis
-</a>
 
 <div class="stickycta">
   <a class="btn primary" href="#harga">Gabung Sekarang</a>

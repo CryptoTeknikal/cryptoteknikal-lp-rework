@@ -148,15 +148,14 @@ Three destinations, each used in more than one place:
 
 | where | destination |
 |-------|-------------|
-| WhatsApp - nav button, FAQ CTA, footer Contact | `api.whatsapp.com/send?phone=628139426038` |
-| Telegram - floating pill, footer Social Media | `https://t.me/cryptoteknikal_id` |
+| WhatsApp - FAQ CTA, footer Contact | `api.whatsapp.com/send?phone=628139426038` |
+| Telegram - footer Social Media | `https://t.me/cryptoteknikal_id` |
 | Checkout - pricing card | see [Checkout links](#checkout-links) |
 
 The WhatsApp glyph is a `<symbol id="wamark">` in the sprite at the top of `<body>`, so
-its three call sites share one copy of the path. Telegram is drawn twice on purpose: the
-pill carries the full-colour mark (blue disc, white plane) because it sits on a light
-pill, and the footer carries the one-path badge in `currentColor`, so it matches the
-other social glyphs, which are all white on the dark footer.
+its two call sites share one copy of the path. Telegram is drawn once, in the footer, as
+a one-path badge in `currentColor`, so it matches the other social glyphs - all white on
+the dark footer.
 
 ### Brand lockup
 
@@ -208,7 +207,7 @@ fast and looks consistent.
 
 ## Section order
 
-1. Sticky nav (brand lockup + *Ada Pertanyaan?* and a WhatsApp button, no link menu)
+1. Sticky nav (brand lockup only, no link menu)
 2. Hero with the real PnL screenshot
 3. Why Crypto Teknikal - eyebrow, the logo sting, then the heading and 4 value cards
 4. Three market conditions (bullish / bearish / sideways)
@@ -231,13 +230,9 @@ fast and looks consistent.
   measured rather than hardcoded.
 - The nav is the one full-bleed band on the page: `.navin` carries its own
   `clamp(22px,3.6vw,56px)` gutter instead of sitting in the 1140px `.wrap` column, so
-  the lockup and the WhatsApp pair reach for the window edges.
-- Two persistent contact affordances, both modelled on the ones on
-  [tradewithsuli.com](https://tradewithsuli.com): the nav pair (*Ada Pertanyaan?* + a
-  green WhatsApp button) and `.joinpill`, the floating *Gabung Komunitas Gratis* pill
-  pinned bottom-right that opens the free Telegram group. Below 900px the pill hides
-  and the nav drops the question, so the sticky buy bar owns the bottom of the screen
-  and the WhatsApp button alone stays in the nav.
+  the lockup reaches for the window edge.
+- The nav carries no CTA of its own. The buy button is the page's single persistent
+  offer: the hero CTA above the fold, then the sticky bar once it scrolls away.
 - Reveal animations use a plain rect check rather than `IntersectionObserver`, so
   sections never stay blank after an anchor jump or a fast scroll.
 - `prefers-reduced-motion` disables all animation.
