@@ -247,6 +247,17 @@ Social Media, Contact, and the scope-of-service disclaimer - was taken off whole
   below that.
 - The nav carries no CTA of its own. The buy button is the page's single persistent
   offer: the hero CTA above the fold, then the sticky bar once it scrolls away.
+- Three of the joins between bands carry a **seam wash**, `.band.seam`: a wide, soft
+  ellipse of `#ff00ff` straddling the band's top edge, so the page moves from one band to
+  the next through colour rather than the flat `--bg`/`--soft` step. It is on the band
+  below the hero, on *Kenapa Pilih Crypto Teknikal Academy*, and on *Modul rahasia* - the
+  three points the page most wants the reader to feel a change of gear. The idea is
+  [fortiscircle.id](https://fortiscircle.id)'s, which hangs a 600px disc of its accent off
+  a section's top corner under a `blur(140px)`; a radial-gradient reaches the same falloff
+  without asking the compositor to blur a box that size. The band sets `isolation:isolate`
+  so the wash can sit at `z-index:-1` - over the band's own background, under everything
+  in it - and the wash is held to the band's own width, since anything wider would push a
+  horizontal scrollbar on a phone. Add or remove one by putting `seam` on a `.band`.
 - The FAQ follows [stockwise.id](https://stockwise.id): one centred column - eyebrow,
   heading, one-line subtitle, then rows the full width of a 900px list, each with a
   question mark on its left and a chevron on its right. The list is held narrower than
