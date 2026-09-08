@@ -219,6 +219,15 @@ eight come to about 51KB. Every other visual - module
 icons, bonus icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
 fast and looks consistent.
 
+### Mentor portraits
+
+The two faces in *Pendidik dan Analis Crypto Teknikal Academy* are the mentors' own
+Instagram profile pictures (`@aleexbrian`, `@farhanprima27`), cropped square on the face
+and inlined as 256px `webp` data URIs - about 15KB the pair, so the section still makes no
+request. Instagram signs those CDN URLs and expires them, which is why the bytes live in
+the file rather than a link. Replacing a portrait means cropping a new square, encoding it
+at `quality=82`, and swapping the base64 in the matching `<img>`.
+
 ## Section order
 
 1. Sticky nav (brand lockup only, no link menu)
@@ -228,15 +237,16 @@ fast and looks consistent.
 5. Three market conditions (bullish / bearish / sideways)
 6. *Kenapa Pilih Crypto Teknikal Academy* - the eyebrow is the whole heading, then
    the logo sting and 4 value cards
-7. Before and after
-8. Proof (member screenshots)
-9. 7 modules + total module value
-10. Who it is for (6 personas)
-11. 6 bonuses + total value Rp15.000.000
-12. Pricing (3 bulan / 12 bulan / lifetime)
-13. Warren Buffett quote
-14. FAQ - centred head over the accordion
-15. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
+7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
+8. Before and after
+9. Proof (member screenshots)
+10. 7 modules + total module value
+11. Who it is for (6 personas)
+12. 6 bonuses + total value Rp15.000.000
+13. Pricing (3 bulan / 12 bulan / lifetime)
+14. Warren Buffett quote
+15. FAQ - centred head over the accordion
+16. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 ## Notes
 
