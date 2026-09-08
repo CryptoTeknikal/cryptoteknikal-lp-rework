@@ -536,7 +536,17 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .proofgrid{columns:3}
 }
 @media(max-width:900px){
-  .herogrid{grid-template-columns:1fr;gap:40px}
+  /* One column, and the CTA moves under the screenshot: on a phone the proof is
+     what earns the tap, so the button should be the thing the reader meets on
+     the way out of it rather than something they scroll past first. The copy
+     wrapper drops out with display:contents so the heading, lead, image and
+     button are all grid items in one column, and only the button is reordered.
+     Row gap goes to zero and the spacing is carried by margins, which lets the
+     heading sit closer to its lead than the image does to either. */
+  .herogrid{grid-template-columns:1fr;gap:0}
+  .herocopy{display:contents}
+  .hero .lead{margin-bottom:40px}
+  .herobtns{order:1;margin-top:40px}
   .mock{max-width:420px;margin:0 auto;width:100%}
   .vgrid{grid-template-columns:repeat(2,1fr)}
   .bagrid{grid-template-columns:1fr}
@@ -599,7 +609,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
   <div class="wrap herogrid">
-    <div>
+    <div class="herocopy">
       <h1>Kuasai Rahasia <span class="hl">Trading Crypto</span> Dari 0 Hingga <span class="hl">Konsisten Profit Per Bulan</span></h1>
       <p class="lead">Telah membantu 1000+ member cuan konsisten tiap bulannya.</p>
       <div class="herobtns">
