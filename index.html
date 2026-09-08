@@ -96,7 +96,10 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .hero{position:relative;padding:clamp(44px,6.5vw,86px) 0 clamp(40px,6vw,70px);overflow:hidden}
 .hero:before{content:"";position:absolute;width:720px;height:720px;right:-220px;top:-320px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,0,255,.16),transparent 62%);pointer-events:none}
-.hero:after{content:"";position:absolute;width:520px;height:520px;left:-240px;bottom:-260px;border-radius:50%;
+/* the hero clips, so a glow that reaches its bottom edge is cut off square there -
+   a hard line across the very join the seam wash below is dissolving. This one sits
+   far enough up that it has faded out before the edge arrives. */
+.hero:after{content:"";position:absolute;width:520px;height:520px;left:-240px;bottom:0;border-radius:50%;
   background:radial-gradient(circle,rgba(168,0,255,.12),transparent 62%);pointer-events:none}
 .herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;position:relative;z-index:2}
 .hero h1{font-size:clamp(1.75rem,3.9vw,2.6rem);margin:0 0 18px}
@@ -110,7 +113,13 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 
 /* ===== BANDS / VALUE CARDS ===== */
 .band{padding:clamp(46px,6vw,74px) 0}
-.band.soft{background:var(--soft)}
+/* The bands alternate in lightness, and a step between them at the join reads as
+   a rule drawn across the page - five points of lightness is little, but an edge
+   is an edge. So a soft band ramps its colour in and out instead of stopping
+   dead: --bg at both ends, --soft through the middle. The ramp is longer than
+   the band's own padding, so it is spent before any content sits on it, and the
+   eye finds no line to catch on. */
+.band.soft{background:linear-gradient(180deg,var(--bg),var(--soft) 170px,var(--soft) calc(100% - 170px),var(--bg))}
 /* Seam wash: the accent bleeding across the join between two bands, so the page
    moves from one to the next through colour instead of the flat step between
    --bg and --soft. fortiscircle.id does this by hanging a large disc of its

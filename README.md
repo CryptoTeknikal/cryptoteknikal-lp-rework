@@ -247,9 +247,16 @@ Social Media, Contact, and the scope-of-service disclaimer - was taken off whole
   below that.
 - The nav carries no CTA of its own. The buy button is the page's single persistent
   offer: the hero CTA above the fold, then the sticky bar once it scrolls away.
+- **No band shows an edge.** `.band.soft` does not paint `--soft` flat; it ramps from
+  `--bg` to `--soft` over 170px at each end, so where two bands meet they are already the
+  same colour and there is no line to see. The ramp is longer than a band's own padding,
+  so it is spent before any content sits on it, and the shortest band on the page is
+  726px, comfortably more than the 340px the two ramps need. The hero earns a mention of
+  its own: it clips (`overflow:hidden`), so its bottom-left glow used to be cut off square
+  at exactly that join - it now sits far enough up to have faded before the edge arrives.
 - Three of the joins between bands carry a **seam wash**, `.band.seam`: a wide, soft
-  ellipse of `#ff00ff` straddling the band's top edge, so the page moves from one band to
-  the next through colour rather than the flat `--bg`/`--soft` step. It is on the band
+  ellipse of `#ff00ff` straddling the band's top edge, so the page changes gear through
+  colour and not only through lightness. It is on the band
   below the hero, on *Kenapa Pilih Crypto Teknikal Academy*, and on *Modul rahasia* - the
   three points the page most wants the reader to feel a change of gear. The idea is
   [fortiscircle.id](https://fortiscircle.id)'s, which hangs a 600px disc of its accent off
