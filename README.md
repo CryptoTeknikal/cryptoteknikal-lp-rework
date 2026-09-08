@@ -251,11 +251,11 @@ fast and looks consistent.
   726px, comfortably more than the 340px the two ramps need. The hero earns a mention of
   its own: it clips (`overflow:hidden`), so its bottom-left glow used to be cut off square
   at exactly that join - it now sits far enough up to have faded before the edge arrives.
-- Three of the joins between bands carry a **seam wash**, `.band.seam`: a wide, soft
+- Four of the joins between bands carry a **seam wash**, `.band.seam`: a wide, soft
   ellipse of `#ff00ff` straddling the band's top edge, so the page changes gear through
-  colour and not only through lightness. It is on the band
-  below the hero, on *Kenapa Pilih Crypto Teknikal Academy*, and on *Modul rahasia* - the
-  three points the page most wants the reader to feel a change of gear. The idea is
+  colour and not only through lightness. It is on the band below the hero, on *Kenapa
+  Pilih Crypto Teknikal Academy*, on *Modul rahasia* and on the membership prices - the
+  points the page most wants the reader to feel a change of gear. The idea is
   [fortiscircle.id](https://fortiscircle.id)'s, which hangs a 600px disc of its accent off
   a section's top corner under a `blur(140px)`; a radial-gradient reaches the same falloff
   without asking the compositor to blur a box that size. The band sets `isolation:isolate`
