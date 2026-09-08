@@ -206,11 +206,16 @@ put back by checking `index.html` out of that tag. To move only the lockup back,
 The images on the page are real member screenshots served from the Scalev CDN where
 they already live: the hero visual (the same OKX +8.338,1 USDT screenshot the Scalev
 page leads with) and the gallery in the "Bukti" section. The eight brand marks in the
-marquee are the exception that stays in the file: each is a `data:` URI, five of them
-SVG taken from the brand's own site and three PNG, and the PNGs carry no colour at all -
-the strip paints every mark flat white, so they were reduced to a white-plus-alpha
-silhouette, which is a third of the weight of the colour art. Together they are about
-35KB. Every other visual - module
+marquee are the exception that stays in the file, each one a `data:` URI. Five are SVG:
+three lifted off the brand's own site, and two - *MEXC Foundation* and *Bybit Indonesia* -
+traced with `potrace` from the only artwork those brands publish for that entity, a blog
+header and a Play Store icon. Tracing takes a bilevel copy of the crop at 4x, then
+`--opttolerance 0.45` to keep the curve count down; the numbers inside `d` are rounded to
+whole units of potrace's tenths, which is 0.1px, but the group's `scale(0.1,-0.1)` must be
+left alone - round that and the mark collapses to nothing. The other three are PNG, and
+they carry no colour at all: the strip paints every mark flat white, so they were reduced
+to a white-plus-alpha silhouette, a third of the weight of the colour art. Together the
+eight come to about 51KB. Every other visual - module
 icons, bonus icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
 fast and looks consistent.
 
@@ -218,7 +223,7 @@ fast and looks consistent.
 
 1. Sticky nav (brand lockup only, no link menu)
 2. Hero with the real PnL screenshot
-3. *Dipercaya Oleh Berbagai Brand* - the brand marquee
+3. *Dipercaya oleh Berbagai Brand* - the brand marquee
 4. *Lo pasti pernah ngerasa* - the reader's own problem, then a member's video
 5. Three market conditions (bullish / bearish / sideways)
 6. *Kenapa Pilih Crypto Teknikal Academy* - the eyebrow is the whole heading, then
@@ -281,7 +286,11 @@ fast and looks consistent.
   without asking the compositor to blur a box that size. The band sets `isolation:isolate`
   so the wash can sit at `z-index:-1` - over the band's own background, under everything
   in it - and the wash is held to the band's own width, since anything wider would push a
-  horizontal scrollbar on a phone. Add or remove one by putting `seam` on a `.band`.
+  horizontal scrollbar on a phone, and to the band's own bottom, since the next band's
+  background paints over anything hanging below it and that cut reads as a line across the
+  very join the wash is there to dissolve. The gradient fades out well inside its box, so
+  a short band shortening the box costs it nothing but reach. Add or remove one by putting
+  `seam` on a `.band`.
 - The FAQ follows [stockwise.id](https://stockwise.id): one centred column - eyebrow,
   heading, one-line subtitle, then rows the full width of a 900px list, each with a
   question mark on its left and a chevron on its right. The list is held narrower than
