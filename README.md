@@ -113,7 +113,7 @@ and the browser never synthesises one:
 | cut    | declared        | what lands on it                                  |
 |--------|-----------------|---------------------------------------------------|
 | Book   | `100 400`       | body copy, card text, the default                 |
-| Medium | `500 600`       | footer headings, struck-through prices, replay pill |
+| Medium | `500 600`       | struck-through prices, the replay pill            |
 | Bold   | `700 900`       | headings, buttons, eyebrows, prices, FAQ questions |
 
 Italics and the Thin cut are not shipped, because nothing on the page asks for them.
@@ -144,25 +144,29 @@ copy edits have room to move without hitting a missing glyph.
 
 ### Contact and community links
 
-Three destinations, each used in more than one place:
+The page currently links to one place only: the [checkout](#checkout-links), from the
+three pricing cards. Every contact route it used to carry - the nav's WhatsApp button,
+the floating Telegram pill, the FAQ's ask-us button and the whole footer - has been
+taken off, so the destinations below are recorded here rather than linked anywhere. They
+are the ones to reach for when a contact route comes back:
 
-| where | destination |
-|-------|-------------|
-| WhatsApp - footer Contact | `api.whatsapp.com/send?phone=628139426038` |
-| Telegram - footer Social Media | `https://t.me/cryptoteknikal_id` |
-| Checkout - pricing card | see [Checkout links](#checkout-links) |
+| what | destination |
+|------|-------------|
+| WhatsApp | `api.whatsapp.com/send?phone=628139426038` (0813 9426 038) |
+| Telegram | `https://t.me/cryptoteknikal_id` |
+| Email | `tanya@cryptoteknikal.id` |
+| Instagram / TikTok / YouTube / X / Threads | `@cryptoteknikal_id`, except YouTube `@cryptoteknikal` and X `@cryptoteknikal_` |
 
-The WhatsApp glyph is a `<symbol id="wamark">` in the sprite at the top of `<body>`,
-where the page keeps its shared glyphs; the footer Contact row is its one call site. Telegram is drawn once, in the footer, as
-a one-path badge in `currentColor`, so it matches the other social glyphs - all white on
-the dark footer.
+The glyphs went with them: the WhatsApp `<symbol id="wamark">` is out of the sprite, and
+the social badges lived in the footer markup. The last version to carry all of them is
+the commit before the footer was removed.
 
 ### Brand lockup
 
-The nav and the footer share one lockup: the CT monogram, a hairline white divider, then
-the word **Academy** in white. It is defined once as `.brand` near the top of the
-stylesheet (`.brand`, `.brand .mark`, `.brand .bdiv`, `.brand .bt`) and used twice in the
-markup.
+The lockup is the CT monogram, a hairline white divider, then the word **Academy** in
+white. It is defined as `.brand` near the top of the stylesheet (`.brand`, `.brand .mark`,
+`.brand .bdiv`, `.brand .bt`). The nav wears it, and the intro sting builds the same three
+pieces out of its own elements so it can animate them.
 
 The wordmark is **Poppins SemiBold (600)** - the one piece of text on the page that is
 not Neue Montreal. It stays Poppins deliberately: the lockup is a mark, and the sting
@@ -219,7 +223,10 @@ fast and looks consistent.
 10. Pricing (3 bulan / 12 bulan / lifetime)
 11. Warren Buffett quote
 12. FAQ - centred head over the accordion
-13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
+
+The page has no footer at the moment. The one that was there - brand lockup and blurb,
+Social Media, Contact, and the scope-of-service disclaimer - was taken off whole; see
+[Contact and community links](#contact-and-community-links).
 
 ## Notes
 
@@ -249,8 +256,8 @@ fast and looks consistent.
 - Reveal animations use a plain rect check rather than `IntersectionObserver`, so
   sections never stay blank after an anchor jump or a fast scroll.
 - `prefers-reduced-motion` disables all animation.
-- Both disclaimers are deliberate. The one under the proof gallery covers the profit
-  figures the page claims: results vary, none of it is financial advice. The footer one
-  covers scope of service - the academy sells education, not lending, fund management or
-  any licensed financial product - and warns that anyone offering those in its name is an
-  impostor.
+- The disclaimer under the proof gallery is deliberate: it covers the profit figures the
+  page claims - results vary, none of it is financial advice. A second one covering scope
+  of service - the academy sells education, not lending, fund management or any licensed
+  financial product, and anyone offering those in its name is an impostor - sat in the
+  footer, and came off with it. It belongs back on the page when the footer returns.
