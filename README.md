@@ -148,12 +148,12 @@ Three destinations, each used in more than one place:
 
 | where | destination |
 |-------|-------------|
-| WhatsApp - FAQ CTA, footer Contact | `api.whatsapp.com/send?phone=628139426038` |
+| WhatsApp - footer Contact | `api.whatsapp.com/send?phone=628139426038` |
 | Telegram - footer Social Media | `https://t.me/cryptoteknikal_id` |
 | Checkout - pricing card | see [Checkout links](#checkout-links) |
 
-The WhatsApp glyph is a `<symbol id="wamark">` in the sprite at the top of `<body>`, so
-its two call sites share one copy of the path. Telegram is drawn once, in the footer, as
+The WhatsApp glyph is a `<symbol id="wamark">` in the sprite at the top of `<body>`,
+where the page keeps its shared glyphs; the footer Contact row is its one call site. Telegram is drawn once, in the footer, as
 a one-path badge in `currentColor`, so it matches the other social glyphs - all white on
 the dark footer.
 
@@ -218,7 +218,7 @@ fast and looks consistent.
 9. Proof (member screenshots)
 10. Pricing (3 bulan / 12 bulan / lifetime)
 11. Warren Buffett quote
-12. FAQ - centred head, the accordion, and the line that offers a person to ask
+12. FAQ - centred head over the accordion
 13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 ## Notes
@@ -242,10 +242,9 @@ fast and looks consistent.
   offer: the hero CTA above the fold, then the sticky bar once it scrolls away.
 - The FAQ follows [stockwise.id](https://stockwise.id): one centred column - eyebrow,
   heading, one-line subtitle, then rows the full width of a 900px list, each with a
-  question mark on its left and a chevron on its right, and under them the line that
-  offers a person to ask. The list is held narrower than the 1140px `.wrap` column it
-  sits in, because a row stretched the full column leaves its question stranded a long
-  way from the chevron that opens it. An open answer indents to start where its
+  question mark on its left and a chevron on its right. The list is held narrower than
+  the 1140px `.wrap` column it sits in, because a row stretched the full column leaves
+  its question stranded a long way from the chevron that opens it. An open answer indents to start where its
   question does, which is the icon's width plus the padding either side of it.
 - Reveal animations use a plain rect check rather than `IntersectionObserver`, so
   sections never stay blank after an anchor jump or a fast scroll.
