@@ -229,8 +229,16 @@ fast and looks consistent.
   never offered the same button twice at once; the threshold is the nav's own height,
   measured rather than hardcoded.
 - The nav is the one full-bleed band on the page: `.navin` carries its own
-  `clamp(22px,3.6vw,56px)` gutter instead of sitting in the 1140px `.wrap` column, so
-  the lockup reaches for the window edge.
+  `max(22px,min(8%,(100% - 1096px)/2))` gutter instead of sitting in the 1140px
+  `.wrap` column, so the lockup stands off the window edge without following the
+  column in. The 8% is [tradewithsuli.com](https://tradewithsuli.com)'s own header
+  gutter, measured off the live page - it lands on the same 151.76px there and here
+  in a 1912px window. The middle term is the left edge of the copy below,
+  `(100% - 1140px)/2 + 22px` folded up: on windows too narrow for 8% to clear the
+  column it wins, so the lockup slides in to sit exactly on the hero heading instead
+  of indented past it, and settles on `.wrap`'s 22px once the column fills the window.
+  Roughly: 8% above ~1300px, the column's own edge between there and 1140px, 22px
+  below that.
 - The nav carries no CTA of its own. The buy button is the page's single persistent
   offer: the hero CTA above the fold, then the sticky bar once it scrolls away.
 - Reveal animations use a plain rect check rather than `IntersectionObserver`, so

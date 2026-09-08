@@ -77,10 +77,16 @@ h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
 nav{position:sticky;top:0;z-index:100;background:rgba(8,6,13,.72);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border .25s,box-shadow .25s}
 nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.5)}
 /* the bar spans the window rather than the 1140px column the rest of the page keeps
-   to, so the lockup sits near the edge - the tradewithsuli arrangement. It carries
-   its own gutter, which is why it is not a .wrap. */
+   to, which is why it is not a .wrap: it carries its own gutter, and the lockup
+   stands off the window edge without following the column in - the tradewithsuli
+   arrangement, whose header gutter is 8% of the window (measured off the live page).
+   The middle term is the left edge of the copy below, (100% - 1140px)/2 + 22px
+   folded up, and it only wins on windows too narrow for 8% to stay outside the
+   column - so the lockup slides in to sit exactly on the hero heading rather than
+   indented past it, and ends up on .wrap's own 22px once the column fills the
+   window. */
 .navin{display:flex;align-items:center;height:66px;
-  padding:0 clamp(22px,3.6vw,56px)}
+  padding:0 max(22px,min(8%,(100% - 1096px)/2))}
 .brand{display:flex;align-items:center;gap:9px;white-space:nowrap}
 .brand .mark{width:39px;height:34px;flex:none;display:block;filter:drop-shadow(0 5px 16px rgba(255,0,255,.3))}
 .brand .bdiv{flex:none;width:1px;height:24px;background:#fff;opacity:.45}
