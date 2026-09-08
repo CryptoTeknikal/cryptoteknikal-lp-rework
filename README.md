@@ -218,9 +218,8 @@ fast and looks consistent.
 9. Proof (member screenshots)
 10. Pricing (3 bulan / 12 bulan / lifetime)
 11. Warren Buffett quote
-12. FAQ accordion
-13. Final CTA
-14. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
+12. FAQ - centred head, the accordion, and the line that offers a person to ask
+13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 ## Notes
 
@@ -241,6 +240,13 @@ fast and looks consistent.
   below that.
 - The nav carries no CTA of its own. The buy button is the page's single persistent
   offer: the hero CTA above the fold, then the sticky bar once it scrolls away.
+- The FAQ follows [stockwise.id](https://stockwise.id): one centred column - eyebrow,
+  heading, one-line subtitle, then rows the full width of a 900px list, each with a
+  question mark on its left and a chevron on its right, and under them the line that
+  offers a person to ask. The list is held narrower than the 1140px `.wrap` column it
+  sits in, because a row stretched the full column leaves its question stranded a long
+  way from the chevron that opens it. An open answer indents to start where its
+  question does, which is the icon's width plus the padding either side of it.
 - Reveal animations use a plain rect check rather than `IntersectionObserver`, so
   sections never stay blank after an anchor jump or a fast scroll.
 - `prefers-reduced-motion` disables all animation.

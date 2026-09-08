@@ -112,6 +112,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .band{padding:clamp(46px,6vw,74px) 0}
 .band.soft{background:var(--soft)}
 .center{text-align:center;max-width:660px;margin:0 auto clamp(34px,4vw,50px)}
+.center .lead{margin-top:12px}
 .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
 .vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
@@ -260,21 +261,28 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .quote p{font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:600;letter-spacing:-.02em;line-height:1.35}
 .quote cite{display:block;margin-top:14px;font-style:normal;font-size:.95rem;font-weight:800;color:var(--brand2);letter-spacing:.04em}
 
-/* ===== FAQ ===== */
-.faqgrid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,64px);align-items:start}
-.faqintro{max-width:400px}
-.faqintro h2{margin-bottom:16px}
-.faqintro h2 .hl{display:block}
-.faqintro .lead{margin-bottom:28px}
-.faqlist{display:flex;flex-direction:column;gap:12px}
+/* ===== FAQ =====
+   One centred column: the section head, the rows under it, then the line that
+   offers a person to ask - the stockwise arrangement. The list is narrower than
+   the .wrap column it sits in, because a row stretched the full column would
+   leave its question stranded a long way from the chevron that opens it. */
+.faqlist{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
 .faq{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border .2s,box-shadow .2s}
 .faq.open{border-color:rgba(255,0,255,.4);box-shadow:var(--shadow-sm)}
-.faq .q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;cursor:pointer;font-weight:600;font-size:1rem;background:none;border:none;width:100%;text-align:left;font-family:inherit;color:inherit;line-height:1.4}
-.faq .q .x{flex:none;width:24px;height:24px;border-radius:50%;background:var(--soft2);color:var(--brand2);display:flex;align-items:center;justify-content:center;transition:transform .25s,background .2s}
-.faq .q .x svg{width:13px;height:13px}
-.faq.open .q .x{transform:rotate(45deg);background:var(--grad);color:#fff}
+.faq .q{display:flex;align-items:center;gap:14px;padding:13px 18px;cursor:pointer;font-weight:600;font-size:1rem;background:none;border:none;width:100%;text-align:left;font-family:inherit;color:inherit;line-height:1.4}
+.faq .q .qi{flex:none;width:34px;height:34px;border-radius:50%;background:var(--soft2);color:var(--brand2);display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+.faq .q .qi svg{width:19px;height:19px}
+.faq .q .qt{flex:1}
+.faq .q .x{flex:none;width:18px;height:18px;color:var(--soft-mut);display:flex;align-items:center;justify-content:center;transition:transform .25s,color .2s}
+.faq .q .x svg{width:18px;height:18px}
+.faq.open .q .qi{background:var(--grad);color:#fff}
+.faq.open .q .x{transform:rotate(180deg);color:var(--brand2)}
 .faq .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.faq .a p{padding:0 22px 20px;color:var(--mut);font-size:.98rem}
+/* the answer starts where its question does, past the icon - 18px of padding,
+   the 34px disc and the 14px gap */
+.faq .a p{padding:0 18px 18px 66px;color:var(--mut);font-size:.98rem}
+.faqfoot{text-align:center;margin-top:clamp(26px,3.2vw,36px)}
+.faqfoot p{color:var(--mut);margin-bottom:16px}
 
 /* ===== INTRO STING (trial section) =====
    Three beats, a note to each, and the picture answers to the sound: every beat
@@ -461,8 +469,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 }
 @media(max-width:900px){
   .herogrid{grid-template-columns:1fr;gap:40px}
-  .faqgrid{grid-template-columns:1fr;gap:32px}
-  .faqintro{max-width:none}
   .mock{max-width:420px;margin:0 auto;width:100%}
   .vgrid{grid-template-columns:repeat(2,1fr)}
   .bagrid{grid-template-columns:1fr}
@@ -477,6 +483,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .mkt{grid-template-columns:1fr}
   .proofgrid{columns:1}
   .herobtns .btn{flex:1;justify-content:center}
+  .faq .a p{padding-left:18px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -497,6 +504,14 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <g transform="translate(0,269) scale(.1,-.1)" style="fill:var(--ctmarkfill,url(#ctmarkgrad))">
       <path d="M1115 2664 c-534 -95 -941 -481 -1076 -1018 -30 -119 -37 -379 -14 -518 89 -532 469 -945 994 -1080 195 -50 462 -50 660 -1 108 27 101 -4 101 428 0 450 9 424 -123 343 -128 -79 -331 -106 -472 -64 -285 85 -475 354 -451 638 22 260 188 457 467 553 32 11 49 23 53 38 3 12 6 165 6 340 0 304 -1 318 -20 337 -23 23 -19 23 -125 4z M1465 2655 c-19 -18 -25 -35 -26 -67 -1 -62 -1 -535 0 -585 1 -43 1 -43 174 -43 188 0 230 -7 278 -47 72 -61 69 -17 69 -904 0 -605 3 -798 12 -807 22 -22 56 -12 130 37 280 188 488 503 560 851 16 79 20 151 25 428 5 318 7 334 27 364 44 65 64 73 213 78 118 4 136 7 149 24 11 16 14 79 14 338 0 305 -1 319 -20 338 -20 20 -33 20 -800 20 -781 0 -781 0 -805 -25z"/>
     </g>
+  </symbol>
+  <symbol id="qmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9.2"/>
+    <path d="M9.5 9.4a2.6 2.6 0 0 1 5.05.8c0 1.7-2.5 2.5-2.5 2.5"/>
+    <path d="M12 16.8h.01"/>
+  </symbol>
+  <symbol id="chevmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9.5l6 6 6-6"/>
   </symbol>
   <symbol id="wamark" viewBox="0 0 24 24">
     <path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.83 9.83 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86A9.8 9.8 0 0 0 19 4.87 9.8 9.8 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.15 8.15 0 0 1-1.25-4.36c0-4.52 3.68-8.2 8.2-8.2a8.15 8.15 0 0 1 5.8 2.41 8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.25-8.15 8.25Zm4.5-6.15c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.07a6.7 6.7 0 0 1-1.98-1.22 7.42 7.42 0 0 1-1.37-1.7c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.2-.58.2-1.08.14-1.18-.06-.1-.22-.17-.47-.29Z"/>
@@ -567,7 +582,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <div class="center reveal">
       <span class="eyebrow">Emang bisa?</span>
       <h2>Bisa kok, kalau lo punya cara main di <span class="hl">tiga kondisi market</span></h2>
-      <p class="lead" style="margin-top:12px">Kebanyakan orang cuma bisa cuan waktu market naik. Di sini lo belajar ketiganya.</p>
+      <p class="lead">Kebanyakan orang cuma bisa cuan waktu market naik. Di sini lo belajar ketiganya.</p>
     </div>
     <div class="mkt reveal">
       <div class="mktcell">
@@ -680,7 +695,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <div class="center reveal">
       <span class="eyebrow">Masih belum yakin?</span>
       <h2>Coba dengerin <span class="hl">member Crypto Teknikal Academy</span></h2>
-      <p class="lead" style="margin-top:12px">Screenshot asli dari channel dan chat member. Hasil tiap orang beda-beda.</p>
+      <p class="lead">Screenshot asli dari channel dan chat member. Hasil tiap orang beda-beda.</p>
     </div>
     <div class="proofgrid reveal">
       <figure><img loading="lazy" src="https://cdn.scalev.id/business_files/-ihY_uVKiojhdBD5JUtLrodZ/1753393944628-2%20digit%20pertama_cut.webp" alt="Testimoni member: dapat 2 digit pertama"></figure>
@@ -705,7 +720,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <div class="center reveal">
       <span class="eyebrow">Modul rahasia</span>
       <h2>Step by step dari 0 sampai <span class="hl">profitable di segala kondisi market</span></h2>
-      <p class="lead" style="margin-top:12px">Lo belajar lewat bahasa simpel, real case, dan gaya santai kayak lagi nongkrong di coffee shop. Gak pakai istilah ribet, gak pakai rumus sakti.</p>
+      <p class="lead">Lo belajar lewat bahasa simpel, real case, dan gaya santai kayak lagi nongkrong di coffee shop. Gak pakai istilah ribet, gak pakai rumus sakti.</p>
     </div>
 
     <div class="mgrid reveal">
@@ -874,52 +889,92 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 
 <!-- ===== FAQ ===== -->
 <section class="band soft" id="faq">
-  <div class="wrap faqgrid">
-    <div class="faqintro reveal">
-      <h2>Frequently <span class="hl">Asked Question</span></h2>
-      <p class="lead">Pertanyaan yang sering diajukan.<br>Punya pertanyaan lain?</p>
-      <a class="btn primary" href="https://api.whatsapp.com/send?phone=628139426038&amp;text=Halo%20Admin%2C%20saya%20ingin%20tanya%20mengenai%20Crypto%20Teknikal%20Academy." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="19" height="19"><use href="#wamark"/></svg>
-        Langsung aja tanya!
-      </a>
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Frequently <span class="hl">Asked Questions</span></h2>
+      <p class="lead">Semua hal yang perlu lo tahu tentang Crypto Teknikal Academy.</p>
     </div>
     <div class="faqlist reveal">
       <div class="faq">
-        <button class="q" type="button">Apa itu Crypto Teknikal Academy?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Apa itu Crypto Teknikal Academy?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Crypto Teknikal Academy adalah platform edukasi cryptocurrency untuk kamu pemula yang ingin belajar crypto dari 0 hingga bisa trading mandiri.</p></div>
       </div>
       <div class="faq">
-        <button class="q" type="button">Apa tujuan Crypto Teknikal Academy?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Apa tujuan Crypto Teknikal Academy?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Kami bertujuan mencetak trader pemula agar bisa trading mandiri dan profitable di berbagai market, baik bull market maupun bear market.</p></div>
       </div>
       <div class="faq">
-        <button class="q" type="button">Bagaimana sistem belajarnya?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Bagaimana sistem belajarnya?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Admin memantau market sampai 16 jam per hari. Kalau ada coin yang berpotensi untuk ditradingkan, informasinya dibagikan lewat channel Telegram. Semua ini bukan ajakan membeli, jadi member tetap perlu riset mandiri terlebih dahulu.</p></div>
       </div>
       <div class="faq">
-        <button class="q" type="button">Bagaimana sistem trading Crypto Teknikal?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Bagaimana sistem trading Crypto Teknikal?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Sama seperti sistem belajarnya: admin memantau market sampai 16 jam per hari dan membagikan coin yang berpotensi lewat channel Telegram. Keputusan akhir tetap ada di tangan member setelah riset mandiri.</p></div>
       </div>
       <div class="faq">
-        <button class="q" type="button">Apakah saya bisa selalu mendapatkan profit?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Apakah saya bisa selalu mendapatkan profit?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Profit dan loss adalah hal yang umum di financial market, khususnya cryptocurrency. Crypto Teknikal hanya memberikan insight dan potensi di market. Segala keputusan finansial ada di tangan kamu sendiri, dan pihak Crypto Teknikal tidak bertanggung jawab atas keputusan finansial kamu.</p></div>
       </div>
       <div class="faq">
-        <button class="q" type="button">Exchange apa yang dipakai?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Exchange apa yang dipakai?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Member bebas memilih exchange, baik exchange global maupun lokal. Tidak ada paksaan dari kami untuk memakai exchange tertentu.</p></div>
       </div>
       <div class="faq">
-        <button class="q" type="button">Berapa modal awal yang dibutuhkan?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Berapa modal awal yang dibutuhkan?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Untuk biaya bergabung, bisa dilihat dari paket membership yang tertera. Untuk modal trading, disesuaikan dengan kemampuan finansial masing-masing, tetapi disarankan minimal punya modal Rp1.500.000.</p></div>
       </div>
       <div class="faq">
-        <button class="q" type="button">Paket apa saja yang tersedia?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Paket apa saja yang tersedia?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Ada 3 pilihan paket: 3 bulan, 1 tahun, dan lifetime. Kalau masa paket habis, kamu otomatis dikeluarkan oleh sistem dan perlu perpanjang lagi kalau mau lanjut akses. Kalau pilih lifetime, cukup bayar sekali tanpa perlu perpanjang.</p></div>
       </div>
       <div class="faq">
-        <button class="q" type="button">Apa saja keuntungan setiap paket?<span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <button class="q" type="button">
+          <span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#qmark"/></svg></span>
+          <span class="qt">Apa saja keuntungan setiap paket?</span>
+          <span class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevmark"/></svg></span>
+        </button>
         <div class="a"><p>Semua paket punya keuntungan yang sama, yang beda cuma durasi aksesnya. Tapi kamu dapat harga per bulan yang lebih murah kalau ambil paket yang lebih panjang.</p></div>
       </div>
+    </div>
+    <div class="faqfoot reveal">
+      <p>Masih ada pertanyaan lain? Tim Crypto Teknikal siap membantu.</p>
+      <a class="btn primary" href="https://api.whatsapp.com/send?phone=628139426038&amp;text=Halo%20Admin%2C%20saya%20ingin%20tanya%20mengenai%20Crypto%20Teknikal%20Academy." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="19" height="19"><use href="#wamark"/></svg>
+        Hubungi Kami
+      </a>
     </div>
   </div>
 </section>
