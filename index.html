@@ -455,6 +455,24 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   to{opacity:.5;transform:translate(-50%,-50%) scale(1)}
 }
 
+/* ===== FOOTER ===== */
+footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);padding:56px 0 30px;font-size:.95rem}
+.foothead{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:clamp(38px,8vw,110px);align-items:start;margin-bottom:44px}
+.footbrand .brand{margin-bottom:16px}
+.footbrand .blurb{color:var(--mut);max-width:340px;line-height:1.75}
+.footcol h4{font-size:1.05rem;font-weight:600;letter-spacing:0;color:#fff;margin-bottom:24px}
+.socials{display:flex;flex-wrap:wrap;gap:20px}
+.socials a{display:flex;color:#fff;transition:opacity .16s,transform .16s}
+.socials a:hover{opacity:.7;transform:translateY(-2px)}
+.socials svg{width:22px;height:22px}
+.footcol ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+.footcol a{display:inline-flex;align-items:center;gap:12px;color:#fff;transition:opacity .16s}
+.footcol a:hover{opacity:.7}
+.footcol .ico{flex:none;display:flex;color:#fff}
+.footcol .ico svg{width:20px;height:20px}
+.foot-legal{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;color:var(--soft-mut);font-size:.82rem;line-height:1.7}
+.foot-legal a{color:var(--brand2)}
+
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
 .reveal.in{opacity:1;transform:none}
 
@@ -477,6 +495,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   .mock{max-width:420px;margin:0 auto;width:100%}
   .vgrid{grid-template-columns:repeat(2,1fr)}
   .bagrid{grid-template-columns:1fr}
+  .foothead{grid-template-columns:1fr;gap:34px}
   .stickycta{display:block}
   body{padding-bottom:70px}
 }
@@ -499,7 +518,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 
 <!-- The CT monogram, traced from the brand logo so it keeps its own
      purple-to-pink gradient and stays crisp at any size. Defined once here, so
-     the nav's lockup and the sting's both draw the same path. -->
+     the nav's lockup, the footer's and the sting's all draw the same path. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="ctmark" viewBox="0 0 310 269">
     <linearGradient id="ctmarkgrad" gradientUnits="userSpaceOnUse" x1="277" y1="2303" x2="1862" y2="92">
@@ -508,6 +527,9 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
     <g transform="translate(0,269) scale(.1,-.1)" style="fill:var(--ctmarkfill,url(#ctmarkgrad))">
       <path d="M1115 2664 c-534 -95 -941 -481 -1076 -1018 -30 -119 -37 -379 -14 -518 89 -532 469 -945 994 -1080 195 -50 462 -50 660 -1 108 27 101 -4 101 428 0 450 9 424 -123 343 -128 -79 -331 -106 -472 -64 -285 85 -475 354 -451 638 22 260 188 457 467 553 32 11 49 23 53 38 3 12 6 165 6 340 0 304 -1 318 -20 337 -23 23 -19 23 -125 4z M1465 2655 c-19 -18 -25 -35 -26 -67 -1 -62 -1 -535 0 -585 1 -43 1 -43 174 -43 188 0 230 -7 278 -47 72 -61 69 -17 69 -904 0 -605 3 -798 12 -807 22 -22 56 -12 130 37 280 188 488 503 560 851 16 79 20 151 25 428 5 318 7 334 27 364 44 65 64 73 213 78 118 4 136 7 149 24 11 16 14 79 14 338 0 305 -1 319 -20 338 -20 20 -33 20 -800 20 -781 0 -781 0 -805 -25z"/>
     </g>
+  </symbol>
+  <symbol id="wamark" viewBox="0 0 24 24">
+    <path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.83 9.83 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86A9.8 9.8 0 0 0 19 4.87 9.8 9.8 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.15 8.15 0 0 1-1.25-4.36c0-4.52 3.68-8.2 8.2-8.2a8.15 8.15 0 0 1 5.8 2.41 8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.25-8.15 8.25Zm4.5-6.15c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.07a6.7 6.7 0 0 1-1.98-1.22 7.42 7.42 0 0 1-1.37-1.7c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.2-.58.2-1.08.14-1.18-.06-.1-.22-.17-.47-.29Z"/>
   </symbol>
   <symbol id="qmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="9.2"/>
@@ -973,7 +995,64 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   </div>
 </section>
 
-
+<footer>
+  <div class="wrap">
+    <div class="foothead">
+      <div class="footbrand">
+        <div class="brand">
+          <svg class="mark" aria-hidden="true"><use href="#ctmark"/></svg>
+          <span class="bdiv" aria-hidden="true"></span>
+          <span class="bt">Academy</span>
+        </div>
+        <p class="blurb">Tempat belajar trading crypto dari 0 hingga konsisten profit per bulan.</p>
+      </div>
+      <div class="footcol">
+        <h4>Social Media</h4>
+        <div class="socials">
+          <a href="https://t.me/cryptoteknikal_id" target="_blank" rel="noopener" aria-label="Telegram Crypto Teknikal Academy">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/cryptoteknikal_id/" target="_blank" rel="noopener" aria-label="Instagram Crypto Teknikal Academy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@cryptoteknikal_id" target="_blank" rel="noopener" aria-label="TikTok Crypto Teknikal Academy">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@cryptoteknikal" target="_blank" rel="noopener" aria-label="YouTube Crypto Teknikal Academy">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://x.com/cryptoteknikal_" target="_blank" rel="noopener" aria-label="X Crypto Teknikal Academy">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>
+          </a>
+          <a href="https://www.threads.com/@cryptoteknikal_id" target="_blank" rel="noopener" aria-label="Threads Crypto Teknikal Academy">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footcol">
+        <h4>Contact</h4>
+        <ul>
+          <li>
+            <a href="mailto:tanya@cryptoteknikal.id">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 6.35A2.75 2.75 0 0 1 4.75 4h14.5A2.75 2.75 0 0 1 22 6.35l-10 5.6-10-5.6Zm0 2.04 9.51 5.33c.31.17.67.17.98 0L22 8.39v9.36A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.75V8.39Z"/></svg></span>
+              tanya@cryptoteknikal.id
+            </a>
+          </li>
+          <li>
+            <a href="https://api.whatsapp.com/send?phone=628139426038&amp;text=Halo%20Admin%2C%20saya%20ingin%20tanya%20mengenai%20Crypto%20Teknikal%20Academy." target="_blank" rel="noopener">
+              <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wamark"/></svg></span>
+              0813 9426 038
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>Crypto Teknikal Academy adalah platform edukasi dan komunitas seputar investasi, crypto, dan makroekonomi. Kami tidak menyediakan layanan pinjaman, P2P lending, pengelolaan dana, maupun jasa keuangan berizin. Seluruh informasi yang diberikan bersifat edukasi dan bukan merupakan saran investasi personal. Kami juga tidak pernah menawarkan produk pinjaman, investasi, ataupun profit secara pribadi. Apabila ada pihak yang menghubungi Anda dan mengaku dari Crypto Teknikal Academy untuk tujuan tersebut, berarti itu adalah pihak yang mengatasnamakan kami.</p>
+      <p style="margin-top:14px">Copyright &copy; <span id="yr">2026</span> All rights reserved</p>
+    </div>
+  </div>
+</footer>
 
 <div class="stickycta">
   <a class="btn primary" href="#harga">Gabung Sekarang</a>
@@ -1202,6 +1281,8 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
     window.addEventListener('scroll', maybePlay, {passive:true});
     maybePlay();
   }
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
 })();
 </script>
 </body>
