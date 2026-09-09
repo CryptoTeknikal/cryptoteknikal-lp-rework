@@ -245,21 +245,21 @@ button in `.mockdots` - the script counts both.
 ### Proof wall
 
 The "Bukti" section is a window with two columns of shots travelling through it in
-opposite directions, one up and one down. The eight `<figure>`s sit in `.proofwall` as one
-flat list and the script deals them into columns - two normally, one at 620px and under,
-where two would leave every screenshot too small to read - then gives each column its own
-set a second time, which is what lets a column travel by exactly one set and land on the
-frame it started from. The duration is measured from the column's own height rather than
-written into the CSS: the columns hold different shots, and the same duration over
-different heights reads as one column dragging the other. 30px a second, and the whole
-wall stops while the pointer is over it.
+opposite directions, one up and one down - two columns at every width, including the
+narrowest phone, where one column of the same eight would simply take twice as long to
+say the same thing. Each column is a `.prooftrack` holding four `<figure>`s, and the
+script gives it its set a second time, which is what lets a track travel by exactly one
+set and land on the frame it started from. The duration is measured from the column's own
+height rather than written into the CSS: the columns hold different shots, and the same
+duration over different heights reads as one column dragging the other. 45px a second, and
+it does not stop for a pointer - a wall that halts under the cursor reads as broken when
+the cursor was only on its way somewhere else.
 
-Adding or replacing a shot is one `<figure>` in `.proofwall`, with `width` and `height` on
-the `<img>` - the script reads the laid-out height before the copies double it, and
-without those attributes it would measure a column of undecoded images as nothing. The
-markup order is dealt out alternately, so shot 1, 3, 5, 7 go down the left column and 2,
-4, 6, 8 down the right; keeping a tall shot opposite a short one is what keeps the two
-columns roughly the same height.
+Adding or replacing a shot is one `<figure>` in either `.prooftrack`, with `width` and
+`height` on the `<img>` - the script reads the laid-out height before the copy doubles it,
+and without those attributes it would measure a column of undecoded images as nothing.
+Keeping a tall shot opposite a short one is what keeps the two columns roughly the same
+height.
 
 ### Mentor portraits
 
