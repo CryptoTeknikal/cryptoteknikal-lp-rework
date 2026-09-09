@@ -203,12 +203,14 @@ put back by checking `index.html` out of that tag. To move only the lockup back,
 
 ### Images
 
-The images on the page are real member screenshots served from the Scalev CDN where
-they already live: the first hero slide (the same OKX +8.338,1 USDT screenshot the Scalev
-page leads with) and the gallery in the "Bukti" section. The two testimonials that follow
-it in the hero deck came off Discord and have no CDN copy, so they are inlined as `webp`
-data URIs at `quality=74` - 784px and 660px wide, about 73KB the pair, which is what they
-need to stay legible at the deck's size on a 2x screen. The eight brand marks in the
+The images on the page are real member screenshots. The gallery in the "Bukti" section is
+served from the Scalev CDN where those files already live; every shot in the hero deck is
+inlined as a `webp` data URI, so the hero makes no request of its own. The first slide is
+the OKX +8.338,1 USDT signal the Scalev page leads with, cropped out of the forwarded
+message it arrived in so only the card itself is left (413x620, `quality=82`); the other
+two came off Discord and have no CDN copy at all (784px and 660px wide, `quality=74`).
+About 90KB the three, which is what they need to stay legible at the deck's size on a 2x
+screen. The eight brand marks in the
 marquee are the exception that stays in the file, each one a `data:` URI. Five are SVG:
 three lifted off the brand's own site, and two - *MEXC Foundation* and *Bybit Indonesia* -
 traced with `potrace` from the only artwork those brands publish for that entity, a blog
@@ -324,8 +326,8 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 - Reveal animations use a plain rect check rather than `IntersectionObserver`, so
   sections never stay blank after an anchor jump or a fast scroll.
 - `prefers-reduced-motion` disables all animation.
-- Both disclaimers are deliberate. The one under the proof gallery covers the profit
-  figures the page claims: results vary, none of it is financial advice. The footer one
-  covers scope of service - the academy sells education, not lending, fund management or
-  any licensed financial product - and warns that anyone offering those in its name is an
-  impostor.
+- The footer disclaimer is deliberate: it covers scope of service - the academy sells
+  education, not lending, fund management or any licensed financial product - and warns
+  that anyone offering those in its name is an impostor. It is now the only one on the
+  page; the line under the proof gallery that said results vary was dropped on request,
+  so nothing next to the profit figures qualifies them any more.
