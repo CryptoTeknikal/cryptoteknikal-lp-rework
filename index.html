@@ -198,6 +198,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   height:min(820px,calc(100% + 360px));
   background:radial-gradient(50% 50% at 50% 50%,rgba(255,0,255,.18),rgba(255,0,255,.06) 46%,transparent 72%)}
 .center{text-align:center;max-width:660px;margin:0 auto clamp(34px,4vw,50px)}
+.center h2{text-wrap:balance}
 .center .lead{margin-top:12px}
 .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
@@ -234,7 +235,6 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .mktcell .mi{width:44px;height:44px;margin:0 auto 12px;border-radius:12px;background:var(--soft2);display:flex;align-items:center;justify-content:center;color:var(--brand2)}
 .mktcell .mi svg{width:22px;height:22px}
 .mktcell b{display:block;font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
-.mktcell span{font-size:.89rem;color:var(--mut)}
 
 /* ===== LO PASTI PERNAH NGERASA (pain + testimonial video) =====
    The panel is the page's one red card - these are the reader's problems, and
@@ -624,7 +624,13 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .sting{aspect-ratio:16/9}
   .sting-replay{top:12px;right:12px;bottom:auto}
   .vgrid,.mgrid,.bgrid,.pgrid,.mentgrid{grid-template-columns:1fr}
-  .mkt{grid-template-columns:1fr}
+  /* an icon and a single word do not need a full-width card each, so the three
+     conditions stay in one row here and only shrink. */
+  .mkt{gap:10px}
+  .mktcell{padding:16px 6px}
+  .mktcell .mi{width:38px;height:38px;margin-bottom:9px}
+  .mktcell .mi svg{width:19px;height:19px}
+  .mktcell b{font-size:.95rem}
   /* the wall keeps both its columns here and gives up the space between them
      instead: at this width every pixel taken by the gap is a pixel off a
      screenshot that is already small. */
@@ -775,22 +781,21 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 <section class="band">
   <div class="wrap">
     <div class="center reveal">
-      <span class="eyebrow">Emang bisa?</span>
-      <h2>Bisa kok, kalau lo punya cara main di <span class="hl">tiga kondisi market</span></h2>
-      <p class="lead">Kebanyakan orang cuma bisa cuan waktu market naik. Di sini lo belajar ketiganya.</p>
+      <span class="eyebrow">Emang bisa cuan dua digit dari trading crypto?</span>
+      <h2>Bisa kok, kalau pakai <span class="hl">Cara Rahasia Trading Profitable</span> untuk segala kondisi market seperti:</h2>
     </div>
     <div class="mkt reveal">
       <div class="mktcell">
         <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div>
-        <b>Bullish</b><span>Ngerti kapan ikut tren dan kapan udah kemahalan.</span>
+        <b>Bullish</b>
       </div>
       <div class="mktcell">
         <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 17v-5h-5"/></svg></div>
-        <b>Bearish</b><span>Tetap punya peluang waktu semua orang panik.</span>
+        <b>Bearish</b>
       </div>
       <div class="mktcell">
         <div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-5 4 10 3-5h4"/></svg></div>
-        <b>Sideways</b><span>Gak maksa entry pas market lagi gak ke mana-mana.</span>
+        <b>Sideways</b>
       </div>
     </div>
   </div>
@@ -1189,7 +1194,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           <span class="bdiv" aria-hidden="true"></span>
           <span class="bt">Academy</span>
         </div>
-        <p class="blurb">Tempat belajar trading crypto dari 0 hingga konsisten profit per bulan.</p>
+        <p class="blurb">Tempat belajar trading crypto dari 0 hingga konsisten profit dua digit per bulan.</p>
       </div>
       <div class="footcol">
         <h4>Social Media</h4>
