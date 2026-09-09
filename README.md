@@ -204,8 +204,11 @@ put back by checking `index.html` out of that tag. To move only the lockup back,
 ### Images
 
 The images on the page are real member screenshots served from the Scalev CDN where
-they already live: the hero visual (the same OKX +8.338,1 USDT screenshot the Scalev
-page leads with) and the gallery in the "Bukti" section. The eight brand marks in the
+they already live: the first hero slide (the same OKX +8.338,1 USDT screenshot the Scalev
+page leads with) and the gallery in the "Bukti" section. The two testimonials that follow
+it in the hero deck came off Discord and have no CDN copy, so they are inlined as `webp`
+data URIs at `quality=74` - 784px and 660px wide, about 73KB the pair, which is what they
+need to stay legible at the deck's size on a 2x screen. The eight brand marks in the
 marquee are the exception that stays in the file, each one a `data:` URI. Five are SVG:
 three lifted off the brand's own site, and two - *MEXC Foundation* and *Bybit Indonesia* -
 traced with `potrace` from the only artwork those brands publish for that entity, a blog
@@ -219,6 +222,17 @@ eight come to about 51KB. Every other visual - module
 icons, bonus icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
 fast and looks consistent.
 
+### Hero deck
+
+Three testimonial screenshots share one slot, so the slot is a box the tallest of them
+fills and each shot sits centred in it at its own size, keeping its own frame and glow -
+they arrive in wildly different shapes (one landscape, two portrait) and stretching them
+into a shared frame would crop the text that is the whole point of them. The slides
+crossfade rather than sliding: a scroll-snap strip would clip the 70px glow every shot
+carries. It turns over every 5.2s and stops on hover, on focus, on touch and in a
+background tab. Adding a fourth means another `<figure>` in `#herodeck` and another
+button in `.mockdots` - the script counts both.
+
 ### Mentor portraits
 
 The two faces in *Pendidik dan Analis Crypto Teknikal Academy* are the mentors' own
@@ -231,7 +245,7 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 ## Section order
 
 1. Sticky nav (brand lockup only, no link menu)
-2. Hero with the real PnL screenshot
+2. Hero with the testimonial deck (three screenshots, crossfading)
 3. *Dipercaya oleh Berbagai Brand* - the brand marquee
 4. *Lo pasti pernah ngerasa* - the reader's own problem, then a member's video
 5. Three market conditions (bullish / bearish / sideways)
