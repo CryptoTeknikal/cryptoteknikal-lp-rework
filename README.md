@@ -207,10 +207,11 @@ The images on the page are real member screenshots. The gallery in the "Bukti" s
 served from the Scalev CDN where those files already live; every shot in the hero deck is
 inlined as a `webp` data URI, so the hero makes no request of its own. The first slide is
 the OKX +8.338,1 USDT signal the Scalev page leads with, cropped out of the forwarded
-message it arrived in so only the card itself is left (413x620, `quality=82`); the other
-two came off Discord and have no CDN copy at all (784px and 660px wide, `quality=74`).
-About 90KB the three, which is what they need to stay legible at the deck's size on a 2x
-screen. The eight brand marks in the
+message it arrived in, and cropped again under the last figure so the referral footer the
+exchange stamps on the card goes with it and only the trade is left (413x514,
+`quality=82`); the other two came off Discord and have no CDN copy at all (784px and 660px
+wide, `quality=74`). About 85KB the three, which is what they need to stay legible at the
+deck's size on a 2x screen. The eight brand marks in the
 marquee are the exception that stays in the file, each one a `data:` URI. Five are SVG:
 three lifted off the brand's own site, and two - *MEXC Foundation* and *Bybit Indonesia* -
 traced with `potrace` from the only artwork those brands publish for that entity, a blog
