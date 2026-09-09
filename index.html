@@ -200,6 +200,9 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .center{text-align:center;max-width:660px;margin:0 auto clamp(34px,4vw,50px)}
 .center h2{text-wrap:balance}
 .center .lead{margin-top:12px}
+/* a section whose eyebrow is the whole heading: the pill carries its own gap
+   to the cards, so it does not also need the one it uses under a heading. */
+.center.labelonly .eyebrow{margin-bottom:0}
 .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
 .vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
@@ -237,21 +240,23 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .mktcell b{display:block;font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
 
 /* ===== LO PASTI PERNAH NGERASA (pain + testimonial video) =====
-   The panel is the page's one red card - these are the reader's problems, and
-   red is what the before/after card already uses for them. The video under it
+   These are the reader's problems, but the panel still reads in the page's own
+   magenta - it is the reader being recognised, not warned, so it gets the same
+   tinted-card-with-a-glow treatment as the rest of the page. The video under it
    is a facade: the poster and a play button until it is clicked, so the page
    still loads without pulling YouTube's player in. */
 .painwrap{max-width:760px;margin:0 auto}
-.paincard{border-radius:22px;padding:28px 26px;border:1px solid rgba(255,95,82,.24);
-  background:linear-gradient(160deg,rgba(255,95,82,.07),var(--card) 52%);box-shadow:var(--shadow-sm)}
-.paincard h2{font-size:clamp(1.15rem,2.2vw,1.4rem);margin-bottom:20px}
+.paincard{border-radius:22px;padding:28px 26px;border:1px solid rgba(255,0,255,.26);
+  background:linear-gradient(160deg,rgba(255,0,255,.09),var(--card) 52%);
+  box-shadow:var(--shadow-sm),0 0 46px rgba(255,0,255,.07)}
+.paincard h2{font-size:clamp(1.15rem,2.2vw,1.4rem);font-weight:700;letter-spacing:-.005em;margin-bottom:20px}
 .painlist{list-style:none;display:flex;flex-direction:column;gap:14px}
 .painlist li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;color:var(--ink2)}
 .painlist li:first-child{font-style:italic;color:var(--ink)}
 .painlist .d{flex:none;width:20px;height:20px;border-radius:50%;margin-top:3px;
-  background:rgba(255,95,82,.14);border:1.5px solid rgba(255,95,82,.5);
+  background:rgba(255,0,255,.14);border:1.5px solid rgba(255,0,255,.5);
   display:flex;align-items:center;justify-content:center}
-.painlist .d i{width:7px;height:7px;border-radius:50%;background:var(--red);display:block}
+.painlist .d i{width:7px;height:7px;border-radius:50%;background:var(--brand2);display:block}
 .painsay{text-align:center;color:var(--mut);font-size:clamp(1rem,1.4vw,1.1rem);margin-top:30px}
 .painsay + .painsay{margin-top:16px}
 .painsay b{font-weight:600}
@@ -290,7 +295,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .bacard.before .bi{background:rgba(255,95,82,.1);border-color:rgba(255,95,82,.3);color:var(--red)}
 .bacard.after .bi{background:rgba(255,0,255,.1);border-color:rgba(255,0,255,.32);color:var(--brand2)}
 .bahead .bi svg{width:20px;height:20px}
-.bahead h3{font-size:clamp(1.12rem,1.5vw,1.3rem);color:var(--ink);margin-top:7px}
+.bahead h3{font-size:clamp(1.12rem,1.5vw,1.3rem);font-weight:700;letter-spacing:-.005em;color:var(--ink);margin-top:7px}
 .balist{list-style:none;display:flex;flex-direction:column;gap:16px}
 .balist li{display:flex;gap:12px;align-items:flex-start;font-size:1rem;line-height:1.62;color:var(--ink2)}
 .balist .d{flex:none;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
@@ -794,16 +799,16 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <div class="paincard">
         <h2>Lo pasti pernah ngerasa:</h2>
         <ul class="painlist">
-          <li><span class="d"><i></i></span>&ldquo;Kayaknya banyak banget orang udah bisa kaya dari crypto deh&hellip;&rdquo;</li>
-          <li><span class="d"><i></i></span>tiap kali lo mau coba, ujungnya bingung sendiri.</li>
-          <li><span class="d"><i></i></span>Nonton video sana-sini, semua mentor udah di pelajarin.</li>
-          <li><span class="d"><i></i></span>join grup Telegram yang isinya rame tapi gak ngerti arah.</li>
-          <li><span class="d"><i></i></span>Udah coba entry pake feeling, eh malah nyangkut.</li>
-          <li><span class="d"><i></i></span>Coba ikut sinyal? Gak ngerti kenapa disuruh beli.</li>
+          <li><span class="d"><i></i></span>&ldquo;Kayaknya banyak banget orang yang udah bisa kaya dari crypto deh&hellip;&rdquo;</li>
+          <li><span class="d"><i></i></span>Tapi tiap kali lo mau coba, ujungnya bingung sendiri.</li>
+          <li><span class="d"><i></i></span>Nonton berbagai video, tapi masih belum paham.</li>
+          <li><span class="d"><i></i></span>Join grup lain yang populer, tapi masih belum yakin arah market mau kemana.</li>
+          <li><span class="d"><i></i></span>Udah coba entry trade pake feeling, eh malah nyangkut.</li>
+          <li><span class="d"><i></i></span>Coba ngikutin sinyal, tapi gak paham kenapa harus ambil sinyalnya.</li>
         </ul>
       </div>
-      <p class="painsay">Mungkin lo belum tahu <b class="hl">rahasia</b> yang bisa membantu lo untuk <b class="hl">menaklukan market crypto</b> &#128184;</p>
-      <p class="painsay">Lo cuma butuh satu hal: ilmu <b class="hl">strategi yang jelas, runtut, masuk akal, dan bisa dipelajari dari 0.</b></p>
+      <p class="painsay">Mungkin lo belum tahu <b class="hl">rahasia</b> yang bisa bantu lo untuk <b class="hl">naklukin market crypto.</b></p>
+      <p class="painsay">Padahal lo cuma butuh: <b class="hl">strategi yang jelas, runtut, masuk akal, dan bisa dipelajari dari 0.</b></p>
     </div>
     <div class="vidwrap reveal">
       <div class="vidbox">
@@ -918,9 +923,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 <!-- ===== BEFORE / AFTER ===== -->
 <section class="band">
   <div class="wrap">
-    <div class="center reveal">
+    <div class="center labelonly reveal">
       <span class="eyebrow">Sebelum dan sesudah</span>
-      <h2>Bedanya kelihatan dari <span class="hl">cara lo ambil keputusan</span></h2>
     </div>
     <div class="bagrid reveal">
       <div class="bacard before">

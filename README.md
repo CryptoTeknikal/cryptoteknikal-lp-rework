@@ -331,7 +331,7 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 6. *Kenapa Pilih Crypto Teknikal Academy* - the eyebrow is the whole heading, then
    the logo sting and 4 value cards
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
-8. Before and after
+8. Before and after - the eyebrow is the whole heading, then the two cards
 9. Proof - a moving wall of member screenshots, two columns against each other
 10. 7 modules + total module value
 11. Who it is for (6 personas)
