@@ -203,16 +203,22 @@ put back by checking `index.html` out of that tag. To move only the lockup back,
 
 ### Images
 
-The images on the page are real member screenshots. The gallery in the "Bukti" section is
-served from the Scalev CDN where those files already live; every shot in the hero deck is
-inlined as a `webp` data URI, so the hero makes no request of its own. The first slide is
-the OKX +8.338,1 USDT signal the Scalev page leads with, cropped out of the forwarded
-message it arrived in, and cropped again under the last figure so the referral footer the
-exchange stamps on the card goes with it and only the trade is left (413x514,
-`quality=82`); the other two came off Discord and have no CDN copy at all (784px and 660px
-wide, `quality=74`). About 85KB the three, which is what they need to stay legible at the
-deck's size on a 2x screen. The eight brand marks in the
-marquee are the exception that stays in the file, each one a `data:` URI. Five are SVG:
+The images on the page are real member screenshots, and every one of them is inlined as a
+`webp` data URI - the page makes no image request of its own either. The hero deck's first
+slide is the OKX +8.338,1 USDT signal the Scalev page leads with, cropped out of the
+forwarded message it arrived in, and cropped again under the last figure so the referral
+footer the exchange stamps on the card goes with it and only the trade is left (413x514,
+`quality=82`); the other two came off Discord (784px and 660px wide, `quality=74`). About
+85KB the three, which is what they need to stay legible at the deck's size on a 2x screen.
+
+The eight shots in the proof wall are 764px wide at `quality=80` - twice the 386px column
+they run in, so they hold at 2x - bar three that arrived smaller than that and are inlined
+at the width they came at (337px, 344px and 549px). About 210KB the eight. They replaced
+eleven served from the Scalev CDN: a wall that moves puts every shot in front of the
+reader rather than the top row only, and a shot fetched over the network would arrive
+already in view.
+
+The eight brand marks in the marquee are `data:` URIs too. Five are SVG:
 three lifted off the brand's own site, and two - *MEXC Foundation* and *Bybit Indonesia* -
 traced with `potrace` from the only artwork those brands publish for that entity, a blog
 header and a Play Store icon. Tracing takes a bilevel copy of the crop at 4x, then
@@ -236,6 +242,25 @@ carries. It turns over every 5.2s and stops on hover, on focus, on touch and in 
 background tab. Adding a fourth means another `<figure>` in `#herodeck` and another
 button in `.mockdots` - the script counts both.
 
+### Proof wall
+
+The "Bukti" section is a window with two columns of shots travelling through it in
+opposite directions, one up and one down. The eight `<figure>`s sit in `.proofwall` as one
+flat list and the script deals them into columns - two normally, one at 620px and under,
+where two would leave every screenshot too small to read - then gives each column its own
+set a second time, which is what lets a column travel by exactly one set and land on the
+frame it started from. The duration is measured from the column's own height rather than
+written into the CSS: the columns hold different shots, and the same duration over
+different heights reads as one column dragging the other. 30px a second, and the whole
+wall stops while the pointer is over it.
+
+Adding or replacing a shot is one `<figure>` in `.proofwall`, with `width` and `height` on
+the `<img>` - the script reads the laid-out height before the copies double it, and
+without those attributes it would measure a column of undecoded images as nothing. The
+markup order is dealt out alternately, so shot 1, 3, 5, 7 go down the left column and 2,
+4, 6, 8 down the right; keeping a tall shot opposite a short one is what keeps the two
+columns roughly the same height.
+
 ### Mentor portraits
 
 The two faces in *Pendidik dan Analis Crypto Teknikal Academy* are the mentors' own
@@ -256,7 +281,7 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
    the logo sting and 4 value cards
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
 8. Before and after
-9. Proof (member screenshots)
+9. Proof - a moving wall of member screenshots, two columns against each other
 10. 7 modules + total module value
 11. Who it is for (6 personas)
 12. 6 bonuses + total value Rp15.000.000
@@ -326,9 +351,11 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
   question does, which is the icon's width plus the padding either side of it.
 - Reveal animations use a plain rect check rather than `IntersectionObserver`, so
   sections never stay blank after an anchor jump or a fast scroll.
-- `prefers-reduced-motion` disables all animation.
+- `prefers-reduced-motion` disables all animation. The proof wall stops being a
+  window when it does: the columns run to their full height and the copy the loop
+  needed drops out, so a stopped wall still shows all eight shots.
 - The footer disclaimer is deliberate: it covers scope of service - the academy sells
   education, not lending, fund management or any licensed financial product - and warns
   that anyone offering those in its name is an impostor. It is now the only one on the
-  page; the line under the proof gallery that said results vary was dropped on request,
+  page; the line under the proof wall that said results vary was dropped on request,
   so nothing next to the profit figures qualifies them any more.
