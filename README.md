@@ -228,6 +228,12 @@ eleven served from the Scalev CDN: a wall that moves puts every shot in front of
 reader rather than the top row only, and a shot fetched over the network would arrive
 already in view.
 
+The Buffett portrait in the quote band is a cutout on transparency, desaturated
+before it was inlined so the only colour in that band is the two words the page puts in
+magenta, and exported at 800px - twice the 380px it is laid out at (55KB, `quality=82`,
+`alpha_q 90`). Its bottom edge is meant to be cut: the band's own bottom rule is what he
+stands on.
+
 The eight brand marks in the marquee are `data:` URIs too. Five are SVG:
 three lifted off the brand's own site, and two - *MEXC Foundation* and *Bybit Indonesia* -
 traced with `potrace` from the only artwork those brands publish for that entity, a blog
@@ -321,7 +327,7 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 11. Who it is for (6 personas)
 12. 6 bonuses + total value Rp15.000.000
 13. Pricing (3 bulan / 12 bulan / lifetime)
-14. Warren Buffett quote
+14. Warren Buffett quote - a ruled band, the portrait standing on the bottom rule
 15. FAQ - centred head over the accordion
 16. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
