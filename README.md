@@ -4,7 +4,7 @@ Landing page rework for **Crypto Teknikal Academy**, built to replace the curren
 Scalev page at `crypto-teknikal.myscalev.com/lpctact`.
 
 - **Copy / offer data:** taken from the existing Scalev landing page (headline, problem
-  framing, before-after, 7 modules, 6 bonuses with their values, 3 pricing tiers, FAQ).
+  framing, before-after, 7 modules, 7 bonuses with their values, 3 pricing tiers, FAQ).
   Nothing about the offer was invented - only the wording was tightened.
 - **Visual language:** structure modelled on [autofunnel.id](https://autofunnel.id) -
   single accent colour, rounded cards, pill badges, generous whitespace,
@@ -228,6 +228,16 @@ eleven served from the Scalev CDN: a wall that moves puts every shot in front of
 reader rather than the top row only, and a shot fetched over the network would arrive
 already in view.
 
+The bonus strips are the shots the Scalev page proves each bonus with, re-encoded
+at twice the size they are laid out at: the telegram and chat screenshots at 332-395px
+wide, the e-book creative at 640px. The CustomGPT box arrived as a mockup on a flat
+light plate, so the plate was keyed out from the edges inward - an edge-connected fill,
+not a luminance threshold, which would have eaten the white type on the box - and the
+shot is inlined with alpha and no frame. The Gathering and Charity rows have no
+photographs yet, so they carry six Pexels stock shots, cropped to a common 3:2 and
+graded down (55% saturation, 88% brightness) so they sit on a dark magenta page;
+they are placeholders for the academy's own event photos. About 460KB the twenty.
+
 The Buffett portrait in the quote band is a cutout on transparency, desaturated
 before it was inlined so the only colour in that band is the two words the page puts in
 magenta, and exported at 800px - twice the 380px it is laid out at (55KB, `quality=82`,
@@ -244,7 +254,7 @@ left alone - round that and the mark collapses to nothing. The other three are P
 they carry no colour at all: the strip paints every mark flat white, so they were reduced
 to a white-plus-alpha silhouette, a third of the weight of the colour art. Together the
 eight come to about 51KB. Every other visual - module
-icons, bonus icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
+icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
 fast and looks consistent.
 
 ### Hero deck
@@ -325,7 +335,7 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 9. Proof - a moving wall of member screenshots, two columns against each other
 10. 7 modules + total module value
 11. Who it is for (6 personas)
-12. 6 bonuses + total value Rp15.000.000
+12. 7 bonuses, each with the shots that prove it + total value Rp15.000.000
 13. Pricing (3 bulan / 12 bulan / lifetime)
 14. Warren Buffett quote - a ruled band, the portrait standing on the bottom rule
 15. FAQ - centred head over the accordion
