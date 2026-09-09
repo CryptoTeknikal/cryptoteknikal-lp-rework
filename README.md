@@ -15,10 +15,12 @@ Scalev page at `crypto-teknikal.myscalev.com/lpctact`.
   (`tradewithsuli.com` applies `* { font-family: "Neue Montreal" }` sitewide). Three
   cuts are inlined - see [Typography](#typography).
 
-The whole thing is one self-contained file: `index.html`. No build step, no
+The page itself is one self-contained file: `index.html`. No build step, no
 dependencies, no external CSS, JS or fonts - the webfonts are inlined as base64, so the
-page still makes no font request. (`dev.mjs` is a local preview server, not part of the
-page - see below.)
+page still makes no font request. The one asset beside it is `testimoni-member.mp4`, the
+member testimonial, which is a file rather than an embed for the reason under
+[Testimonial video](#testimonial-video); nothing fetches it until someone presses play.
+(`dev.mjs` is a local preview server, not part of the page - see below.)
 
 ## Preview locally
 
@@ -37,6 +39,9 @@ standard library alone - nothing to install, no `package.json`, no
 - **Everything else reloads,** restoring the scroll position afterwards.
 - A small pill in the bottom-left flashes on each update, and turns amber if the
   dev server goes away.
+- It answers `Range` requests, which is what lets the testimonial video play in
+  Safari - a server that replies to a range with the whole file reads to Safari as
+  one that cannot seek, and the video never starts.
 
 Flags: `--port 9000` (falls forward if the port is taken) and `--no-open`.
 
@@ -57,7 +62,11 @@ The page is a complete standalone HTML document, so there are two options:
 2. **Paste into a Scalev custom HTML / code block.** Scalev's builder wraps its own
    document around the block, so paste only the contents of `<body>` plus the
    `<style>` block from `<head>`. Drop the `<!DOCTYPE>`, `<html>`, `<head>` and
-   `<body>` tags themselves.
+   `<body>` tags themselves. One edit is needed for this route: the video's
+   `<source src="testimoni-member.mp4">` is relative to wherever the page is served
+   from, so point it at the Pages copy -
+   `https://cryptoteknikal.github.io/cryptoteknikal-lp-rework/testimoni-member.mp4` -
+   or upload the file to Scalev and use its URL.
 
 ### Checkout links
 
@@ -260,6 +269,31 @@ Adding or replacing a shot is one `<figure>` in either `.prooftrack`, with `widt
 and without those attributes it would measure a column of undecoded images as nothing.
 Keeping a tall shot opposite a short one is what keeps the two columns roughly the same
 height.
+
+### Testimonial video
+
+`testimoni-member.mp4` is served from this origin rather than embedded from YouTube, and
+that is not a preference. The embed runs in a third-party `youtube.com` frame; Safari -
+every iPhone - blocks third-party cookies, so the frame is an anonymous viewer on every
+visit no matter how signed in the reader is on youtube.com itself, and YouTube answers
+anonymous embeds with "Sign in to confirm you're not a bot". Tapping that button lands the
+reader on youtube.com, where they already are signed in, and coming back changes nothing,
+because the session lives in a cookie jar the frame is never handed. Chrome still passes
+those cookies today, which is why the page ran an embed for as long as it did; on an
+iPhone the video was simply unplayable.
+
+The file is the 86-second clip from the channel, re-encoded for the web: 1280x720 at
+30fps, H.264 high profile `crf 24`, AAC 112k, `+faststart` so it begins playing before the
+download finishes. About 10MB. The poster is the video's own cover art, inlined as a 34KB
+`webp` data URI, and the `<video>` is `preload="none"` - so the box costs the poster and
+nothing else until the play button is pressed. That press is also the gesture iOS
+requires, and `play()` is called inside the click handler while it is still live, so the
+film starts inline rather than throwing the phone into its fullscreen player.
+
+Replacing it means a new `testimoni-member.mp4` next to `index.html`, a new poster in the
+`<video>`'s `poster` attribute, and the aria-label on `.vidplay`, which names who is
+speaking. GitHub Pages caps a file at 100MB and the account's traffic at 100GB a month; at
+10MB a play, that is a lot of plays, but a longer or larger cut would not be.
 
 ### Mentor portraits
 

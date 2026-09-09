@@ -38,6 +38,8 @@ const MIME = {
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
   '.avif': 'image/avif',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
   '.gif': 'image/gif',
   '.ico': 'image/x-icon',
   '.woff': 'font/woff',
@@ -196,8 +198,33 @@ const server = createServer(async (req, res) => {
       return;
     }
     const buf = await readFile(path);
+    // Safari will not play a video off a server that ignores Range. It asks for
+    // a couple of bytes first, and a 200 carrying the whole file in reply reads
+    // as "this server cannot seek", after which the element simply never plays -
+    // so the local preview would fail at the one thing the deployed page does
+    // fine. The file is already in memory, so answering is a slice of it.
+    const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+    if (range && buf.length) {
+      const last = buf.length - 1;
+      const start = range[1] ? Number(range[1]) : Math.max(0, last - Number(range[2]) + 1);
+      const end = range[1] && range[2] ? Math.min(Number(range[2]), last) : last;
+      if (start > end || start > last) {
+        res.writeHead(416, { 'content-range': `bytes */${buf.length}` }).end();
+        return;
+      }
+      res.writeHead(206, {
+        'content-type': MIME[ext] || 'application/octet-stream',
+        'content-range': `bytes ${start}-${end}/${buf.length}`,
+        'content-length': end - start + 1,
+        'accept-ranges': 'bytes',
+        'cache-control': 'no-store',
+      });
+      res.end(buf.subarray(start, end + 1));
+      return;
+    }
     res.writeHead(200, {
       'content-type': MIME[ext] || 'application/octet-stream',
+      'accept-ranges': 'bytes',
       'cache-control': 'no-store',
     });
     res.end(buf);
