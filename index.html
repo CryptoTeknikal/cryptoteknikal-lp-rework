@@ -208,7 +208,10 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .vic{width:48px;height:48px;border-radius:13px;background:var(--soft2);display:flex;align-items:center;justify-content:center;color:var(--brand2);margin-bottom:15px}
 .vic svg{width:24px;height:24px}
-.vcard h3{font-size:1.1rem;margin-bottom:7px}
+/* the four titles run one to three lines, so without a floor the descriptions
+   start at three different heights and the row stops scanning across. Reserving
+   the longest title's three lines puts every description on the same line. */
+.vcard h3{font-size:1.1rem;margin-bottom:7px;min-height:3lh}
 .vcard p{font-size:.95rem;color:var(--mut)}
 
 /* ===== MENTORS =====
@@ -671,6 +674,9 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .sting{aspect-ratio:16/9}
   .sting-replay{top:12px;right:12px;bottom:auto}
   .vgrid,.mgrid,.pgrid,.mentgrid{grid-template-columns:1fr}
+  /* one card per row: there is no neighbour to line up with, and the reserve
+     would only open dead space under the short titles. */
+  .vcard h3{min-height:0}
   /* an icon and a single word do not need a full-width card each, so the three
      conditions stay in one row here and only shrink. */
   .mkt{gap:10px}
@@ -803,7 +809,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           <li><span class="d"><i></i></span>Tapi tiap kali lo mau coba, ujungnya bingung sendiri.</li>
           <li><span class="d"><i></i></span>Nonton berbagai video, tapi masih belum paham.</li>
           <li><span class="d"><i></i></span>Join grup lain yang populer, tapi masih belum yakin arah market mau kemana.</li>
-          <li><span class="d"><i></i></span>Udah coba entry trade pake feeling, eh malah nyangkut.</li>
+          <li><span class="d"><i></i></span>Udah coba entry trade, tapi karena pake feeling, jadinya nyangkut.</li>
           <li><span class="d"><i></i></span>Coba ngikutin sinyal, tapi gak paham kenapa harus ambil sinyalnya.</li>
         </ul>
       </div>
@@ -876,23 +882,23 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <div class="vgrid reveal">
       <div class="vcard">
         <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></div>
-        <h3>Sistem teruji</h3>
-        <p>Terbukti profitable di bull market, bear market, maupun sideways. Bukan strategi satu musim.</p>
+        <h3>Sistem trading yang terbukti profitable di berbagai market</h3>
+        <p>Terbukti di bull market, bear, maupun sideways market.</p>
       </div>
       <div class="vcard">
         <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-1.5z"/><path d="M8 7h7M8 11h7"/></svg></div>
-        <h3>Materi dari nol</h3>
-        <p>Tujuh modul runtut dari price action sampai prop firm. Gak ada yang diloncat.</p>
+        <h3>Materi trading dari 0</h3>
+        <p>Hingga bisa menaklukan market crypto secara konsisten.</p>
       </div>
       <div class="vcard">
         <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <h3>Komunitas eksklusif</h3>
-        <p>Tempat nanya tanpa takut dibully, diisi orang-orang yang sefrekuensi dan saling dukung.</p>
+        <h3>Komunitas eksklusif dua arah</h3>
+        <p>Untuk diskusi dan saling dukung dalam segala permasalahan lo selama trading crypto.</p>
       </div>
       <div class="vcard">
         <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 11l6-4v10l-6-4z"/></svg></div>
-        <h3>Live mentoring mingguan</h3>
-        <p>Seminggu sekali bahas porto, review entry, dan nanya apa pun langsung ke mentor.</p>
+        <h3>Live mentoring mingguan bareng mentor</h3>
+        <p>Untuk arahan saat praktek trading dan diskusi kemana arah pasar ke depannya.</p>
       </div>
     </div>
   </div>
