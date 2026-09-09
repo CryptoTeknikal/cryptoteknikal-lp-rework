@@ -214,11 +214,12 @@ put back by checking `index.html` out of that tag. To move only the lockup back,
 
 The images on the page are real member screenshots, and every one of them is inlined as a
 `webp` data URI - the page makes no image request of its own either. The hero deck's first
-slide is the OKX +8.338,1 USDT signal the Scalev page leads with, cropped out of the
-forwarded message it arrived in, and cropped again under the last figure so the referral
-footer the exchange stamps on the card goes with it and only the trade is left (413x514,
-`quality=82`); the other two came off Discord (784px and 660px wide, `quality=74`). About
-85KB the three, which is what they need to stay legible at the deck's size on a 2x screen.
+slide is the OKX +8.338,1 USDT signal the Scalev page leads with, taken from the trader's
+own export and cut under the last figure so the referral footer the exchange stamps on the
+card goes with it and only the trade is left (784x966, `quality=86`); the other two came
+off Discord (784px and 660px wide, `quality=74`). About 104KB the three, which is what they
+need to stay legible at the deck's size on a 2x screen - every slide is twice the 392px the
+deck lays out.
 
 The eight shots in the proof wall are 764px wide at `quality=80` - twice the 386px column
 they run in, so they hold at 2x - bar three that arrived smaller than that and are inlined
