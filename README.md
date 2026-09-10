@@ -256,17 +256,26 @@ magenta, and exported at 800px - twice the 380px it is laid out at (55KB, `quali
 `alpha_q 90`). Its bottom edge is meant to be cut: the band's own bottom rule is what he
 stands on.
 
-The eight brand marks in the marquee are `data:` URIs too. Five are SVG:
-three lifted off the brand's own site, and two - *MEXC Foundation* and *Bybit Indonesia* -
-traced with `potrace` from the only artwork those brands publish for that entity, a blog
-header and a Play Store icon. Tracing takes a bilevel copy of the crop at 4x, then
-`--opttolerance 0.45` to keep the curve count down; the numbers inside `d` are rounded to
-whole units of potrace's tenths, which is 0.1px, but the group's `scale(0.1,-0.1)` must be
-left alone - round that and the mark collapses to nothing. The other three are PNG, and
-they carry no colour at all: the strip paints every mark flat white, so they were reduced
-to a white-plus-alpha silhouette, a third of the weight of the colour art. Together the
-eight come to about 51KB. Every other visual - module
-icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
+The eight brand marks in the marquee are `data:` URIs too, and all eight are PNG. Five of
+them began as SVG: three lifted off the brand's own site, and two - *MEXC Foundation* and
+*Bybit Indonesia* - traced with `potrace` from the only artwork those brands publish for
+that entity, a blog header and a Play Store icon. Tracing takes a bilevel copy of the crop
+at 4x, then `--opttolerance 0.45` to keep the curve count down; the numbers inside `d` are
+rounded to whole units of potrace's tenths, which is 0.1px, but the group's
+`scale(0.1,-0.1)` must be left alone - round that and the mark collapses to nothing. Those
+five are rasterised once with `rsvg-convert -h`, at three times the height the stylesheet
+lays them out at; the vector originals are in the history, not in the file. The three that
+were already PNG keep their own pixels rather than being blown up to match.
+
+None of the eight carries any colour: the strip wants every mark flat white, and the white
+is painted into the file - a white-plus-alpha silhouette, a third of the weight of the
+colour art - rather than asked of the browser as `filter:brightness(0) invert(1)`. Sixteen
+marks, the set and its clone, each wearing a filter on a track that never stops is sixteen
+filtered layers a phone re-rasterises every frame, and phones answered that by stuttering,
+or by never painting the strip at all. Each mark carries its `width` and `height` too, the
+way the proof wall's screenshots do, so the row is laid out - and the lap measured -
+before a single one has decoded. Together the eight come to about 53KB. Every other
+visual - module icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
 fast and looks consistent.
 
 ### Decks
@@ -401,8 +410,11 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
   odd half-gap would show as a jump once a lap. It runs left to right, which is why the
   keyframes go from `-50%` up to `0`. The second set is cloned by the script rather than
   written into the markup, so the eight data URIs sit in the file once; the clone keeps
-  its `alt`, because three marks are sized by an `[alt=...]` rule and a clone without one
-  would be sized differently from its original. Under `prefers-reduced-motion` the track
+  its `alt`, because four marks are sized by an `[alt=...]` rule and a clone without one
+  would be sized differently from its original. The lap is timed by the script from the
+  set's measured width, at 78px a second, for the reason the proof wall times its own: the
+  row is narrower on a phone than on a desktop, and one duration for both would have the
+  phone's marks drift while the desktop's stride. Under `prefers-reduced-motion` the track
   stops being a track: it wraps, centres, and drops the cloned set.
 - Four of the joins between bands carry a **seam wash**, `.band.seam`: a wide, soft
   ellipse of `#ff00ff` straddling the band's top edge, so the page changes gear through
