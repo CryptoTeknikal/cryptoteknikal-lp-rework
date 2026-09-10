@@ -4,8 +4,10 @@ Landing page rework for **Crypto Teknikal Academy**, built to replace the curren
 Scalev page at `crypto-teknikal.myscalev.com/lpctact`.
 
 - **Copy / offer data:** taken from the existing Scalev landing page (headline, problem
-  framing, before-after, 7 modules, 7 bonuses with their values, 3 pricing tiers, FAQ).
-  Nothing about the offer was invented - only the wording was tightened.
+  framing, before-after, 7 bonuses with their values, 3 pricing tiers, FAQ). Nothing about
+  the offer was invented - only the wording was tightened. The nine modules are the one
+  place that goes further than the Scalev page: the titles are the academy's own
+  curriculum list, and the line under each was written here to say what it covers.
 - **Visual language:** structure modelled on [autofunnel.id](https://autofunnel.id) -
   single accent colour, rounded cards, pill badges, generous whitespace,
   reveal-on-scroll - rendered as a dark theme: near-black surfaces with a pure
@@ -355,7 +357,7 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
 8. Before and after - the eyebrow is the whole heading, then the two cards
 9. Proof - a moving wall of member screenshots, two columns against each other
-10. 7 modules + total module value
+10. 9 modules + what the set is worth
 11. Who it is for (6 personas)
 12. 7 bonuses, each with the shots that prove it - four of them decks - + total
     value Rp15.000.000
@@ -404,19 +406,19 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
   stops being a track: it wraps, centres, and drops the cloned set.
 - Four of the joins between bands carry a **seam wash**, `.band.seam`: a wide, soft
   ellipse of `#ff00ff` straddling the band's top edge, so the page changes gear through
-  colour and not only through lightness. It is on the brand marquee below the hero, on *Kenapa
-  Pilih Crypto Teknikal Academy*, on *Modul rahasia* and on the membership prices - the
-  points the page most wants the reader to feel a change of gear. The idea is
-  [fortiscircle.id](https://fortiscircle.id)'s, which hangs a 600px disc of its accent off
-  a section's top corner under a `blur(140px)`; a radial-gradient reaches the same falloff
-  without asking the compositor to blur a box that size. The band sets `isolation:isolate`
-  so the wash can sit at `z-index:-1` - over the band's own background, under everything
-  in it - and the wash is held to the band's own width, since anything wider would push a
-  horizontal scrollbar on a phone, and to the band's own bottom, since the next band's
-  background paints over anything hanging below it and that cut reads as a line across the
-  very join the wash is there to dissolve. The gradient fades out well inside its box, so
-  a short band shortening the box costs it nothing but reach. Add or remove one by putting
-  `seam` on a `.band`.
+  colour and not only through lightness. It is on the brand marquee below the hero, on
+  *Kenapa Pilih Crypto Teknikal Academy*, on *Modul Rahasia Trading Profitable* and on the
+  membership prices - the points the page most wants the reader to feel a change of gear.
+  The idea is [fortiscircle.id](https://fortiscircle.id)'s, which hangs a 600px disc of
+  its accent off a section's top corner under a `blur(140px)`; a radial-gradient reaches
+  the same falloff without asking the compositor to blur a box that size. The band sets
+  `isolation:isolate` so the wash can sit at `z-index:-1` - over the band's own
+  background, under everything in it - and the wash is held to the band's own width, since
+  anything wider would push a horizontal scrollbar on a phone, and to the band's own
+  bottom, since the next band's background paints over anything hanging below it and that
+  cut reads as a line across the very join the wash is there to dissolve. The gradient
+  fades out well inside its box, so a short band shortening the box costs it nothing but
+  reach. Add or remove one by putting `seam` on a `.band`.
 - The FAQ follows [stockwise.id](https://stockwise.id): one centred column - eyebrow,
   heading, one-line subtitle, then rows the full width of a 900px list, each with a
   question mark on its left and a chevron on its right. The list is held narrower than
