@@ -203,6 +203,12 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 /* a section whose eyebrow is the whole heading: the pill carries its own gap
    to the cards, so it does not also need the one it uses under a heading. */
 .center.labelonly .eyebrow{margin-bottom:0}
+/* the page speaking to the reader in its own voice rather than through another
+   card: centred, muted, and held to the same 760px measure wherever it lands -
+   under the pain list, and again under the before/after pair. */
+.say{text-align:center;color:var(--mut);font-size:clamp(1rem,1.4vw,1.1rem);max-width:760px;margin:30px auto 0;text-wrap:balance}
+.say + .say{margin-top:16px}
+.say b{font-weight:600}
 .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;
   display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0}
@@ -268,9 +274,6 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   background:rgba(255,0,255,.14);border:1.5px solid rgba(255,0,255,.5);
   display:flex;align-items:center;justify-content:center}
 .painlist .d i{width:7px;height:7px;border-radius:50%;background:var(--brand2);display:block}
-.painsay{text-align:center;color:var(--mut);font-size:clamp(1rem,1.4vw,1.1rem);margin-top:30px}
-.painsay + .painsay{margin-top:16px}
-.painsay b{font-weight:600}
 
 /* Click-to-play video. The poster and the play button are all there is until
    someone asks for the film: the <video> is preload="none", so the box costs a
@@ -818,8 +821,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           <li><span class="d"><i></i></span>Coba ngikutin sinyal, tapi gak paham kenapa harus ambil sinyalnya.</li>
         </ul>
       </div>
-      <p class="painsay">Mungkin lo belum tahu <b class="hl">rahasia</b> yang bisa bantu lo untuk <b class="hl">naklukin market crypto.</b></p>
-      <p class="painsay">Padahal lo cuma butuh: <b class="hl">strategi yang jelas, runtut, masuk akal, dan bisa dipelajari dari 0.</b></p>
+      <p class="say">Mungkin lo belum tahu <b class="hl">rahasia</b> yang bisa bantu lo untuk <b class="hl">naklukin market crypto.</b></p>
+      <p class="say">Padahal lo cuma butuh: <b class="hl">strategi yang jelas, runtut, masuk akal, dan bisa dipelajari dari 0.</b></p>
     </div>
     <div class="vidwrap reveal">
       <div class="vidbox">
@@ -967,6 +970,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         </ul>
       </div>
     </div>
+    <p class="say reveal">Lo bakal belajar lewat <b class="hl">bahasa simpel, real use case, dan gaya santai</b> kayak lo lagi nongkrong di coffee shop.</p>
+    <p class="say reveal">Gak pake istilah ribet. Gak pake rumus sakti. Semua dibikin <b class="hl">relatable</b> dan langsung bisa <b class="hl">dipraktekin hari itu juga.</b></p>
   </div>
 </section>
 
@@ -1072,14 +1077,13 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 <section class="band soft">
   <div class="wrap">
     <div class="center reveal">
-      <span class="eyebrow">Cocok buat siapa</span>
-      <h2>Kalau lo salah satu dari ini, <span class="hl">ini tempat lo</span></h2>
+      <h2>Cocok buat siapa sih <span class="hl">Crypto Teknikal Academy?</span></h2>
     </div>
     <div class="pgrid reveal">
       <div class="pcell"><div class="pemoji">💼</div><h3>Karyawan yang pengen nambah penghasilan</h3><p>Capek ngandelin gaji doang? Ini bantu lo mulai cuan dari crypto sambil tetap kerja.</p></div>
-      <div class="pcell"><div class="pemoji">🎧</div><h3>Freelancer yang pengen income stabil</h3><p>Bosen pemasukan naik turun? Pelajari strategi cuan konsisten dari chart, bukan hoki.</p></div>
+      <div class="pcell"><div class="pemoji">🎧</div><h3>Freelancer yang pengen income stabil</h3><p>Bosen pemasukan naik turun? Pelajari strategi cuan konsisten dari chart.</p></div>
       <div class="pcell"><div class="pemoji">📉</div><h3>Pemula yang sering nyangkut dan FOMO</h3><p>Lo bakal paham cara entry dan exit yang bener biar gak jadi korban market lagi.</p></div>
-      <div class="pcell"><div class="pemoji">🚀</div><h3>Anak muda yang mau punya skill cuan</h3><p>Daripada scroll medsos doang, mending belajar skill yang bisa jadi mesin uang.</p></div>
+      <div class="pcell"><div class="pemoji">🚀</div><h3>Anak muda yang mau belajar skill cuan dua digit per bulan</h3><p>Daripada scroll medsos doang, mending belajar skill yang bisa jadi mesin uang.</p></div>
       <div class="pcell"><div class="pemoji">🛑</div><h3>Korban sinyal gratisan dan pompom coin</h3><p>Ini bantu lo stop jadi follower dan mulai ngerti analisa lo sendiri.</p></div>
       <div class="pcell"><div class="pemoji">⏱️</div><h3>Orang sibuk dengan waktu luang terbatas</h3><p>Materi padat, to the point, bisa dipelajarin di sela-sela waktu tanpa harus full time.</p></div>
     </div>
