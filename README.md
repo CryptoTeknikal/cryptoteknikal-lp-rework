@@ -429,6 +429,11 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
   row is narrower on a phone than on a desktop, and one duration for both would have the
   phone's marks drift while the desktop's stride. Under `prefers-reduced-motion` the track
   stops being a track: it wraps, centres, and drops the cloned set.
+- The **bonus band gives up its bottom padding**. The total-value box is the last thing in
+  it, its copy ends on *cukup dengan harga...* and the price under it is what finishes that
+  sentence, so the join is not a place to leave two band paddings stacked. With one there
+  instead, the box also sits the same distance from the last bonus above it as from the
+  price below, which it did not before.
 - Four of the joins between bands carry a **seam wash**, `.band.seam`: a wide, soft
   ellipse of `#ff00ff` straddling the band's top edge, so the page changes gear through
   colour and not only through lightness. It is on the brand marquee below the hero, on
