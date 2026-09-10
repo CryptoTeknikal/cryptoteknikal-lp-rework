@@ -218,10 +218,15 @@ The images on the page are real member screenshots, and every one of them is inl
 `webp` data URI - the page makes no image request of its own either. The hero deck's first
 slide is the OKX +8.338,1 USDT signal the Scalev page leads with, taken from the trader's
 own export and cut under the last figure so the referral footer the exchange stamps on the
-card goes with it and only the trade is left (784x966, `quality=86`); the other two came
-off Discord (784px and 660px wide, `quality=74`). About 104KB the three, which is what they
-need to stay legible at the deck's size on a 2x screen - every slide is twice the 392px the
-deck lays out.
+card goes with it and only the trade is left (784x966, `quality=86`); the other four came
+off Discord (784px and 660px wide, `quality=74`). Two of those four carry a MEXC card, and
+MEXC stamps a footer of the same kind - a white band with a QR code and somebody else's
+referral code, which is a competing offer standing in this page's hero. Both are cut: one at
+the bottom, one out of the middle, where the member's own *Thx prof* line sits under the
+card and has to be kept. The card is closed off again afterwards with rounded corners of its
+own, drawn in the colour it ends on, so the cut reads as the card finishing rather than as a
+screenshot chopped. About 145KB the five, which is what they need to stay legible at the
+deck's size on a 2x screen - every slide is twice the 392px the deck lays out.
 
 The eight shots in the proof wall are 764px wide at `quality=80` - twice the 386px column
 they run in, so they hold at 2x - bar three that arrived smaller than that and are inlined
@@ -357,7 +362,7 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 ## Section order
 
 1. Sticky nav (brand lockup only, no link menu)
-2. Hero with the testimonial deck (three screenshots, crossfading)
+2. Hero with the testimonial deck (five screenshots, crossfading)
 3. *Dipercaya oleh Berbagai Brand* - the brand marquee
 4. *Lo pasti pernah ngerasa* - the reader's own problem, then a member's video
 5. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - the question, then the three
