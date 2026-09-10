@@ -360,7 +360,8 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 2. Hero with the testimonial deck (three screenshots, crossfading)
 3. *Dipercaya oleh Berbagai Brand* - the brand marquee
 4. *Lo pasti pernah ngerasa* - the reader's own problem, then a member's video
-5. Three market conditions (bullish / bearish / sideways)
+5. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - the question, then the three
+   market conditions the answer covers (bullish / bearish / sideways)
 6. *Kenapa Pilih Crypto Teknikal Academy* - the eyebrow is the whole heading, then
    the logo sting and 4 value cards
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
@@ -370,7 +371,7 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 11. Who it is for (6 personas)
 12. 7 bonuses, each with the shots that prove it - four of them decks - + total
     value Rp15.000.000
-13. Pricing (3 bulan / 12 bulan / lifetime)
+13. Pricing - one membership, twelve months
 14. Warren Buffett quote - a ruled band, the portrait standing on the bottom rule
 15. FAQ - centred head over the accordion
 16. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
