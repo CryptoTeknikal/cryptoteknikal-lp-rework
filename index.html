@@ -204,14 +204,19 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    to the cards, so it does not also need the one it uses under a heading. */
 .center.labelonly .eyebrow{margin-bottom:0}
 .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;
+  display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0}
 .vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .vic{width:48px;height:48px;border-radius:13px;background:var(--soft2);display:flex;align-items:center;justify-content:center;color:var(--brand2);margin-bottom:15px}
 .vic svg{width:24px;height:24px}
-/* the four titles run one to three lines, so without a floor the descriptions
-   start at three different heights and the row stops scanning across. Reserving
-   the longest title's three lines puts every description on the same line. */
-.vcard h3{font-size:1.1rem;margin-bottom:7px;min-height:3lh}
+/* the four titles run to different lengths, so laid out as plain blocks the
+   descriptions would start at different heights and the row would stop scanning
+   across. Each card is a subgrid of .vgrid instead: chip, title and description
+   sit in three rows the grid owns, so the cards sharing a row get the same title
+   height whatever the copy says and however many columns are on screen - no line
+   reserve to keep in step with the wording. The card carries its own row-gap,
+   which is what keeps .vgrid's 18px gutter between the cards and out of them. */
+.vcard h3{font-size:1.1rem;margin-bottom:7px}
 .vcard p{font-size:.95rem;color:var(--mut)}
 
 /* ===== MENTORS =====
@@ -677,9 +682,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .sting{aspect-ratio:16/9}
   .sting-replay{top:12px;right:12px;bottom:auto}
   .vgrid,.mgrid,.pgrid,.mentgrid{grid-template-columns:1fr}
-  /* one card per row: there is no neighbour to line up with, and the reserve
-     would only open dead space under the short titles. */
-  .vcard h3{min-height:0}
   /* an icon and a single word do not need a full-width card each, so the three
      conditions stay in one row here and only shrink. */
   .mkt{gap:10px}
