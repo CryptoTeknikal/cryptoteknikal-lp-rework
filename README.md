@@ -228,15 +228,25 @@ eleven served from the Scalev CDN: a wall that moves puts every shot in front of
 reader rather than the top row only, and a shot fetched over the network would arrive
 already in view.
 
-The bonus strips are the shots the Scalev page proves each bonus with, re-encoded
-at twice the size they are laid out at: the telegram and chat screenshots at 332-395px
-wide, the e-book creative at 640px. The CustomGPT box arrived as a mockup on a flat
-light plate, so the plate was keyed out from the edges inward - an edge-connected fill,
-not a luminance threshold, which would have eaten the white type on the box - and the
-shot is inlined with alpha and no frame. The Gathering and Charity rows have no
-photographs yet, so they carry six Pexels stock shots, cropped to a common 3:2 and
-graded down (55% saturation, 88% brightness) so they sit on a dark magenta page;
-they are placeholders for the academy's own event photos. About 460KB the twenty.
+The bonus shots are the academy's own, and they replace the twenty the Scalev page
+proved its bonuses with. Six are phone screenshots of the member Discord - three calls
+and outlooks under Market Alphas, three conversations under the community - and each
+three run as a deck. Three bonuses carry a single shot: the weekly mentoring recording
+paused on its chart, the CustomGPT waiting for a question, and the e-book cover. Two
+more decks close the section, and those are photographs: a monthly gathering and a
+charity night. Every shot is inlined at twice the width it is laid out at - the
+screenshots at 616px and 668px, the cover at 644px, the upright photographs at 768px and
+the flat ones at 1208px. The screenshots are `quality=76`, because the words on them are
+what proves the bonus; the photographs `quality=70`, where nothing shows. About 790KB
+the fifteen.
+
+The phone screenshots are cut under the iOS status bar, so the clock, the battery and
+the aeroplane symbol go with it and the app's own header is the top edge. The e-book
+arrived as a screenshot of two pages being scrolled, the second cut off halfway, and is
+cropped to the cover - a whole page rather than half of one. The photographs keep their
+own colour: the stock shots they replace were graded down to sit on a dark magenta page,
+but these are the academy's own rooms and its own people, and grading them would only
+make them look borrowed again.
 
 The Buffett portrait in the quote band is a cutout on transparency, desaturated
 before it was inlined so the only colour in that band is the two words the page puts in
@@ -257,16 +267,28 @@ eight come to about 51KB. Every other visual - module
 icons, badges - is hand-built HTML/CSS/SVG, which is why the page stays
 fast and looks consistent.
 
-### Hero deck
+### Decks
 
-Three testimonial screenshots share one slot, so the slot is a box the tallest of them
-fills and each shot sits centred in it at its own size, keeping its own frame and glow -
-they arrive in wildly different shapes (one landscape, two portrait) and stretching them
-into a shared frame would crop the text that is the whole point of them. The slides
-crossfade rather than sliding: a scroll-snap strip would clip the 70px glow every shot
-carries. It turns over every 5.2s and stops on hover, on focus, on touch and in a
-background tab. Adding a fourth means another `<figure>` in `#herodeck` and another
-button in `.mockdots` - the script counts both.
+A deck is one shot at a time in a box of a fixed shape, the rest waiting behind it, and
+dots underneath to say how many there are and which one this is. The hero runs one, and
+so does every bonus with more than one shot to show - three phone screenshots side by
+side in a column that narrow are thumbnails, and the words on them are the whole proof.
+
+The box is a shape written down rather than the size of whatever is in it, so a shot
+turning over never moves the page under the reader, and each shot sits centred in it at
+its own size, keeping its own frame. The hero's three arrive in wildly different shapes
+(one landscape, two portrait), so its box is one the tallest of them fills; a bonus deck
+holds shots of one shape and its box is that shape - `--w` the width it is laid out at,
+`--ar` the shape, both on the block that wraps it. The slides crossfade rather than
+slide: a scroll-snap strip would clip the 70px glow the hero's shots carry.
+
+A deck turns over every 5.2s and stops on hover, on focus, on touch and in a background
+tab. It also waits its turn: one below the fold holds its first shot until it is in
+view, so a reader who scrolls down to a bonus starts at the beginning of its set rather
+than halfway through, and the five decks on the page are not all ticking away at once
+off-screen. Adding a shot is another `<figure>` in the `.deck` and another button in the
+`.deckdots` beside it - the script counts both, and finds the dots as the deck's next
+sibling.
 
 ### Proof wall
 
@@ -335,7 +357,8 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 9. Proof - a moving wall of member screenshots, two columns against each other
 10. 7 modules + total module value
 11. Who it is for (6 personas)
-12. 7 bonuses, each with the shots that prove it + total value Rp15.000.000
+12. 7 bonuses, each with the shots that prove it - four of them decks - + total
+    value Rp15.000.000
 13. Pricing (3 bulan / 12 bulan / lifetime)
 14. Warren Buffett quote - a ruled band, the portrait standing on the bottom rule
 15. FAQ - centred head over the accordion
