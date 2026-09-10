@@ -208,6 +208,8 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    under the pain list, and again under the before/after pair. */
 .say{text-align:center;color:var(--mut);font-size:clamp(1rem,1.4vw,1.1rem);max-width:760px;margin:30px auto 0;text-wrap:balance}
 .say + .say{margin-top:16px}
+/* in a band of its own the top margin would be air on top of air */
+.sayband .say:first-child{margin-top:0}
 .say b{font-weight:600}
 .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;
@@ -974,10 +976,18 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Two lines bridging the before/after pair and the testimonials. They get a
+     band of their own rather than a place at the foot of the section above,
+     which pinned them to the cards and left all the air on the other side. -->
+<div class="band sayband">
+  <div class="wrap">
     <p class="say reveal">Lo bakal belajar lewat <b class="hl">bahasa simpel, real use case, dan gaya santai</b> kayak lo lagi nongkrong di coffee shop.</p>
     <p class="say reveal">Gak pake istilah ribet. Gak pake rumus sakti. Semua dibikin <b class="hl">relatable</b> dan langsung bisa <b class="hl">dipraktekin hari itu juga.</b></p>
   </div>
-</section>
+</div>
 
 <!-- ===== BUKTI ===== -->
 <section class="band soft" id="bukti">
