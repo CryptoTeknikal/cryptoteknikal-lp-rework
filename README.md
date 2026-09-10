@@ -367,21 +367,24 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
 8. Before and after - the eyebrow is the whole heading, then the two cards
 9. Proof - a moving wall of member screenshots, two columns against each other
-10. 9 modules + what the set is worth
+10. 9 modules + what the set is worth, and a *Gabung Sekarang* under it
 11. Who it is for (6 personas)
 12. 7 bonuses, each with the shots that prove it - four of them decks - + total
     value Rp15.000.000
 13. Pricing - one membership, twelve months
-14. Warren Buffett quote - a ruled band, the portrait standing on the bottom rule
-15. FAQ - centred head over the accordion
+14. Warren Buffett quote - a ruled band, the portrait standing on the bottom rule,
+    a *Gabung Sekarang* under the line it argues for
+15. FAQ - centred head over the accordion, then a last *Gabung Sekarang*
 16. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 ## Notes
 
 - Responsive down to 360px, with a sticky bottom CTA bar on mobile. The bar stays
-  parked below the fold until the hero CTA has gone behind the nav, so the reader is
-  never offered the same button twice at once; the threshold is the nav's own height,
-  measured rather than hardcoded.
+  parked below the fold until the hero CTA has gone behind the nav, and drops back down
+  wherever one of the page's own buttons has come onto the screen - the three that close
+  a section, the plan's - so the reader is never offered the same button twice at once.
+  The top threshold is the nav's own height, measured rather than hardcoded; the bottom
+  one is the line the reveal already uses.
 - The nav is the one full-bleed band on the page: `.navin` carries its own
   `max(22px,min(8%,(100% - 1096px)/2))` gutter instead of sitting in the 1140px
   `.wrap` column, so the lockup stands off the window edge without following the
@@ -393,8 +396,12 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
   of indented past it, and settles on `.wrap`'s 22px once the column fills the window.
   Roughly: 8% above ~1300px, the column's own edge between there and 1140px, 22px
   below that.
-- The nav carries no CTA of its own. The buy button is the page's single persistent
-  offer: the hero CTA above the fold, then the sticky bar once it scrolls away.
+- The nav carries no CTA of its own. The buy button is the page's one persistent offer:
+  the hero CTA above the fold, a *Gabung Sekarang* closing each of the three sections
+  that finish an argument - the modules and what they are worth, the quote, the last
+  answered question - and on mobile the sticky bar covering the stretches between them.
+  All four point at `#harga` rather than the checkout, so the reader always sees the
+  price before the cart.
 - **No band shows an edge.** `.band.soft` does not paint `--soft` flat; it ramps from
   `--bg` to `--soft` over 170px at each end, so where two bands meet they are already the
   same colour and there is no line to see. The ramp is longer than a band's own padding,
