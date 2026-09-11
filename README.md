@@ -425,9 +425,9 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
   written into the markup, so the eight data URIs sit in the file once; the clone keeps
   its `alt`, because four marks are sized by an `[alt=...]` rule and a clone without one
   would be sized differently from its original. The lap is timed by the script from the
-  set's measured width, at 78px a second, for the reason the proof wall times its own: the
-  row is narrower on a phone than on a desktop, and one duration for both would have the
-  phone's marks drift while the desktop's stride. Under `prefers-reduced-motion` the track
+  set's measured width, at 52px a second - near the 45 the proof wall travels at - for the
+  reason the proof wall times its own: the row is narrower on a phone than on a desktop,
+  and one duration for both would have the phone's marks drift while the desktop's stride. Under `prefers-reduced-motion` the track
   stops being a track: it wraps, centres, and drops the cloned set.
 - The **bonus band gives up its bottom padding**. The total-value box is the last thing in
   it, its copy ends on *cukup dengan harga...* and the price under it is what finishes that

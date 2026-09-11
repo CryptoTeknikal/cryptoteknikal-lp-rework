@@ -110,7 +110,8 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    marks and not after the last one, and the odd half-gap would show up as a jump
    once a lap. It travels left to right, hence -50% up to 0 rather than the other
    way about. The lap is timed in the script from the set's measured width, so a
-   phone's narrower row travels at the same speed as a desktop's wide one.
+   phone's narrower row travels at the same speed as a desktop's wide one - and
+   slowly, because a row of marks is there to be read in passing, not watched.
 
    Every mark is a PNG drawn flat white on transparent, so eight house styles
    read as one row. Flat white the way the proof wall's shots are flat: the paint
@@ -127,7 +128,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
 .mtrack{display:flex;align-items:center;width:max-content;will-change:transform;
-  animation:mq 20s linear infinite}
+  animation:mq 30s linear infinite}
 .blogo{flex:none;display:block;margin-right:var(--mgap);
   height:clamp(26px,2.4vw,34px);width:auto;max-width:132px;opacity:.72}
 /* two of these are drawn much wider or much taller than the rest for the same
@@ -1765,8 +1766,9 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   //
   // The duration is measured the way the proof wall's is: the row is narrower on
   // a phone than on a desktop, and one duration for both would have the phone's
-  // marks drift while the desktop's stride. 78px a second either way, the speed
-  // the desktop already ran at.
+  // marks drift while the desktop's stride. 52px a second either way - near the
+  // 45 the proof wall travels at, and slow enough that a mark can be read on its
+  // way across rather than only recognised.
   var mtrack = document.querySelector('.mtrack');
   if(mtrack){
     // measured before the copy doubles it. The marks carry width and height
@@ -1778,7 +1780,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       copy.setAttribute('aria-hidden', 'true');
       mtrack.appendChild(copy);
     });
-    if(span){ mtrack.style.animationDuration = Math.round(span / 78) + 's'; }
+    if(span){ mtrack.style.animationDuration = Math.round(span / 52) + 's'; }
   }
 
   // The proof wall's two columns, each holding its set twice over for the reason
