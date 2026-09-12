@@ -358,7 +358,18 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .mcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 22px 26px;box-shadow:var(--shadow-sm);
   display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:0;transition:transform .2s,box-shadow .2s}
 .mcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+/* The still runs the full width of the card, so it breaks back out of the
+   padding and takes the card's top corners as its own. Its bottom edge is not
+   cut but faded into the card, and the icon chip rides the corner of it - which
+   keeps the card at the four rows .mgrid hands out: still, tag, title, line. */
+.mfig{position:relative;margin:-24px -22px 18px;border-radius:calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0;overflow:hidden;background:#0b0614}
+.mart{display:block;width:100%;height:auto;aspect-ratio:640/358;transition:transform .35s ease}
+.mcard:hover .mart{transform:scale(1.045)}
+.mfig::after{content:"";position:absolute;inset:auto 0 0;height:28%;pointer-events:none;
+  background:linear-gradient(to top,var(--card) 4%,rgba(19,13,28,.42) 54%,rgba(19,13,28,0))}
 .mic{width:48px;height:48px;border-radius:13px;background:var(--soft2);color:var(--brand2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.mfig .mic{position:absolute;left:14px;bottom:12px;margin:0;background:rgba(11,6,20,.66);border:1px solid rgba(255,0,255,.34);
+  box-shadow:0 6px 18px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
 .mic svg{width:24px;height:24px}
 .mtag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--brand2);margin-bottom:9px}
 .mcard h3{font-size:1.08rem;margin-bottom:8px;letter-spacing:-.015em}
@@ -1084,6 +1095,232 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   </div>
 </section>
 
+<!-- ===== MODUL STILLS =====
+     A still for each of the nine modules, drawn here instead of shipped as
+     renders. They are one series: every symbol opens with the same room -
+     horizon bloom, perspective floor, a wall of screens - and adds only the
+     motif its module is about, so the nine hang together the way a commissioned
+     set would, stay sharp at any card width, and cost a few kB between them
+     rather than a megabyte of artwork. Purely decorative: each card states its
+     own title underneath, so every instance is aria-hidden. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="msky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#160726"/><stop offset=".48" stop-color="#2a0b40"/>
+      <stop offset=".58" stop-color="#10061c"/><stop offset="1" stop-color="#07040e"/>
+    </linearGradient>
+    <radialGradient id="mbloom" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#ff2bff" stop-opacity=".5"/>
+      <stop offset=".5" stop-color="#a300cf" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#a300cf" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mslab" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7ee7ff" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#ff00ff" stop-opacity=".14"/>
+    </linearGradient>
+    <radialGradient id="mvig" cx=".5" cy=".44" r=".76">
+      <stop offset=".4" stop-color="#02010a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#02010a" stop-opacity=".9"/>
+    </radialGradient>
+    <pattern id="mscan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000" opacity=".45"/>
+    </pattern>
+    <!-- One blur per still, on the motif only: the room behind it is painted
+         with gradients so the section stays cheap to repaint while scrolling. -->
+    <filter id="mglow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- The room every still opens with. -->
+  <symbol id="mscene" viewBox="0 0 640 358">
+    <rect width="640" height="358" fill="url(#msky)"/>
+    <g opacity=".8">
+      <rect x="18" y="44" width="78" height="158" rx="6" fill="url(#mslab)" opacity=".5"/>
+      <rect x="104" y="66" width="58" height="136" rx="5" fill="url(#mslab)" opacity=".34"/>
+      <rect x="484" y="58" width="66" height="144" rx="5" fill="url(#mslab)" opacity=".4"/>
+      <rect x="558" y="34" width="72" height="168" rx="6" fill="url(#mslab)" opacity=".52"/>
+      <g stroke="#9deaff" stroke-width="2" stroke-linecap="round" opacity=".3">
+        <path d="M28 62h48M28 74h30M28 86h56M28 98h38M28 110h52M28 122h26M28 134h46M28 146h34M28 158h50M28 170h30M28 182h42"/>
+        <path d="M112 84h34M112 96h22M112 108h40M112 120h28M112 132h36M112 144h20M112 156h32M112 168h38M112 180h24"/>
+        <path d="M492 76h44M492 88h26M492 100h38M492 112h48M492 124h22M492 136h40M492 148h30M492 160h44M492 172h28M492 184h36"/>
+        <path d="M568 52h48M568 64h30M568 76h52M568 88h36M568 100h44M568 112h24M568 124h50M568 136h32M568 148h46M568 160h28M568 172h40M568 184h34"/>
+      </g>
+    </g>
+    <ellipse cx="320" cy="204" rx="300" ry="96" fill="url(#mbloom)"/>
+    <!-- floor: everything converges on the bloom, which sits on the horizon -->
+    <g stroke="#ff3cff" stroke-width="1" opacity=".3">
+      <path d="M320 206-300 358M320 206-96 358M320 206 74 358M320 206 196 358M320 206 272 358M320 206v152M320 206 368 358M320 206 444 358M320 206 566 358M320 206 736 358M320 206 940 358"/>
+      <path d="M0 214h640M0 224h640M0 238h640M0 258h640M0 286h640M0 322h640"/>
+    </g>
+    <rect width="640" height="358" fill="url(#mvig)"/>
+    <rect width="640" height="358" fill="url(#mscan)" opacity=".3"/>
+  </symbol>
+
+  <!-- The chart the room is looking at, reused wherever a motif sits over one. -->
+  <symbol id="mcndl" viewBox="0 0 640 358">
+    <g opacity=".62" stroke-width="2.6" stroke-linecap="round">
+      <g stroke="#ff5cff" fill="#ff5cff" fill-opacity=".26">
+        <path d="M78 234v58M252 196v58M368 172v62M542 122v60"/>
+        <rect x="68" y="244" width="20" height="34" rx="2"/><rect x="242" y="206" width="20" height="36" rx="2"/>
+        <rect x="358" y="182" width="20" height="38" rx="2"/><rect x="532" y="132" width="20" height="38" rx="2"/>
+      </g>
+      <g stroke="#7ee7ff" fill="#7ee7ff" fill-opacity=".2">
+        <path d="M136 216v54M194 226v50M310 186v54M426 152v54M484 168v52"/>
+        <rect x="126" y="228" width="20" height="30" rx="2"/><rect x="184" y="236" width="20" height="28" rx="2"/>
+        <rect x="300" y="198" width="20" height="30" rx="2"/><rect x="416" y="164" width="20" height="30" rx="2"/>
+        <rect x="474" y="180" width="20" height="28" rx="2"/>
+      </g>
+    </g>
+  </symbol>
+
+  <!-- 01 trend and timeframe: the line the whole chart is really making -->
+  <symbol id="mfig1" viewBox="0 0 640 358"><use href="#mscene"/><use href="#mcndl"/>
+    <g fill="none" stroke="#ff4dff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#mglow)">
+      <path d="M76 282 210 228 288 250 396 172 466 194 560 100"/>
+      <path d="M528 96h36v36" stroke-width="4.4"/>
+    </g>
+    <g opacity=".85">
+      <rect x="76" y="42" width="52" height="22" rx="7" fill="#ff00ff" fill-opacity=".9"/>
+      <rect x="136" y="42" width="52" height="22" rx="7" fill="none" stroke="#ff5cff" stroke-opacity=".5" stroke-width="1.6"/>
+      <rect x="196" y="42" width="52" height="22" rx="7" fill="none" stroke="#ff5cff" stroke-opacity=".5" stroke-width="1.6"/>
+    </g>
+  </symbol>
+
+  <!-- 02 support and resistance: the two rails price keeps answering to -->
+  <symbol id="mfig2" viewBox="0 0 640 358"><use href="#mscene"/>
+    <g>
+      <rect x="48" y="96" width="544" height="16" rx="8" fill="#ff00ff" fill-opacity=".16"/>
+      <rect x="48" y="250" width="544" height="16" rx="8" fill="#7ee7ff" fill-opacity=".14"/>
+      <g stroke-width="3" stroke-dasharray="16 12" stroke-linecap="round">
+        <path d="M48 104h544" stroke="#ff4dff" opacity=".9"/><path d="M48 258h544" stroke="#7ee7ff" opacity=".8"/>
+      </g>
+    </g>
+    <g fill="none" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#mglow)" opacity=".95">
+      <path d="M60 244 154 112 232 252 322 110 404 254 494 112 572 236"/>
+    </g>
+    <g fill="#ff4dff" opacity=".9">
+      <circle cx="154" cy="112" r="7"/><circle cx="322" cy="110" r="7"/><circle cx="494" cy="112" r="7"/>
+    </g>
+    <g fill="#7ee7ff" opacity=".85">
+      <circle cx="232" cy="252" r="7"/><circle cx="404" cy="254" r="7"/>
+    </g>
+  </symbol>
+
+  <!-- 03 chart patterns: head and shoulders, the one everybody meets first -->
+  <symbol id="mfig3" viewBox="0 0 640 358"><use href="#mscene"/><use href="#mcndl"/>
+    <g fill="none" stroke="#ff4dff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#mglow)">
+      <path d="M64 264 146 156 216 232 320 84 424 232 494 156 576 266"/>
+    </g>
+    <path d="M146 232h348" fill="none" stroke="#7ee7ff" stroke-width="3" stroke-dasharray="14 11" stroke-linecap="round" opacity=".9"/>
+    <g fill="none" stroke="#fff" stroke-width="2.4" opacity=".55">
+      <circle cx="146" cy="156" r="16"/><circle cx="320" cy="84" r="20"/><circle cx="494" cy="156" r="16"/>
+    </g>
+  </symbol>
+
+  <!-- 04 indicators: one oscillator under the price, not a wall of them -->
+  <symbol id="mfig4" viewBox="0 0 640 358"><use href="#mscene"/>
+    <g opacity=".75" stroke-width="2.6" stroke-linecap="round">
+      <g stroke="#ff5cff" fill="#ff5cff" fill-opacity=".26">
+        <path d="M104 92v48M232 74v50M400 62v46M528 46v48"/>
+        <rect x="94" y="100" width="20" height="30" rx="2"/><rect x="222" y="82" width="20" height="32" rx="2"/>
+        <rect x="390" y="70" width="20" height="30" rx="2"/><rect x="518" y="54" width="20" height="32" rx="2"/>
+      </g>
+      <g stroke="#7ee7ff" fill="#7ee7ff" fill-opacity=".2">
+        <path d="M168 86v46M316 68v48M464 58v46"/>
+        <rect x="158" y="94" width="20" height="28" rx="2"/><rect x="306" y="78" width="20" height="28" rx="2"/>
+        <rect x="454" y="66" width="20" height="28" rx="2"/>
+      </g>
+    </g>
+    <rect x="56" y="168" width="528" height="140" rx="16" fill="#0b0518" fill-opacity=".72" stroke="#ff00ff" stroke-opacity=".3" stroke-width="1.6"/>
+    <g stroke-width="2.4" stroke-dasharray="12 10" stroke-linecap="round" opacity=".7">
+      <path d="M76 202h488" stroke="#ff4dff"/><path d="M76 274h488" stroke="#7ee7ff"/>
+    </g>
+    <path d="M76 262 150 196 226 268 300 200 378 274 452 196 564 250" fill="none" stroke="#fff" stroke-width="4.4"
+          stroke-linecap="round" stroke-linejoin="round" filter="url(#mglow)" opacity=".95"/>
+  </symbol>
+
+  <!-- 05 entry and exit: target above, stop below, both set before the click -->
+  <symbol id="mfig5" viewBox="0 0 640 358"><use href="#mscene"/>
+    <rect x="48" y="70" width="544" height="60" rx="10" fill="#7ee7ff" fill-opacity=".13"/>
+    <rect x="48" y="258" width="544" height="56" rx="10" fill="#ff5f52" fill-opacity=".14"/>
+    <g stroke-width="3" stroke-dasharray="15 11" stroke-linecap="round">
+      <path d="M48 78h544" stroke="#7ee7ff" opacity=".85"/><path d="M48 308h544" stroke="#ff5f52" opacity=".8"/>
+      <path d="M48 194h544" stroke="#ff4dff" opacity=".9"/>
+    </g>
+    <g fill="none" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" opacity=".95" filter="url(#mglow)">
+      <path d="M60 246 142 214 214 236 268 194"/>
+      <path d="M268 194 350 150 424 168 520 92"/>
+      <path d="M488 88h34v34" stroke-width="4"/>
+    </g>
+    <g><circle cx="268" cy="194" r="16" fill="#ff00ff" fill-opacity=".26"/><circle cx="268" cy="194" r="8.5" fill="#ff4dff"/></g>
+  </symbol>
+
+  <!-- 06 trading plan: the rules written down before the market opens -->
+  <symbol id="mfig6" viewBox="0 0 640 358"><use href="#mscene"/>
+    <g filter="url(#mglow)">
+      <rect x="170" y="42" width="300" height="230" rx="20" fill="#0d0618" fill-opacity=".9" stroke="#ff4dff" stroke-width="3"/>
+    </g>
+    <rect x="272" y="26" width="96" height="32" rx="10" fill="#170a24" stroke="#ff5cff" stroke-width="2.4"/>
+    <g>
+      <g fill="#ff00ff" fill-opacity=".14"><rect x="198" y="88" width="34" height="34" rx="10"/><rect x="198" y="142" width="34" height="34" rx="10"/>
+        <rect x="198" y="196" width="34" height="34" rx="10"/></g>
+      <g fill="none" stroke="#ff4dff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M205 105.5 213 113.5 226 96.5M205 159.5 213 167.5 226 150.5M205 213.5 213 221.5 226 204.5"/>
+      </g>
+      <g stroke="#e9d8f5" stroke-width="6" stroke-linecap="round" opacity=".5">
+        <path d="M250 98h190M250 118h124M250 152h190M250 172h146M250 206h190M250 226h108"/>
+      </g>
+      <rect x="198" y="250" width="242" height="16" rx="8" fill="#ff00ff" fill-opacity=".22"/>
+    </g>
+  </symbol>
+
+  <!-- 07 the house system: what is behind the lock, spelled out -->
+  <symbol id="mfig7" viewBox="0 0 640 358"><use href="#mscene"/><use href="#mcndl"/>
+    <g stroke="#ff4dff" stroke-width="2" opacity=".45" fill="none">
+      <path d="M96 118h84v-40h56M544 118h-84v-40h-56M96 262h84v40h56M544 262h-84v40h-56"/>
+      <g fill="#ff4dff"><circle cx="96" cy="118" r="5"/><circle cx="544" cy="118" r="5"/><circle cx="96" cy="262" r="5"/><circle cx="544" cy="262" r="5"/></g>
+    </g>
+    <g filter="url(#mglow)">
+      <rect x="236" y="146" width="168" height="126" rx="22" fill="#12071e" fill-opacity=".94" stroke="#ff4dff" stroke-width="4"/>
+      <path d="M268 146v-30a52 52 0 0 1 104 0v30" fill="none" stroke="#ff4dff" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9">
+      <circle cx="320" cy="198" r="18"/><path d="M320 216v26"/>
+    </g>
+  </symbol>
+
+  <!-- 08 risk management: the account survives the analysis being wrong -->
+  <symbol id="mfig8" viewBox="0 0 640 358"><use href="#mscene"/>
+    <g opacity=".75">
+      <g fill="#ff00ff" fill-opacity=".2" stroke="#ff5cff" stroke-width="2">
+        <rect x="60" y="234" width="34" height="72" rx="6"/><rect x="106" y="204" width="34" height="102" rx="6"/>
+        <rect x="152" y="252" width="34" height="54" rx="6"/>
+      </g>
+      <g fill="#7ee7ff" fill-opacity=".16" stroke="#7ee7ff" stroke-width="2">
+        <rect x="454" y="252" width="34" height="54" rx="6"/><rect x="500" y="214" width="34" height="92" rx="6"/>
+        <rect x="546" y="240" width="34" height="66" rx="6"/>
+      </g>
+    </g>
+    <g filter="url(#mglow)">
+      <path d="M320 32 424 72v90c0 68-52 105-104 121-52-16-104-53-104-121V72z" fill="#12071e" fill-opacity=".92" stroke="#ff4dff" stroke-width="4.4" stroke-linejoin="round"/>
+    </g>
+    <path d="M272 174 302 204 370 134" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity=".95"/>
+  </symbol>
+
+  <!-- 09 psychology: the flat line is the trader, not the market -->
+  <symbol id="mfig9" viewBox="0 0 640 358"><use href="#mscene"/>
+    <g filter="url(#mglow)">
+      <path d="M300 54c-52 0-84 40-84 86 0 30 10 44 10 66 0 16-4 22-4 34v56h58v-54h34c12 0 18-8 18-18v-22c0-8 8-10 14-12 8-2 10-8 6-16l-18-34c-2-28-14-48-34-62-6-14-8-24-30-24z"
+            fill="#12071e" fill-opacity=".9" stroke="#ff4dff" stroke-width="4" stroke-linejoin="round"/>
+    </g>
+    <path d="M240 168c14-26 28-26 42 0s28 26 42 0" fill="none" stroke="#fff" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
+    <g fill="#ff5cff" opacity=".8"><circle cx="470" cy="112" r="7"/><circle cx="506" cy="168" r="5"/><circle cx="146" cy="118" r="6"/><circle cx="112" cy="176" r="4.5"/></g>
+  </symbol>
+</svg>
+
 <!-- ===== MODUL ===== -->
 <section class="band seam" id="modul">
   <div class="wrap">
@@ -1095,55 +1332,64 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 
     <div class="mgrid reveal">
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M7 15l3-3.5 3 2.5 4-5"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig1"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M7 15l3-3.5 3 2.5 4-5"/></svg></div></div>
         <span class="mtag">Modul 01</span>
         <h3>Analisa Trend &amp; Timeframe</h3>
         <p>Baca arah market dulu sebelum mikirin entry, dan tahu timeframe mana yang lo pakai buat ngambil keputusan.</p>
       </article>
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h18M3 17.5h18"/><path d="M12 15.5V9M12 9l-3 3M12 9l3 3"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig2"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h18M3 17.5h18"/><path d="M12 15.5V9M12 9l-3 3M12 9l3 3"/></svg></div></div>
         <span class="mtag">Modul 02</span>
         <h3>Analisa Support &amp; Resisten</h3>
         <p>Nandain area yang sering nahan dan mantulin harga, biar lo masuk di level yang masuk akal, bukan di tengah jalan.</p>
       </article>
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5v3M7 16v4.5M17 3v4M17 15.5v5.5"/><rect x="4" y="6.5" width="6" height="9.5" rx="1.5"/><rect x="14" y="7" width="6" height="8.5" rx="1.5"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig3"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5v3M7 16v4.5M17 3v4M17 15.5v5.5"/><rect x="4" y="6.5" width="6" height="9.5" rx="1.5"/><rect x="14" y="7" width="6" height="8.5" rx="1.5"/></svg></div></div>
         <span class="mtag">Modul 03</span>
         <h3>Analisa Pola Chart</h3>
         <p>Ngenalin pola yang berulang di chart, dan apa yang biasanya kejadian setelah pola itu kelar kebentuk.</p>
       </article>
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.34 19a10 10 0 1 1 17.32 0"/><path d="M12 14l4-4"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig4"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.34 19a10 10 0 1 1 17.32 0"/><path d="M12 14l4-4"/></svg></div></div>
         <span class="mtag">Modul 04</span>
         <h3>Analisa Indikator</h3>
         <p>Pakai indikator seperlunya buat konfirmasi, bukan buat ngeramein chart sampai lo sendiri bingung.</p>
       </article>
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig5"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div></div>
         <span class="mtag">Modul 05</span>
         <h3>Cara Menentukan Entry &amp; Exit</h3>
         <p>Titik masuk, target profit, dan stop loss ditentukan sebelum posisi dibuka, bukan pas harga udah jalan.</p>
       </article>
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4.5h2a2 2 0 0 1 2 2V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2h2"/><rect x="8" y="2.5" width="8" height="4" rx="1.3"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig6"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4.5h2a2 2 0 0 1 2 2V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2h2"/><rect x="8" y="2.5" width="8" height="4" rx="1.3"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></div></div>
         <span class="mtag">Modul 06</span>
         <h3>Cara Membuat Trading Plan</h3>
         <p>Nyusun rencana yang tertulis: setup apa yang lo ambil, ukuran posisinya berapa, dan kapan lo berhenti.</p>
       </article>
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig7"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></div></div>
         <span class="mtag">Modul 07</span>
         <h3>Sistem Trading Rahasia Yang Kami Gunakan</h3>
         <p>Sistem yang dipakai mentor tiap hari, dibongkar aturannya satu per satu sampai bisa lo jalanin sendiri.</p>
       </article>
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig8"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div></div>
         <span class="mtag">Modul 08</span>
         <h3>Cara Melakukan Manajemen Resiko</h3>
         <p>Ngatur risiko tiap posisi supaya profit lo maksimal dan akun lo tetap hidup waktu analisa meleset.</p>
       </article>
       <article class="mcard">
-        <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18z"/></svg></div>
+        <div class="mfig"><svg class="mart" viewBox="0 0 640 358" aria-hidden="true"><use href="#mfig9"/></svg>
+          <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18z"/></svg></div></div>
         <span class="mtag">Modul 09</span>
         <h3>Cara Menjaga Psikologi Dalam Trading</h3>
         <p>Tetap tenang waktu porto lagi merah, dan gak balas dendam ke market setelah kena stop loss.</p>
