@@ -370,7 +370,8 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 5. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - the question, then the three
    market conditions the answer covers (bullish / bearish / sideways)
 6. *Kenapa Pilih Crypto Teknikal Academy* - the eyebrow is the whole heading, then
-   the logo sting and 4 value cards
+   the logo sting and 4 value cards, each opening on a still from the same drawn
+   series the modules use
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
 8. Before and after - the eyebrow is the whole heading, then the two cards
 9. Proof - a moving wall of member screenshots, two columns against each other
@@ -378,7 +379,8 @@ at `quality=82`, and swapping the base64 in the matching `<img>`.
 11. Who it is for (6 personas)
 12. 7 bonuses, each with the shots that prove it - four of them decks - + total
     value Rp15.000.000
-13. Pricing - one membership, twelve months
+13. Pricing - one membership, twelve months, with the 30-day money-back guarantee
+    directly under the card
 14. Warren Buffett quote - a ruled band, the portrait standing on the bottom rule,
     a *Gabung Sekarang* under the line it argues for
 15. FAQ - centred head over the accordion, then a last *Gabung Sekarang*
