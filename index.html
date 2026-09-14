@@ -485,7 +485,10 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .plan.pro{border:1.5px solid var(--brand);background:linear-gradient(165deg,rgba(255,0,255,.09),var(--card) 55%);box-shadow:var(--shadow),0 0 56px rgba(255,0,255,.12)}
 .plan .pname{font-size:1.5rem;font-weight:600;letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
 .plan .psub{margin-top:3px;font-size:.95rem;color:var(--mut)}
-.plan .pcoret{display:block;margin-top:14px;color:var(--soft-mut);text-decoration:line-through;font-size:1rem;font-weight:600}
+/* The struck total value outsizes the price paid on purpose: what the membership
+   is worth should read bigger than what it costs. The mute plus the rule keeps
+   the paid price the brighter of the two, so the hierarchy still points at it. */
+.plan .pcoret{display:block;margin-top:14px;color:var(--soft-mut);text-decoration:line-through;font-size:clamp(2.05rem,3.45vw,2.65rem);font-weight:600;letter-spacing:-.025em;line-height:1.1}
 .plan .pprice{font-size:clamp(1.8rem,3vw,2.3rem);font-weight:600;margin:2px 0 0;letter-spacing:-.025em;line-height:1.1}
 .plan .pday{margin:8px 0 22px;font-size:.95rem;color:var(--mut)}
 .plan ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:24px;flex:1}
@@ -632,14 +635,6 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .sting-vig:after{content:"";position:absolute;inset:0;opacity:.06;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-.sting-replay{position:absolute;right:14px;bottom:14px;z-index:3;
-  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:99px;
-  background:rgba(255,255,255,.07);border:1px solid var(--line2);color:var(--ink2);
-  font:inherit;font-size:.76rem;font-weight:600;cursor:pointer;
-  transition:background .18s,color .18s,border-color .18s}
-.sting-replay:hover{background:rgba(255,0,255,.16);border-color:rgba(255,0,255,.5);color:#fff}
-.sting-replay svg{width:13px;height:13px}
-
 @media(prefers-reduced-motion:no-preference){
   /* hidden start states - only worth applying where the sting can actually run */
   .sting-aura{opacity:0;transform:translate(-50%,-50%) scale(.5)}
@@ -755,7 +750,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 }
 @media(max-width:620px){
   .sting{aspect-ratio:16/9}
-  .sting-replay{top:12px;right:12px;bottom:auto}
   .vgrid,.mgrid,.pgrid,.mentgrid{grid-template-columns:1fr}
   /* an icon and a single word do not need a full-width card each, so the three
      conditions stay in one row here and only shrink. */
@@ -1302,10 +1296,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           </span>
         </span>
         <span class="sting-vig" aria-hidden="true"></span>
-        <button class="sting-replay" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>
-          Replay
-        </button>
       </div>
     </div>
     <div class="vgrid reveal">
@@ -1319,7 +1309,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig2"/></svg>
           <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-1.5z"/><path d="M8 7h7M8 11h7"/></svg></div></div>
         <h3>Materi Trading Dari 0</h3>
-        <p>Hingga bisa menaklukan market crypto secara konsisten.</p>
+        <p>Hingga bisa dapet cuan dua digit per bulan secara konsisten.</p>
       </div>
       <div class="vcard">
         <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig3"/></svg>
@@ -1705,7 +1695,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 <section class="band soft seam" id="harga">
   <div class="wrap">
     <div class="center labelonly reveal">
-      <span class="eyebrow">Pricing</span>
+      <span class="eyebrow">Investasi</span>
     </div>
     <div class="pricewrap reveal">
       <!-- Paket 12 bulan -->
@@ -1988,8 +1978,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   sweep();
 
 
-  // Intro sting. Scrolling it into view plays it; a click anywhere on the stage,
-  // the Replay button included, restarts it.
+  // Intro sting. Scrolling it into view plays it; a click anywhere on the stage
+  // restarts it.
   var sting = document.getElementById('sting');
   if(sting){
     var quiet = window.matchMedia('(prefers-reduced-motion: reduce)');
