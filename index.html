@@ -245,19 +245,15 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;
   display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0}
 .vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.vic{width:48px;height:48px;border-radius:13px;background:var(--soft2);display:flex;align-items:center;justify-content:center;color:var(--brand2);margin-bottom:15px}
-.vic svg{width:24px;height:24px}
 /* Each card opens on its own still, drawn from the same series as the module
    cards further down: it runs the full width of the card, breaks back out of
    the padding, takes the card's top corners, and fades into the card rather
-   than being cut off at a hard edge - with the icon chip riding its corner. */
+   than being cut off at a hard edge. */
 .vfig{position:relative;margin:-24px -20px 16px;border-radius:calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0;overflow:hidden;background:#0b0614}
 .vart{display:block;width:100%;height:auto;aspect-ratio:640/358;transition:transform .35s ease}
 .vcard:hover .vart{transform:scale(1.045)}
 .vfig::after{content:"";position:absolute;inset:auto 0 0;height:28%;pointer-events:none;
   background:linear-gradient(to top,var(--card) 4%,rgba(19,13,28,.42) 54%,rgba(19,13,28,0))}
-.vfig .vic{position:absolute;left:14px;bottom:12px;margin:0;background:rgba(11,6,20,.66);border:1px solid rgba(255,0,255,.34);
-  box-shadow:0 6px 18px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
 /* the four titles run to different lengths, so laid out as plain blocks the
    descriptions would start at different heights and the row would stop scanning
    across. Each card is a subgrid of .vgrid instead: still, title and description
@@ -1300,26 +1296,22 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     </div>
     <div class="vgrid reveal">
       <div class="vcard">
-        <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig1"/></svg>
-          <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></div></div>
+        <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig1"/></svg></div>
         <h3>Sistem Trading Yang Terbukti Profitable</h3>
         <p>Terbukti profitable di bull, bear, maupun sideways market.</p>
       </div>
       <div class="vcard">
-        <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig2"/></svg>
-          <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-1.5z"/><path d="M8 7h7M8 11h7"/></svg></div></div>
+        <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig2"/></svg></div>
         <h3>Materi Trading Dari 0</h3>
         <p>Hingga bisa dapet cuan dua digit per bulan secara konsisten.</p>
       </div>
       <div class="vcard">
-        <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig3"/></svg>
-          <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div></div>
+        <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig3"/></svg></div>
         <h3>Komunitas Ekslusif Dua Arah</h3>
         <p>Untuk diskusi dan saling dukung dalam segala permasalahan lo selama trading crypto.</p>
       </div>
       <div class="vcard">
-        <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig4"/></svg>
-          <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 11l6-4v10l-6-4z"/></svg></div></div>
+        <div class="vfig"><svg class="vart" viewBox="0 0 640 358" aria-hidden="true"><use href="#vfig4"/></svg></div>
         <h3>Live Mentoring Mingguan Bareng Mentor</h3>
         <p>Untuk arahan saat praktek trading dan diskusi kemana arah pasar ke depannya.</p>
       </div>
